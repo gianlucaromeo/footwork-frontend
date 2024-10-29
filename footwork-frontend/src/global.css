@@ -1,0 +1,14 @@
+/* Global Variables */
+
+/* Add your variables here */
+:root {
+    --background-color: #1a1a1a;
+    --primary-color: #00FF88;
+}
+
+/* How to use variables:
+body {
+    background-color: var(--background-color);
+    color: var(--primary-color);
+}
+*/
