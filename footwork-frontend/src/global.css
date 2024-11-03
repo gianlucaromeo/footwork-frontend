@@ -28,6 +28,13 @@
     --header-font: 'Bebas Neue', sans-serif;
     --copy-font: 'Roboto', sans-serif;
 
+    /* Header font sizes desktop: */
+    --h1-size: 96px;
+    --h2-size: 64px;
+    --h3-size: 36px;
+    --h4-size: 32px;
+    --h5-size: 24px;
+
     /* Copy font sizes desktop: */
     --copy-large: 20px;
     --copy-medium: 16px;
@@ -36,7 +43,6 @@
     --weight-regular: 400;
     --weight-medium: 500;
     --weight-semibold: 600;
-
 }
 
 body {
@@ -50,11 +56,11 @@ h1, h2, h3, h4, h5 {
 }
 
 /* Desktop fonts: */
-h1 { font-size: 96px; }
-h2 { font-size: 64px; }
-h3 { font-size: 36px; }
-h4 { font-size: 32px; }
-h5 { font-size: 24px; }
+h1 { font-size: var(--h1-size); }
+h2 { font-size: var(--h2-size); }
+h3 { font-size: var(--h3-size); }
+h4 { font-size: var(--h4-size); }
+h5 { font-size: var(--h5-size); }
 
 .copy-large-med {
     font-size: var(--copy-large);
