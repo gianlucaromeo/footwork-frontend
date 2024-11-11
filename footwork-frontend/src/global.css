@@ -265,6 +265,65 @@ button .icon {
     height: 24px;
 }
 
+/*-----------------------------Switch-----------------------------*/
+.switchContainer {
+    display: flex;
+    align-items: flex-start;
+}
+
+.switch {
+    display: flex;
+    width: 140px;
+    min-width: 140px;
+    padding: 8px 16px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-top: 2px solid var(--neon-green, #0F8);
+    border-bottom: 2px solid var(--neon-green, #0F8);
+    font-size: var(--h5-size);
+    font-family: var(--header-font);
+}
+
+.switch.left {
+    border-radius: 8px 0px 0px 8px;
+    border-left: 2px solid var(--neon-green, #0F8);
+}
+
+.switch.right {
+    border-radius: 0px 8px 8px 0px;
+    border-bottom: 2px solid var(--neon-green, #0F8);
+}
+
+.switch.selected {
+    background: var(--neon-green, #0F8);
+    color: var(--black, #1A1A1A);
+}
+
+/*-----------------------------Switch Mobile:-----------------------------*/
+@media (max-width: 600px) {
+    .switch {
+        font-size: var(--h4-size);
+    }
+}
+
+/*-----------------------------Checkbox:-----------------------------*/
+.checkboxContainer {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.checkboxContainer .icon {
+    width: 24px;
+    height: 24px;
+}
+
+.checked {
+    color: var(--neon-green);
+    font-weight: var(--weight-semibold);
+}
+
 /*-----------------------------Login Form-----------------------------*/
 .loginForm {
     display: flex;
