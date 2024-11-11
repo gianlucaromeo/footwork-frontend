@@ -123,6 +123,23 @@ h5 { font-size: var(--h5-size); }
     margin: 0;
 }
 
+/*-----------------------------Logo:-----------------------------*/
+.logo {
+    width: 104px;
+    height: 23.362px;
+    background-image: url('./assets/logos/logo-desktop.png');
+    background-size: 100%;
+}
+/*-----------------------------Logo Mobile:-----------------------------*/
+@media (max-width: 600px) {
+    .logo {
+        width: 79px;
+        height: 17.978px;
+        background-image: url('./assets/logos/logo-mobile.png');
+        background-size: 100%;
+    }
+}
+
 /*-----------------------------Buttons:-----------------------------*/
 .btn-primary {
     border: none;
@@ -222,7 +239,70 @@ button .icon {
     }
 }
 
-/*-----------------------------Input Fields-----------------------------*/
+/*-----------------------------Icon Buttons:-----------------------------*/
+.iconBtn {
+    padding: 8px;
+    border-radius: 200px;
+    border: 2px solid var(--neon-green, #0F8);
+    background-size: 70%; /* Adjust this percentage to control icon size */
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 24px; /* Button width */
+    height: 24px; /* Button height */
+}
+.iconBtn.profile {
+    background-image: url('./assets/icons/profile-green.png');
+}
+.iconBtn.more {
+    background: var(--dark-green, #272A28);
+    background-image: url('./assets/icons/dots.png');
+    background-size: 60%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/*-----------------------------Icon Buttons Mobile:-----------------------------*/
+@media (max-width: 600px) {
+    .iconBtn {
+        width: 32px; /* Button width */
+        height: 32px; /* Button height */
+    }
+}
+
+/*-----------------------------Navbar:-----------------------------*/
+.navbar {
+    display: flex;
+    padding: 48px 48px 32px 48px;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 1px solid #FFF;
+    background: var(--black, #1A1A1A);
+    height: 125px; /* Sets the height to 125px */
+    box-sizing: border-box; /* Ensures padding is included within the height */
+}
+.navbar .content {
+    display: flex;
+    max-width: 1400px;
+    justify-content: space-between;
+    align-items: center;
+    flex: 1 0 0;
+}
+.navbar .content .buttonContainer {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+/*-----------------------------Navbar Mobile:-----------------------------*/
+@media (max-width: 600px) {
+    .navbar {
+        padding: 48px 32px 24px 32px;
+        height: 104px; /* Sets the height to 125px */
+    }
+}
+
+/*-----------------------------Input Fields:-----------------------------*/
 .inputContainer {
     display: flex;
     flex-direction: column;
