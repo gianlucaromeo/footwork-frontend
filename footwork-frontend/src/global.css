@@ -84,6 +84,7 @@ body {
 h1, h2, h3, h4, h5 {
     font-family: var(--header-font);
     margin: 0px;
+    line-height: 1;
 }
 h1 { font-size: var(--h1-size); }
 h2 { font-size: var(--h2-size); }
@@ -273,12 +274,12 @@ button .icon {
 .navbar {
     display: flex;
     padding: 48px 48px 32px 48px;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     gap: 10px;
     border-bottom: 1px solid #FFF;
     background: var(--black, #1A1A1A);
-    height: 125px; /* Sets the height to 125px */
+    height: 125px;
     box-sizing: border-box; /* Ensures padding is included within the height */
 }
 .navbar .content {
@@ -299,6 +300,43 @@ button .icon {
     .navbar {
         padding: 48px 32px 24px 32px;
         height: 104px; /* Sets the height to 125px */
+    }
+}
+
+/*-----------------------------Title Subtitle:-----------------------------*/
+.titleSubtitle {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+}
+.titleSubtitle.big {
+    align-items: center;
+    display: inline-flex;
+}
+.arrowTitle {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+}
+.arrow {
+    background-size: 80%; /* Adjust this percentage to control icon size */
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url('./assets/icons/arrow-left.png');
+    width: 48px;
+    height: 48px;
+}
+
+/*-----------------------------Title Subtitle Mobile:-----------------------------*/
+@media (max-width: 600px) {
+    .arrowTitle {
+        gap: 8px;
+    }
+    .arrow {
+        background-size: 90%; /* Adjust this percentage to control icon size */
+        width: 24px;
+        height: 24px;
     }
 }
 
