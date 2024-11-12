@@ -62,19 +62,18 @@
 }
 
 /*-----------------------------Body:-----------------------------*/
-body {
+html, body {
     font-family: var(--copy-font);
     color: var(--white);
     background-color: var(--black);
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
 }
 
 /*-----------------------------Body Mobile:-----------------------------*/
 @media (max-width: 600px) {
-    html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-    }
     * , *::before, *::after {
         box-sizing: border-box;
     }
@@ -437,6 +436,84 @@ button .icon {
 .checked {
     color: var(--neon-green);
     font-weight: var(--weight-semibold);
+}
+
+/*-----------------------------Tile:-----------------------------*/
+.tileContainer {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    max-height: 800px;
+    padding: 48px;
+    box-sizing: border-box;
+    overflow-x: auto;
+    white-space: nowrap;
+    justify-content: center;
+}
+.tile {
+    display: inline-block;
+    width: 33.33%;
+    max-width: 500px;
+    max-height: 500px;
+    padding: 60px 48px;
+    box-sizing: border-box;
+    vertical-align: bottom;
+    box-shadow: 8px 8px 0px 0px #0F8;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    background-size: cover; /* Ensures background covers the tile */
+    background-position: center; /* Centers the background image */
+    background-repeat: no-repeat; /* Prevents background from repeating */
+}
+.tileText {
+    display: flex;
+    padding: 12px 16px;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+    background: var(--neon-green, #0F8);
+    color: var(--black);
+    font-family: var(--header-font);
+    font-size: var(--h2-size);
+    line-height: 1;
+    margin: 0 0 12px 0;
+    width: auto;
+}
+
+/*-----------------------------Tile Mobile:-----------------------------*/
+@media (max-width: 600px) {
+    .tileContainer {
+        flex-direction: column; /* Stacks tiles vertically */
+        width: 100%; /* Fills the container width */
+        margin: 0; /* Removes margin */
+        align-items: stretch; /* Ensures child elements take full width */
+        height: auto; /* Allows container to hug its content height */
+        overflow-y: auto; /* Enables scrolling if tiles exceed viewport */
+        max-height: none; /* Removes any max-height restriction */
+    }
+    .tile {
+        min-height: 311px; /* Fixed height for each tile */
+        width: 100%; /* Fills the width of tileContainer */
+        max-width: none; /* Removes any max-width restriction */
+        max-height: none; /* Removes any max-height restriction */
+        padding: 32px 24px;
+        box-sizing: border-box; /* Ensures padding is included within width */
+    }
+    .tileText {
+        display: flex;
+        padding: 12px 16px;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 10px;
+        background: var(--neon-green, #0F8);
+        color: var(--black);
+        font-family: var(--header-font);
+        font-size: var(--h2-size);
+        line-height: 1;
+        width: auto;
+    }
 }
 
 /*-----------------------------Login Form:-----------------------------*/
