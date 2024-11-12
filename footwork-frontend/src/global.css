@@ -516,6 +516,74 @@ button .icon {
     }
 }
 
+/*-----------------------------Card:-----------------------------*/
+.card {
+    display: flex;
+    height: 309px;
+    padding: 32px 48px;
+    flex-direction: column;
+    gap: 48px;
+    align-self: stretch;
+    border-radius: 8px;
+    background: var(--white-opaque, rgba(255, 255, 255, 0.10));
+    flex-grow: 1;
+    flex-basis: 0; 
+}
+.card .informationContainer {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    align-self: stretch;
+}
+.card .informationContainer .column {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 48px;
+    flex: 1 0 0;
+}
+.card .informationContainer .column .content, .card .coursesContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 24px;
+}
+.card .informationContainer .column .content .entry {
+    color: var(--neon-green);
+    font-weight: var(--weight-semibold);
+}
+.card .buttonContainer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 24px;
+    align-self: stretch;
+}
+
+/*-----------------------------Card Mobile:-----------------------------*/
+@media (max-width: 600px) {
+    .card {
+        height: auto;
+        width: 100%;
+        padding: 24px;
+        gap: 0px;
+    }
+    .card .informationContainer {
+        gap: 32px;
+        flex-direction: column; 
+        align-items: stretch; 
+    }
+    .card .informationContainer .column {
+        gap: 32px;
+    }
+    .card .informationContainer .column .content, .card .coursesContainer {
+        gap: 16px;
+    }
+}
+
+
 /*-----------------------------Login Form:-----------------------------*/
 .loginForm {
     display: flex;
