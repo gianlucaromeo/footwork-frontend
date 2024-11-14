@@ -882,3 +882,145 @@ button .icon {
         height: 122px;
     }
 }
+
+/*-----------------------------Popup:-----------------------------*/
+.popupContainer {
+    display: flex;
+    width: 801px;
+    padding: 78px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 96px;
+    border-radius: 24px;
+    background: var(--dark-green, #272A28);
+}
+.popupContainer.userRequest {
+    gap: 48px;
+}
+.popupContainer .titleSubtitle {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    align-self: stretch;
+}
+.popupContainer .titleButton {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-self: stretch;
+}
+.popupContainer .buttonsLeft {
+    display: flex;
+    align-items: center;
+    gap: 48px;
+    align-self: stretch;
+}
+.popupContainer .buttonsRight {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 24px;
+    align-self: stretch;
+}
+.popupContainer .bigButtons {
+    display: flex;
+    padding: 48px 0px;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 96px;
+    align-self: stretch;
+}
+.popupContainer .bigButtons .bigButtonContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+}
+.popupContainer .bigButtons .bigButtonContainer .bigButton {
+    display: flex;
+    padding: 24px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 8px;
+    background: #0F8;
+}
+.popupContainer .bigButtons .bigButtonContainer .bigButton .iconAdd {
+    background-size: 80%; 
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url('./assets/icons/add-folder.png');
+    width: 48px;
+    height: 48px;
+}
+.popupContainer .bigButtons .bigButtonContainer .bigButton .iconVideo {
+    background-size: 80%; 
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url('./assets/icons/video.png');
+    width: 48px;
+    height: 48px;
+}
+/*-----------------------------Popup Mobile:-----------------------------*/
+@media (max-width: 600px) {
+    .popupContainer {
+        width: 311px;
+        padding: 48px 24px;
+        gap: 64px;
+    }
+    .popupContainer.userRequest {
+        gap: 32px;
+    }
+    .popupContainer .titleSubtitle {
+        gap: 24px;
+    }
+    .popupContainer .titleButton {
+        justify-content: space-between;
+        flex-direction: column;
+        align-items: flex-start;
+        align-self: stretch;
+    }
+    .popupContainer .titleButton .buttonRight {
+        display: flex;
+        justify-content: flex-end;
+        align-items: flex-start;
+        gap: 24px;
+        align-self: stretch;
+    }
+    .popupContainer .titleButton .buttonRight .s {
+        padding-right: 0;
+    }
+    .popupContainer .buttonsLeft {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        align-self: stretch;
+        gap: auto;
+    }
+    .popupContainer .buttonsRight {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        align-self: stretch;
+        gap: auto;
+    }
+    .popupContainer .bigButtons {
+        padding: 0;
+        gap: 48px;
+    }
+    .popupContainer .bigButtons .bigButtonContainer {
+        gap: 24px;
+    }
+    .popupContainer .bigButtons .bigButtonContainer .bigButton {
+        padding: 16px;
+    }
+    .popupContainer .bigButtons .bigButtonContainer .bigButton .iconAdd {
+        width: 24px;
+        height: 24px;
+    }
+    .popupContainer .bigButtons .bigButtonContainer .bigButton .iconVideo {
+        width: 24px;
+        height: 24px;
+    }
+}
