@@ -598,11 +598,9 @@ button .icon {
     border: 2px dashed var(--white, #FFF);
     background: rgba(255, 255, 255, 0.10);
 }
-
 .uploadContainer.selected {
     border: 2px dashed var(--neon-green, #0F8);
 }
-
 .uploadContainer .icon {
     width: 48px;
     height: 48px;
@@ -617,6 +615,42 @@ button .icon {
     }
 }
 
+/*-----------------------------Chips:-----------------------------*/
+.chipContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    align-self: stretch;
+}
+.chips {
+    display: flex;
+    align-items: flex-start;
+    align-content: flex-start;
+    gap: 24px;
+    align-self: stretch;
+    flex-wrap: wrap;
+}
+.chip {
+    display: flex;
+    padding: 12px 16px;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    border-radius: 100px;
+    border: 2px solid var(--white, #FFF);
+}
+.chip.selected {
+    background: var(--neon-green, #0F8);
+    border: 2px solid var(--neon-green, #0F8);
+    color: var(--black, #1A1A1A);
+}
+.chip.selected .icon {
+    width: 16px;
+    height: 16px;
+    background-image: url('./assets/icons/check-black.png');
+    background-size: 100%;
+}
 
 /*-----------------------------Login Form:-----------------------------*/
 .loginForm {
