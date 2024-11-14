@@ -652,6 +652,28 @@ button .icon {
     background-size: 100%;
 }
 
+/*-----------------------------Notification:-----------------------------*/
+.notification {
+    display: inline-flex; /* Makes the container hug its content */
+    padding: 24px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 16px;
+    background: var(--dark-green, #272A28);
+    box-sizing: border-box; /* Ensures padding is included within the width and height */
+    width: auto; /* Allows natural content-based sizing */
+    height: auto;
+}
+
+/*-----------------------------Notification Mobile:-----------------------------*/
+@media (max-width: 600px) {
+    .notification {
+        display: flex;
+        align-self: stretch;
+    }
+}
+
 /*-----------------------------Login Form:-----------------------------*/
 .loginForm {
     display: flex;
