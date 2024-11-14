@@ -583,6 +583,40 @@ button .icon {
     }
 }
 
+/*-----------------------------Upload:-----------------------------*/
+.uploadContainer {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    align-self: stretch;
+    box-sizing: border-box;
+    border-radius: 8px;
+    border: 2px dashed var(--white, #FFF);
+    background: rgba(255, 255, 255, 0.10);
+}
+
+.uploadContainer.selected {
+    border: 2px dashed var(--neon-green, #0F8);
+}
+
+.uploadContainer .icon {
+    width: 48px;
+    height: 48px;
+    background-image: url('./assets/icons/upload.png');
+    background-size: 100%;
+}
+
+/*-----------------------------Upload Mobile:-----------------------------*/
+@media (max-width: 600px) {
+    .uploadContainer {
+        height: 311px;
+    }
+}
+
 
 /*-----------------------------Login Form:-----------------------------*/
 .loginForm {
