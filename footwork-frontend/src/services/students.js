@@ -8,8 +8,6 @@ const login = async (email, password) => {
     ).then(data => {
         currentUserService.clearUser()
         currentUserService.setToken(data.token)
-        currentUserService.setRole('student')
-        currentUserService.setId(data.id)
         return data
     }).catch(error => {
         console.error(error)
