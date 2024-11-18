@@ -20,6 +20,7 @@ const createStudentEndpoint = `${studentsEndpoint}/`
 
 /* COURSES */
 const getAllCoursesEndpoint = `${coursesEndpoint}/all`
+const getEnrolledCoursesEndpoint = `${coursesEndpoint}/student/all`
 
 /* COMMON */
 const doPost = async (url, data) => {
@@ -28,9 +29,9 @@ const doPost = async (url, data) => {
   return request.then(response => response.data)
 }
 
-const doGet = (url) => {
+const doGet = async (url, config) => {
     console.log(('GET', url))
-    const request = axios.get(url)
+    const request = axios.get(url, config)
     return request.then(response => response.data)
 }
     
@@ -46,6 +47,7 @@ export default {
 
     /* COURSES */
     getAllCoursesEndpoint,
+    getEnrolledCoursesEndpoint,
 
     /* COMMON */
     doPost,
