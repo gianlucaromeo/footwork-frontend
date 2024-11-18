@@ -22,7 +22,7 @@ const createStudentEndpoint = `${studentsEndpoint}/`
 const getAllCoursesEndpoint = `${coursesEndpoint}/all`
 
 /* COMMON */
-const doPost = (url, data) => {
+const doPost = async (url, data) => {
   console.log(('POST', url, data))
   const request = axios.post(url, data)
   return request.then(response => response.data)
