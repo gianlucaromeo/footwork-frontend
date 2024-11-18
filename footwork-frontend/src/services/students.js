@@ -9,12 +9,14 @@ const create = (
     lastName,
     email,
     password,
+    courseIds,
 ) => {
     return helper.doPost(helper.createStudentEndpoint, {
         firstName,
         lastName,
         email,
         password,
+        courseIds,
     })
 }
 
