@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 const CheckboxContainer = ({ 
-    label = "Default Label" 
+    label = "" 
 }) => {
   // State to track if the checkbox is checked or not
   const [isChecked, setIsChecked] = useState(false);
@@ -12,31 +12,15 @@ const CheckboxContainer = ({
   };
 
   return (
-    <div style={styles.container}>
+    <div>
       <input
         type="checkbox"
         checked={isChecked}
         onChange={handleCheckboxChange}
-        style={styles.checkbox}
       />
-      <span style={styles.label}>{label}</span>
+      <span>{label}</span>
     </div>
   );
-};
-
-const styles = {
-  container: {
-    display: 'flex',
-    alignItems: 'center',
-    margin: '10px 0',
-  },
-  checkbox: {
-    marginRight: '10px',
-  },
-  label: {
-    fontSize: '16px',
-    color: 'black',
-  },
 };
 
 export default CheckboxContainer;
