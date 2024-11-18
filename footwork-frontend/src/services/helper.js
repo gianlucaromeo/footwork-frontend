@@ -2,7 +2,7 @@ import axios from 'axios'
 
 const baseUrl = import.meta.env.VITE_BASE_URL
 
-// const studentsEndpoint = `${baseUrl}/students`
+const studentsEndpoint = `${baseUrl}/students`
 const adminsEndpoint = `${baseUrl}/admins`
 const loginEndpoint = `${baseUrl}/login`
 // const coursesEndpoint = `${baseUrl}/courses`
@@ -14,6 +14,10 @@ const loginEndpoint = `${baseUrl}/login`
 const loginAdminEndpoint = `${loginEndpoint}/admin/`
 const createAdminEndpoint = `${adminsEndpoint}/`
 
+/* STUDENT */
+const loginStudentEndpoint = `${loginEndpoint}/student/`
+const createStudentEndpoint = `${studentsEndpoint}/`
+
 const doPost = (url, data) => {
   console.log(('POST', url, data))
   const request = axios.post(url, data)
@@ -22,7 +26,14 @@ const doPost = (url, data) => {
     
 
 export default {
+    /* ADMIN */
     loginAdminEndpoint,
     createAdminEndpoint,
+
+    /* STUDENT */
+    loginStudentEndpoint,
+    createStudentEndpoint,
+
+    /* COMMON */
     doPost,
 }
