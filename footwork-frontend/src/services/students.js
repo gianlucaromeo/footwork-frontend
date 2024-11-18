@@ -1,7 +1,20 @@
 import helper from './helper'
+import currentUserService from './currentUser'
 
-const login = (email, password) => {
-    return helper.doPost(helper.loginStudentEndpoint, { email, password })
+const login = async (email, password) => {
+    return helper.doPost(
+        helper.loginStudentEndpoint,
+        { email, password }
+    ).then(data => {
+        currentUserService.clearUser()
+        currentUserService.setToken(data.token)
+        currentUserService.setRole('student')
+        currentUserService.setId(data.id)
+        return data
+    }).catch(error => {
+        console.error(error)
+        return null
+    })
 }
 
 const create = (
