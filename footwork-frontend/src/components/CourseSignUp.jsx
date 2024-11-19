@@ -1,15 +1,30 @@
-import React from 'react';
+import { useState, useEffect } from 'react';
+
 import CheckboxContainer from './CheckboxContainer';
+import coursesService from '../services/courses';
 
 const CourseSignUp = () => {
+
+  const [courses, setCourses] = useState([]);
+
+  useEffect(() => {
+    console.log('Fetching courses');
+    coursesService.getAll()
+      .then(response => {
+        console.log('Courses fetched:', response);
+        setCourses(response);
+      }).catch(error => {
+        console.error('Error fetching courses:', error);
+      });
+  }, [])
+
   return (
     <div>
       <h3>Courses</h3>
       <p>Which courses do you want to sign up for?</p>
-      {/* Render the CheckboxContainer components with appropriate labels */}
-      <CheckboxContainer label="Breakdance Beginner" />
-      <CheckboxContainer label="Breakdance Advanced" />
-      <CheckboxContainer label="Contemporary Intermediate" />
+      {courses.map(course =>
+        <CheckboxContainer key={course.id} label={course.name} />
+      )}
     </div>
   );
 };
