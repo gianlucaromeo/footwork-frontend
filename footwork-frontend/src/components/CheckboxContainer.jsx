@@ -1,22 +1,16 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 const CheckboxContainer = ({ 
-    label = "" 
+    label = "", 
+    checked = false, 
+    onChange = () => {} 
 }) => {
-  // State to track if the checkbox is checked or not
-  const [isChecked, setIsChecked] = useState(false);
-
-  // Handler to toggle checkbox state
-  const handleCheckboxChange = () => {
-    setIsChecked(!isChecked);
-  };
-
   return (
     <div>
       <input
         type="checkbox"
-        checked={isChecked}
-        onChange={handleCheckboxChange}
+        checked={checked}
+        onChange={(e) => onChange(e.target.checked)} // Pass the checked value back to the parent
       />
       <span>{label}</span>
     </div>
