@@ -3,6 +3,8 @@ import AuthenticationPage from './pages/AuthenticationPage'
 import RegistrationFinalStepPage from './pages/RegistrationFinalStepPage'
 import LoginPage from './pages/LoginPage'
 import RegistrationPage from './pages/RegistrationPage'
+import AdminHomePage from './pages/AdminHomePage'
+import StudentHomePage from './pages/StudentHomePage'
 
 function App() {
   return (
@@ -11,6 +13,12 @@ function App() {
       <Route path="/login" element={<LoginPage />} />
       <Route path="/registration" element={<RegistrationPage />} />
       <Route path="/registration-final-step" element={<RegistrationFinalStepPage />} />
+
+      <Route path="/admin/home" element={<AdminHomePage />} />
+
+      <Route path="/student/home" element={<StudentHomePage />} />
+
+      <Route path='/test' element={<h1>Test</h1>} />
     </Routes>
   )
 }

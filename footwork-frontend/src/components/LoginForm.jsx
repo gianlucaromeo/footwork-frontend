@@ -1,11 +1,18 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import InputField from './InputField'
+import CheckboxContainer from './CheckboxContainer'
+import adminsSerivce from '../services/admins'
+import studentsService from '../services/students'
 
 const LoginForm = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [emailError, setEmailError] = useState('');
     const [isButtonActive, setIsButtonActive] = useState(false);
+    const [isTeacher, setIsTeacher] = useState(false);
+
+    const navigate = useNavigate()
 
     const validateEmail = (email) => {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -35,7 +42,47 @@ const LoginForm = () => {
     };
     const handleContinue = () => {
         if (isButtonActive) {
-            navigate('');
+            if (isTeacher) {
+                // TEACHER
+                adminsSerivce.login(email, password)
+                    .then((response) => {
+                        console.log(response)
+                        navigate('/admin/home')
+                    })
+                    .catch((error) => {
+                        const errorMessage = error.response.data.error
+                        console.log(errorMessage)
+                        //
+                        // TODO: Understand which error message we get from the
+                        // backend and set it here. 
+                        // 
+                        // Errors can be:
+                        // - "Both email and password are required"
+                        // - "Email is not valid"
+                        // - "Invalid email or password"
+                        // - "Please confirm your email before logging in"
+                    });
+            } else {
+                // STUDENT
+                studentsService.login(email, password)
+                    .then((response) => {
+                        console.log(response)
+                        navigate('/student/home')
+                    })
+                    .catch((error) => {
+                        const errorMessage = error.response.data.error
+                        console.log(errorMessage)
+                        //
+                        // TODO: Understand which error message we get from the
+                        // backend and set it here. 
+                        // 
+                        // Errors can be:
+                        // - "Both email and password are required"
+                        // - "Email is not valid"
+                        // - "Invalid email or password"
+                        // - "Please confirm your email before logging in"
+                    });
+            }
         }
     };
 
@@ -50,6 +97,13 @@ const LoginForm = () => {
             <InputField label='email*' type='email' value={email} onChange={handleEmailChange} errorMessage={emailError} />
 
             <InputField label='password*' type='password' value={password} onChange={handlePasswordChange} />
+            <div>
+                <CheckboxContainer
+                  label='I am a teacher' 
+                  checked={isTeacher} 
+                  onChange={setIsTeacher} 
+                />
+            </div>
             <div>
                 <button>Cancel</button>
                 <button className={`continue ${isButtonActive ? 'active' : ''}`}

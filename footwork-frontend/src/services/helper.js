@@ -24,15 +24,11 @@ const getEnrolledCoursesEndpoint = `${coursesEndpoint}/student/all`
 
 /* COMMON */
 const doPost = async (url, data) => {
-  console.log(('POST', url, data))
-  const request = axios.post(url, data)
-  return request.then(response => response.data)
+  return axios.post(url, data)
 }
 
 const doGet = async (url, config) => {
-    console.log(('GET', url))
-    const request = axios.get(url, config)
-    return request.then(response => response.data)
+    return axios.get(url, config)
 }
     
 

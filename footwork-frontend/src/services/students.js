@@ -5,14 +5,7 @@ const login = async (email, password) => {
     return helper.doPost(
         helper.loginStudentEndpoint,
         { email, password }
-    ).then(data => {
-        currentUserService.clearUser()
-        currentUserService.setToken(data.token)
-        return data
-    }).catch(error => {
-        console.error(error)
-        return null
-    })
+    )
 }
 
 const create = (
