@@ -1,5 +1,6 @@
 import helper from './helper'
 import currentUserService from './currentUser'
+import courses from './courses'
 
 const login = async (email, password) => {
     return helper.doPost(
@@ -16,11 +17,13 @@ const create = (
     courseIds,
 ) => {
     return helper.doPost(helper.createStudentEndpoint, {
-        firstName,
-        lastName,
-        email,
-        password,
-        courseIds,
+        student: {
+            firstName,
+            lastName,
+            email,
+            password,
+        },
+        courses: courseIds,
     })
 }
 

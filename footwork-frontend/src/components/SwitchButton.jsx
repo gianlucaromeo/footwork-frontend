@@ -4,7 +4,9 @@ const SwitchButton = ({
   nameButtonLeft = "",
   nameButtonRight = "",
   contentLeft = "",
-  contentRight = ""
+  contentRight = "",
+  onLeftClick = () => {},
+  onRightClick = () => {}
 }) => {
   // State to track which button is selected
   const [isLeftSelected, setIsLeftSelected] = useState(true);
@@ -12,11 +14,13 @@ const SwitchButton = ({
   // Handler for left button click
   const handleLeftClick = () => {
     setIsLeftSelected(true);
+    onLeftClick();
   };
 
   // Handler for right button click
   const handleRightClick = () => {
     setIsLeftSelected(false);
+    onRightClick();
   };
 
   return (
