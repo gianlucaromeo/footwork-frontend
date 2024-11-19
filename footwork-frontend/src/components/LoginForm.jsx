@@ -4,6 +4,7 @@ import InputField from './InputField'
 import CheckboxContainer from './CheckboxContainer'
 import adminsSerivce from '../services/admins'
 import studentsService from '../services/students'
+import currentUserService from '../services/currentUser'
 
 const LoginForm = () => {
     const [email, setEmail] = useState('');
@@ -47,6 +48,15 @@ const LoginForm = () => {
                 adminsSerivce.login(email, password)
                     .then((response) => {
                         console.log(response)
+
+                        const token = response.data.token
+                        const id = response.data.id
+                        const role = 'admin'
+
+                        currentUserService.setToken(token)
+                        currentUserService.setId(id)
+                        currentUserService.setRole(role)
+                        
                         navigate('/admin/home')
                     })
                     .catch((error) => {
@@ -67,6 +77,14 @@ const LoginForm = () => {
                 studentsService.login(email, password)
                     .then((response) => {
                         console.log(response)
+
+                        const token = response.data.token
+                        const id = response.data.id
+                        const role = 'student'
+                        currentUserService.setToken(token)
+                        currentUserService.setId(id)
+                        currentUserService.setRole(role)
+
                         navigate('/student/home')
                     })
                     .catch((error) => {
