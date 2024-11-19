@@ -1,14 +1,15 @@
 const BtnPrimaryMEnabled = ({
     onClick = () => { },
-    children
+    children,
+    disabled = false // Accept the disabled prop
 }) => {
     return (
         <div>
-            <button onClick={onClick}>
+            <button onClick={onClick} disabled={disabled}>
                 {children}
             </button>
         </div>
-    )
-}
+    );
+};
 
-export default BtnPrimaryMEnabled
+export default BtnPrimaryMEnabled;
