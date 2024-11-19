@@ -1,0 +1,1031 @@
+/* Defining the font-face rules: */
+@font-face {
+    font-family: 'Roboto';
+    src: url('./assets/fonts/Roboto-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+  
+@font-face {
+    font-family: 'Bebas Neue';
+    src: url('./assets/fonts/BebasNeue-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/*-----------------------------Global Variables-----------------------------*/
+:root {
+    /* Colours: */
+    --neon-green: #00FF88;
+    --red: #FF1E00;
+    --grey: #A2A2A2;
+    --dark-green:#272A28;
+    --white-opaque:rgba(255, 255, 255, 0.10);
+    --black: #1a1a1a;
+    --white: #FFFFFF;
+
+    /* Fonts: */
+    --header-font: 'Bebas Neue', sans-serif;
+    --copy-font: 'Roboto', sans-serif;
+
+    /* Header font sizes desktop: */
+    --h1-size: 96px;
+    --h2-size: 64px;
+    --h3-size: 36px;
+    --h4-size: 32px;
+    --h5-size: 24px;
+
+    /* Copy font sizes desktop: */
+    --copy-xlarge: 24px;
+    --copy-large: 20px;
+    --copy-medium: 16px;
+
+    /* Copy font weights: */
+    --weight-regular: 400;
+    --weight-medium: 500;
+    --weight-semibold: 600;
+    --weight-bold: 700;
+}
+
+/*-----------------------------Global Variables Mobile-----------------------------*/
+@media (max-width: 600px) {
+    :root {
+        /* Header font sizes mobile: */
+        --h1-size: 48px;
+        --h2-size: 40px;
+        --h3-size: 36px;
+        --h4-size: 24px;
+        --h5-size: 20px;
+        --h6-size: 16px;
+        --h7-size: 12px;
+    }
+}
+
+/*-----------------------------Body:-----------------------------*/
+html, body {
+    font-family: var(--copy-font);
+    color: var(--white);
+    background-color: var(--black);
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+/*-----------------------------Body Mobile:-----------------------------*/
+@media (max-width: 600px) {
+    * , *::before, *::after {
+        box-sizing: border-box;
+    }
+}
+
+/*-----------------------------Header Fonts:-----------------------------*/
+h1, h2, h3, h4, h5 {
+    font-family: var(--header-font);
+    margin: 0px;
+    line-height: 1;
+}
+h1 { font-size: var(--h1-size); }
+h2 { font-size: var(--h2-size); }
+h3 { font-size: var(--h3-size); }
+h4 { font-size: var(--h4-size); }
+h5 { font-size: var(--h5-size); }
+
+/*-----------------------------Copy Fonts:-----------------------------*/
+.copy-xlarge-b {
+    font-size: var(--copy-xlarge);
+    font-weight: var(--weight-bold);
+    margin: 0;
+}
+.copy-large-med {
+    font-size: var(--copy-large);
+    font-weight: var(--weight-medium);
+    margin: 0;
+}
+.copy-large-reg {
+    font-size: var(--copy-large);
+    font-weight: var(--weight-regular);
+    margin: 0;
+}
+.copy-medium-sb {
+    font-size: var(--copy-medium);
+    font-weight: var(--weight-semibold);
+    margin: 0;
+}
+.copy-medium-med {
+    font-size: var(--copy-medium);
+    font-weight: var(--weight-medium);
+    margin: 0;
+}
+.copy-medium-reg {
+    font-size: var(--copy-medium);
+    font-weight: var(--weight-regular);
+    margin: 0;
+}
+
+/*-----------------------------Logo:-----------------------------*/
+.logo {
+    width: 104px;
+    height: 23.362px;
+    background-image: url('./assets/logos/logo-desktop.png');
+    background-size: 100%;
+}
+/*-----------------------------Logo Mobile:-----------------------------*/
+@media (max-width: 600px) {
+    .logo {
+        width: 79px;
+        height: 17.978px;
+        background-image: url('./assets/logos/logo-mobile.png');
+        background-size: 100%;
+    }
+}
+
+/*-----------------------------Buttons:-----------------------------*/
+.btn-primary {
+    border: none;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    gap: 8px; 
+    font-family: var(--header-font);
+}
+.btn-text {
+    border: none;
+    background: none;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--header-font);
+    color: var(--white);
+}
+.btn-admin {
+    display: flex;
+    padding: 32px 208px;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    align-self: stretch;
+    border-radius: 8px;
+    border: 2px solid var(--neon-green);
+    background: none;
+    color: var(--neon-green);
+    font-size: var(--copy-large);
+    font-weight: var(--weight-medium);
+}
+
+/* Button sizes */
+.m {
+    min-width: 156px;
+    padding: 8px 40px;   
+    font-size: var(--h4-size);
+}
+.s {
+    min-width: 140px;
+    padding: 8px 16px;
+    font-size: var(--h5-size);
+}
+
+/* Button states */
+.btn-primary.enabled {
+    color: var(--black);
+    background: var(--neon-green);  
+}
+.btn-primary.disabled {
+    background: var(--grey);  
+}
+
+.btn-text.enabled {
+    color: var(--white);
+}
+.btn-text.disabled {
+    color: var(--grey);
+}
+
+/* Button icon sizes (default 24px and bigger for m) */
+button .icon {
+    width: 24px;
+    height: 24px;
+}
+button .icon img { /*adjusted img because of code*/
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+.m .icon {
+    width: 32px;
+    height: 32px;
+}
+
+/*-----------------------------Buttons Mobile:-----------------------------*/
+@media (max-width: 600px) {
+    /* btn-admin */
+    .btn-admin {
+        padding: 48px 32px;
+        gap: 8px;
+        font-size: var(--copy-medium);
+    }
+    /* Button sizes */
+    .m, .s {
+        min-width: 0px;
+        padding: 12px 32px;   
+        font-size: var(--h4-size);
+    }
+    .xs {
+        min-width: 0px;
+        padding: 8px 12px;
+        font-size: var(--h6-size);
+    }
+    /* Button icon sizes */
+    .m .icon, .s .icon {
+        width: 24px;
+        height: 24px;
+    }
+}
+
+/*-----------------------------Icon Buttons:-----------------------------*/
+.iconBtn {
+    padding: 8px;
+    border-radius: 200px;
+    border: 2px solid var(--neon-green, #0F8);
+    background-size: 70%; /* Adjust this percentage to control icon size */
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 24px; /* Button width */
+    height: 24px; /* Button height */
+}
+.iconBtn.profile {
+    background-image: url('./assets/icons/profile-green.png');
+}
+.iconBtn.more {
+    background: var(--dark-green, #272A28);
+    background-image: url('./assets/icons/dots.png');
+    background-size: 60%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/*-----------------------------Icon Buttons Mobile:-----------------------------*/
+@media (max-width: 600px) {
+    .iconBtn {
+        width: 32px; /* Button width */
+        height: 32px; /* Button height */
+    }
+}
+
+/*-----------------------------Navbar:-----------------------------*/
+.navbar {
+    display: flex;
+    padding: 48px 48px 32px 48px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 1px solid #FFF;
+    background: var(--black, #1A1A1A);
+    height: 125px;
+    box-sizing: border-box; /* Ensures padding is included within the height */
+}
+.navbar .content {
+    display: flex;
+    max-width: 1400px;
+    justify-content: space-between;
+    align-items: center;
+    flex: 1 0 0;
+}
+.navbar .content .buttonContainer {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+/*-----------------------------Navbar Mobile:-----------------------------*/
+@media (max-width: 600px) {
+    .navbar {
+        padding: 48px 32px 24px 32px;
+        height: 104px; /* Sets the height to 125px */
+    }
+}
+
+/*-----------------------------Title Subtitle:-----------------------------*/
+.titleSubtitle {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+}
+.titleSubtitle.big {
+    align-items: center;
+    display: inline-flex;
+}
+.arrowTitle {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+}
+.arrow {
+    background-size: 80%; /* Adjust this percentage to control icon size */
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url('./assets/icons/arrow-left.png');
+    width: 48px;
+    height: 48px;
+}
+
+/*-----------------------------Title Subtitle Mobile:-----------------------------*/
+@media (max-width: 600px) {
+    .arrowTitle {
+        gap: 8px;
+    }
+    .arrow {
+        background-size: 90%; /* Adjust this percentage to control icon size */
+        width: 24px;
+        height: 24px;
+    }
+}
+
+/*-----------------------------Input Fields:-----------------------------*/
+.inputContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    align-self: stretch;
+}
+.name {
+    font-size: var(--copy-medium);
+    font-weight: var(--weight-regular);
+}
+
+/* Text container */
+.input {
+    display: flex;
+    padding: 8px 16px;
+    justify-content: space-between;
+    align-items: center;
+    align-self: stretch;
+    border-radius: 4px;
+    font-size: var(--copy-medium);
+    font-weight: var(--weight-medium);
+}
+
+/* States (default, valid, or error) */
+.input.default {
+    border: 2px solid var(--white);
+}
+.input.valid {
+    border: 2px solid var(--neon-green);
+    color: var(--neon-green);
+}
+.error { 
+    color: var(--red);
+}
+.input.error {
+    border: 2px solid var(--red);
+}
+
+/* Icon */
+.input .icon {
+    width: 24px;
+    height: 24px;
+}
+
+/*-----------------------------Switch-----------------------------*/
+.switchContainer {
+    display: flex;
+    align-items: flex-start;
+}
+.switch {
+    display: flex;
+    width: 140px;
+    min-width: 140px;
+    padding: 8px 16px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-top: 2px solid var(--neon-green, #0F8);
+    border-bottom: 2px solid var(--neon-green, #0F8);
+    font-size: var(--h5-size);
+    font-family: var(--header-font);
+}
+.switch.left {
+    border-radius: 8px 0px 0px 8px;
+    border-left: 2px solid var(--neon-green, #0F8);
+}
+.switch.right {
+    border-radius: 0px 8px 8px 0px;
+    border-bottom: 2px solid var(--neon-green, #0F8);
+}
+.switch.selected {
+    background: var(--neon-green, #0F8);
+    color: var(--black, #1A1A1A);
+}
+
+/*-----------------------------Switch Mobile:-----------------------------*/
+@media (max-width: 600px) {
+    .switch {
+        font-size: var(--h4-size);
+    }
+}
+
+/*-----------------------------Checkbox:-----------------------------*/
+.checkboxContainer {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.checkboxContainer .icon {
+    width: 24px;
+    height: 24px;
+}
+.checked {
+    color: var(--neon-green);
+    font-weight: var(--weight-semibold);
+}
+
+/*-----------------------------Tile:-----------------------------*/
+.tileContainer {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    max-height: 800px;
+    padding: 48px;
+    box-sizing: border-box;
+    overflow-x: auto;
+    white-space: nowrap;
+    justify-content: center;
+}
+.tile {
+    display: inline-block;
+    width: 33.33%;
+    max-width: 500px;
+    max-height: 500px;
+    padding: 60px 48px;
+    box-sizing: border-box;
+    vertical-align: bottom;
+    box-shadow: 8px 8px 0px 0px #0F8;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    background-size: cover; /* Ensures background covers the tile */
+    background-position: center; /* Centers the background image */
+    background-repeat: no-repeat; /* Prevents background from repeating */
+}
+.tileText {
+    display: flex;
+    padding: 12px 16px;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+    background: var(--neon-green, #0F8);
+    color: var(--black);
+    font-family: var(--header-font);
+    font-size: var(--h2-size);
+    line-height: 1;
+    margin: 0 0 12px 0;
+    width: auto;
+}
+
+/*-----------------------------Tile Mobile:-----------------------------*/
+@media (max-width: 600px) {
+    .tileContainer {
+        flex-direction: column; /* Stacks tiles vertically */
+        width: 100%; /* Fills the container width */
+        margin: 0; /* Removes margin */
+        align-items: stretch; /* Ensures child elements take full width */
+        height: auto; /* Allows container to hug its content height */
+        overflow-y: auto; /* Enables scrolling if tiles exceed viewport */
+        max-height: none; /* Removes any max-height restriction */
+    }
+    .tile {
+        min-height: 311px; /* Fixed height for each tile */
+        width: 100%; /* Fills the width of tileContainer */
+        max-width: none; /* Removes any max-width restriction */
+        max-height: none; /* Removes any max-height restriction */
+        padding: 32px 24px;
+        box-sizing: border-box; /* Ensures padding is included within width */
+    }
+    .tileText {
+        display: flex;
+        padding: 12px 16px;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 10px;
+        background: var(--neon-green, #0F8);
+        color: var(--black);
+        font-family: var(--header-font);
+        font-size: var(--h2-size);
+        line-height: 1;
+        width: auto;
+    }
+}
+
+/*-----------------------------Card:-----------------------------*/
+.card {
+    display: flex;
+    height: 309px;
+    padding: 32px 48px;
+    flex-direction: column;
+    gap: 48px;
+    align-self: stretch;
+    border-radius: 8px;
+    background: var(--white-opaque, rgba(255, 255, 255, 0.10));
+    flex-grow: 1;
+    flex-basis: 0; 
+}
+.card .informationContainer {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    align-self: stretch;
+}
+.card .informationContainer .column {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 48px;
+    flex: 1 0 0;
+}
+.card .informationContainer .column .content, .card .coursesContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 24px;
+}
+.card .informationContainer .column .content .entry {
+    color: var(--neon-green);
+    font-weight: var(--weight-semibold);
+}
+.card .buttonContainer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 24px;
+    align-self: stretch;
+}
+
+/*-----------------------------Card Mobile:-----------------------------*/
+@media (max-width: 600px) {
+    .card {
+        height: auto;
+        width: 100%;
+        padding: 24px;
+        gap: 0px;
+    }
+    .card .informationContainer {
+        gap: 32px;
+        flex-direction: column; 
+        align-items: stretch; 
+    }
+    .card .informationContainer .column {
+        gap: 32px;
+    }
+    .card .informationContainer .column .content, .card .coursesContainer {
+        gap: 16px;
+    }
+}
+
+/*-----------------------------Upload:-----------------------------*/
+.uploadContainer {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    align-self: stretch;
+    box-sizing: border-box;
+    border-radius: 8px;
+    border: 2px dashed var(--white, #FFF);
+    background: rgba(255, 255, 255, 0.10);
+}
+.uploadContainer.selected {
+    border: 2px dashed var(--neon-green, #0F8);
+}
+.uploadContainer .icon {
+    width: 48px;
+    height: 48px;
+    background-image: url('./assets/icons/upload.png');
+    background-size: 100%;
+}
+
+/*-----------------------------Upload Mobile:-----------------------------*/
+@media (max-width: 600px) {
+    .uploadContainer {
+        height: 311px;
+    }
+}
+
+/*-----------------------------Chips:-----------------------------*/
+.chipContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    align-self: stretch;
+}
+.chips {
+    display: flex;
+    align-items: flex-start;
+    align-content: flex-start;
+    gap: 24px;
+    align-self: stretch;
+    flex-wrap: wrap;
+}
+.chip {
+    display: flex;
+    padding: 12px 16px;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    border-radius: 100px;
+    border: 2px solid var(--white, #FFF);
+}
+.chip.selected {
+    background: var(--neon-green, #0F8);
+    border: 2px solid var(--neon-green, #0F8);
+    color: var(--black, #1A1A1A);
+}
+.chip.selected .icon {
+    width: 16px;
+    height: 16px;
+    background-image: url('./assets/icons/check-black.png');
+    background-size: 100%;
+}
+
+/*-----------------------------Notification:-----------------------------*/
+.notification {
+    display: inline-flex; /* Makes the container hug its content */
+    padding: 24px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 16px;
+    background: var(--dark-green, #272A28);
+    box-sizing: border-box; /* Ensures padding is included within the width and height */
+    width: auto; /* Allows natural content-based sizing */
+    height: auto;
+}
+
+/*-----------------------------Notification Mobile:-----------------------------*/
+@media (max-width: 600px) {
+    .notification {
+        display: flex;
+        align-self: stretch;
+    }
+}
+
+/*-----------------------------Login Form:-----------------------------*/
+.loginForm {
+    display: flex;
+    width: 548px;
+    max-height: 707px;
+    padding: 48px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 48px;
+    background-color: var(--dark-green);
+    border-radius: 24px;
+}
+.loginForm .header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    align-self: stretch;
+}
+.loginForm .content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+    align-self: stretch;
+}
+.loginForm .content .iconContainer {
+    display: flex;
+    padding: 4px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    align-self: stretch;
+}
+.loginForm .content .iconContainer .icon {
+    width: 32px;
+    height: 32px;
+}
+.loginForm .buttonContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    align-self: stretch;
+}
+
+/*-----------------------------Login Form Mobile:-----------------------------*/
+@media (max-width: 600px) {
+    .loginForm {
+        margin: 0 auto;
+        width: 100%;
+        max-width: 100%; /* Prevents the form from exceeding screen width */
+        margin: 0; 
+        min-height: 100vh; /* Ensures full viewport height on mobile */
+        height: auto;
+        padding: 48px 32px;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        background-color: var(--black);
+    }
+}
+
+/*-----------------------------Registration Form:-----------------------------*/
+.registrationForm {
+    display: flex;
+    width: 548px;
+    max-height: 707px;
+    padding: 48px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 48px;
+    border-radius: 24px;
+    background: var(--dark-green, #272A28);
+}
+.registrationForm .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-self: stretch;
+}
+.registrationForm .inputFields { /* Page 1/2 */
+    display: flex;
+    min-height: 445px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex: 1 0 0;
+    align-self: stretch;
+}
+.registrationForm .content { /* Page 2/2 */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 48px;
+    align-self: stretch;
+}
+.registrationForm .content .titleDescription { 
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    align-self: stretch;
+}
+.registrationForm .content .courses { 
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+}
+.registrationForm .buttonContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    align-self: stretch;
+}
+/*-----------------------------Registration Form Mobile:-----------------------------*/
+@media (max-width: 600px) {
+    .registrationForm {
+        margin: 0 auto;
+        width: 100%;
+        max-width: 100%; /* Prevents the form from exceeding screen width */
+        margin: 0; 
+        min-height: 100vh; /* Ensures full viewport height on mobile */
+        height: auto;
+        padding: 48px 32px;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        background-color: var(--black);
+    }
+}
+
+/*-----------------------------Video Elements:-----------------------------*/
+.video {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    flex-shrink: 0;
+}
+.video .headerBar {
+    display: flex;
+    max-width: 1400px;
+    padding: 48px 48px 24px 48px;
+    align-items: flex-start;
+    align-self: stretch;
+}
+.video .headerBar .titleContainer {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.video .headerBar .titleContainer .icon {
+    background-size: 90%; /* Adjust this percentage to control icon size */
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url('./assets/icons/arrow-left.png');
+    width: 24px;
+    height: 24px;
+}
+.video .navBar {
+    display: flex;
+    padding: 24px 48px 48px 48px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 24px;
+    align-self: stretch;
+    background: rgba(39, 42, 40, 0.50);
+}
+.video .navBar .play {
+    background-size: 80%; /* Adjust this percentage to control icon size */
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url('./assets/icons/play-white.png');
+    width: 42px;
+    height: 42px;
+}
+.video .navBar .pause {
+    background-size: 80%; /* Adjust this percentage to control icon size */
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url('./assets/icons/pause.png');
+    width: 42px;
+    height: 42px;
+}
+/*-----------------------------Video Elements Mobile:-----------------------------*/
+@media (max-width: 600px) {
+    .video .navBar {
+        height: 100%;
+        padding: 0;
+        align-items: center;
+        align-self: stretch;
+        background: none;
+    }
+    .video .navBar .play {
+        width: 122px;
+        height: 122px;
+    }
+    .video .navBar .pause {
+        width: 122px;
+        height: 122px;
+    }
+}
+
+/*-----------------------------Popup:-----------------------------*/
+.popupContainer {
+    display: flex;
+    width: 801px;
+    padding: 78px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 96px;
+    border-radius: 24px;
+    background: var(--dark-green, #272A28);
+}
+.popupContainer.userRequest {
+    gap: 48px;
+}
+.popupContainer .titleSubtitle {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    align-self: stretch;
+}
+.popupContainer .titleButton {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-self: stretch;
+}
+.popupContainer .buttonsLeft {
+    display: flex;
+    align-items: center;
+    gap: 48px;
+    align-self: stretch;
+}
+.popupContainer .buttonsRight {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 24px;
+    align-self: stretch;
+}
+.popupContainer .bigButtons {
+    display: flex;
+    padding: 48px 0px;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 96px;
+    align-self: stretch;
+}
+.popupContainer .bigButtons .bigButtonContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+}
+.popupContainer .bigButtons .bigButtonContainer .bigButton {
+    display: flex;
+    padding: 24px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 8px;
+    background: #0F8;
+}
+.popupContainer .bigButtons .bigButtonContainer .bigButton .iconAdd {
+    background-size: 80%; 
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url('./assets/icons/add-folder.png');
+    width: 48px;
+    height: 48px;
+}
+.popupContainer .bigButtons .bigButtonContainer .bigButton .iconVideo {
+    background-size: 80%; 
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url('./assets/icons/video.png');
+    width: 48px;
+    height: 48px;
+}
+/*-----------------------------Popup Mobile:-----------------------------*/
+@media (max-width: 600px) {
+    .popupContainer {
+        width: 311px;
+        padding: 48px 24px;
+        gap: 64px;
+    }
+    .popupContainer.userRequest {
+        gap: 32px;
+    }
+    .popupContainer .titleSubtitle {
+        gap: 24px;
+    }
+    .popupContainer .titleButton {
+        justify-content: space-between;
+        flex-direction: column;
+        align-items: flex-start;
+        align-self: stretch;
+    }
+    .popupContainer .titleButton .buttonRight {
+        display: flex;
+        justify-content: flex-end;
+        align-items: flex-start;
+        gap: 24px;
+        align-self: stretch;
+    }
+    .popupContainer .titleButton .buttonRight .s {
+        padding-right: 0;
+    }
+    .popupContainer .buttonsLeft {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        align-self: stretch;
+        gap: auto;
+    }
+    .popupContainer .buttonsRight {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        align-self: stretch;
+        gap: auto;
+    }
+    .popupContainer .bigButtons {
+        padding: 0;
+        gap: 48px;
+    }
+    .popupContainer .bigButtons .bigButtonContainer {
+        gap: 24px;
+    }
+    .popupContainer .bigButtons .bigButtonContainer .bigButton {
+        padding: 16px;
+    }
+    .popupContainer .bigButtons .bigButtonContainer .bigButton .iconAdd {
+        width: 24px;
+        height: 24px;
+    }
+    .popupContainer .bigButtons .bigButtonContainer .bigButton .iconVideo {
+        width: 24px;
+        height: 24px;
+    }
+}
