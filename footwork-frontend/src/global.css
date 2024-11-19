@@ -208,6 +208,11 @@ button .icon {
     width: 24px;
     height: 24px;
 }
+button .icon img { /*adjusted img because of code*/
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
 .m .icon {
     width: 32px;
     height: 32px;
