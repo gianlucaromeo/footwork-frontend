@@ -2,15 +2,14 @@
 .bgImageContainer {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start; 
+    justify-content: center; 
     align-items: center; 
     gap: 56px; 
     width: 100%; 
-    height: 100vh; 
+    height: calc(100vh - 125px);
     background-size: cover;
     background-position: center;
     box-sizing: border-box;
-    padding-top: 120px; 
 }
 .join {
     display: flex;
@@ -35,6 +34,22 @@
 /*-----------------------------AuthenticationPage Mobile:-----------------------------*/
 @media (max-width: 600px) {
     .bgImageContainer {
-        padding-top: 50%; 
+        height: calc(100vh - 104px);
+    }
+}
+
+/*-----------------------------LoginPage:-----------------------------*/
+.centerContent {
+    height: calc(100vh - 125px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1 0 0;
+    align-self: stretch;
+}
+/*-----------------------------LoginPage Mobile:-----------------------------*/
+@media (max-width: 600px) {
+    .centerContent {
+        height: calc(100vh - 104px);
     }
 }

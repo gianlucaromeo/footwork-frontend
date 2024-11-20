@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom'
 import InputField from './InputField'
 import Button from './Button'
@@ -17,7 +17,18 @@ const LoginForm = () => {
     const [isTeacher, setIsTeacher] = useState(false);
 
     const navigate = useNavigate()
+    const [isMobile, setIsMobile] = useState(false);
 
+    useEffect(() => {
+        const checkMobile = () => {
+            setIsMobile(window.matchMedia('(max-width: 600px)').matches);
+        };
+        checkMobile(); // Check on initial load
+        window.addEventListener('resize', checkMobile); // Update on resize
+        return () => {
+            window.removeEventListener('resize', checkMobile); // Cleanup
+        };
+    }, []);
     const validateEmail = (email) => {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return emailRegex.test(email);
@@ -128,13 +139,13 @@ const LoginForm = () => {
             </div>
             <div className='buttonContainer'>
                     <Button 
-                        className="btn-text s"
+                        className={isMobile ? "btn-text m" : "btn-text s"}
                         onClick={handleContinue}
                         disabled={isButtonActive}
                         text="Cancel"
                     />
                     <Button 
-                        className="btn-primary s"
+                        className={isMobile ? "btn-primary m" : "btn-primary s"}
                         onClick={handleContinue}
                         disabled={!isButtonActive}
                         text="Continue"

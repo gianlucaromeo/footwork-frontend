@@ -1,11 +1,17 @@
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom'
+import NavbarLogo from '../components/NavbarLogo'
+import '../global.css';
+import '../pageSpecific.css';
 import LoginForm from '../components/LoginForm'
 
 const LoginPage = () => {
-
     return (
         <div>
-        <h1>Login Page</h1>
-        <LoginForm />
+            <NavbarLogo />
+            <div className="centerContent">
+                <LoginForm />
+            </div>
         </div>
     )
 }
