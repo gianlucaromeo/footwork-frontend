@@ -125,15 +125,17 @@ h5 { font-size: var(--h5-size); }
 }
 
 /*-----------------------------Logo:-----------------------------*/
-.logo {
+button.logo {
     width: 104px;
     height: 23.362px;
     background-image: url('./assets/logos/logo-desktop.png');
     background-size: 100%;
+    background-color: var(--black);
+    border: none;
 }
 /*-----------------------------Logo Mobile:-----------------------------*/
 @media (max-width: 600px) {
-    .logo {
+    button.logo {
         width: 79px;
         height: 17.978px;
         background-image: url('./assets/logos/logo-mobile.png');

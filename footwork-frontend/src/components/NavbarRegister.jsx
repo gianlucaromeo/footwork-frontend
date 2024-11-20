@@ -8,7 +8,7 @@ const NavbarRegister = () => {
     return (
         <div className="navbar">
             <div className="content">
-                <div className="logo"></div>
+                <button className="logo" onClick={ () => navigate('/') }></button>
                 <div className="buttonContainer">
                     <Button 
                         className="btn-text s"

@@ -1,8 +1,14 @@
-const NavbarLogo= ({ 
-}) => {
+import { useNavigate } from 'react-router-dom';
+
+const NavbarLogo = () => {
+    const navigate = useNavigate();
+    const isButtonActive = false;
+
     return (
-        <div>
-            <h1>footwork</h1> {/* Title */}
+        <div className="navbar">
+            <div className="content">
+                <button className="logo" onClick={ () => navigate('/') }></button>
+            </div>
         </div>
     );
 };

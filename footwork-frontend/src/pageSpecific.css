@@ -1,4 +1,4 @@
-/* AuthenticationPage */
+/*-----------------------------AuthenticationPage:-----------------------------*/
 .bgImageContainer {
     display: flex;
     flex-direction: column;
@@ -31,4 +31,10 @@
     justify-content: center; 
     gap: 16px; 
     width: 100%; 
+}
+/*-----------------------------AuthenticationPage Mobile:-----------------------------*/
+@media (max-width: 600px) {
+    .bgImageContainer {
+        padding-top: 50%; 
+    }
 }
