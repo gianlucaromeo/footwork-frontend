@@ -7,6 +7,7 @@ import adminsSerivce from '../services/admins'
 import studentsService from '../services/students'
 import currentUserService from '../services/currentUser'
 import '../global.css'
+import profileIcon from '../assets/icons/profile-white.png';
 
 const LoginForm = () => {
     const [email, setEmail] = useState('');
@@ -106,30 +107,38 @@ const LoginForm = () => {
     };
 
     return (
-        <div>
-            <div>
-                <div>Login</div>
+        <div className="loginForm">
+            <div className="header">
+                <h3>Login</h3>
             </div>
-            <div>
-                <img />
-            </div>
-            <InputField label='email*' type='email' value={email} onChange={handleEmailChange} errorMessage={emailError} />
-
-            <InputField label='password*' type='password' value={password} onChange={handlePasswordChange} />
-            <div>
-                <CheckboxContainer
-                  label='I am a teacher' 
-                  checked={isTeacher} 
-                  onChange={setIsTeacher} 
-                />
+            <div className="content">
+                <div className="iconContainer">
+                    <img src={profileIcon} alt="Profile Icon" className="icon" />
+                </div>
+                {/* state of InputField can be default, valid or error */}
+                <InputField label='email*' type='email' state ='default' value={email} onChange={handleEmailChange} errorMessage={emailError} />
+                <InputField label='password*' type='password' state ='default' value={password} onChange={handlePasswordChange} />
+                <div>
+                    <CheckboxContainer
+                    label='I am a teacher' 
+                    checked={isTeacher} 
+                    onChange={setIsTeacher} 
+                    />
+                </div>
             </div>
             <div className='buttonContainer'>
-                <Button text="Cancel" />
-                <Button 
-                    onClick={handleContinue}
-                    disabled={!isButtonActive}
-                    text="Continue"
-                />
+                    <Button 
+                        className="btn-text s"
+                        onClick={handleContinue}
+                        disabled={isButtonActive}
+                        text="Cancel"
+                    />
+                    <Button 
+                        className="btn-primary s"
+                        onClick={handleContinue}
+                        disabled={!isButtonActive}
+                        text="Continue"
+                    />
             </div>
         </div>
     );

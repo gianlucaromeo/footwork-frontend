@@ -4,13 +4,19 @@ const CheckboxContainer = ({
     onChange = () => {} 
 }) => {
   return (
-    <div>
+    <div className="checkboxContainer">
       <input
         type="checkbox"
+        id="customCheckbox"
         checked={checked}
         onChange={(e) => onChange(e.target.checked)} // Pass the checked value back to the parent
       />
-      <span>{label}</span>
+      <label
+        htmlFor="customCheckbox"
+        className={checked ? "checked" : ""}
+        >
+        {label}
+      </label>
     </div>
   );
 };
