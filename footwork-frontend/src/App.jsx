@@ -4,6 +4,7 @@ import LoginPage from './pages/LoginPage'
 import RegistrationPage from './pages/RegistrationPage'
 import AdminHomePage from './pages/AdminHomePage'
 import StudentHomePage from './pages/StudentHomePage'
+import StudentProfilePage from './pages/StudentProfilePage'
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <Route path="/admin/home" element={<AdminHomePage />} />
 
       <Route path="/student/home" element={<StudentHomePage />} />
+      <Route path="/student/profile" element={<StudentProfilePage />} />
 
       <Route path='/test' element={<h1>Test</h1>} />
     </Routes>

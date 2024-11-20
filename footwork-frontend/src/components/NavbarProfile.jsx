@@ -1,8 +1,8 @@
-import profileIcon from '../assets/profileIcon.png';
+import profileIcon from '../assets/icons/profile-btn.svg';
 
-const NavbarProfile = (
-    onClick = () => { },
-) => {
+const NavbarProfile = ({
+    onClick,
+}) => {
     return (
         <div>
             <div>
