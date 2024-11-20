@@ -1,6 +1,6 @@
 import InputField from './InputField';
 
-const RegistrationPeronsalDataForm = ({
+const RegistrationFormStep1 = ({
     firstName,
     lastName,
     email,
@@ -74,4 +74,4 @@ const RegistrationPeronsalDataForm = ({
     );
 };
 
-export default RegistrationPeronsalDataForm
+export default RegistrationFormStep1

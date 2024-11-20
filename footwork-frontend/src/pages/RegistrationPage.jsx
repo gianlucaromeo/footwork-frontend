@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import RegistrationPeronsalDataForm from '../components/RegistrationPersonalDataForm'
-import RegistrationCoursesForm from '../components/RegistrationCoursesForm'
+import RegistrationFormStep1 from '../components/RegistrationFormStep1'
+import RegistrationFormStep2 from '../components/RegistrationFormStep2'
 
 import adminService from '../services/admins'
 import studentService from '../services/students'
@@ -104,7 +104,7 @@ const RegistrationPage = () => {
     return (
         <div>
             <h1>Registration Page</h1>
-            {isFristStep ? <RegistrationPeronsalDataForm 
+            {isFristStep ? <RegistrationFormStep1 
                 firstName={firstName}
                 lastName={lastName}
                 email={email}
@@ -121,7 +121,7 @@ const RegistrationPage = () => {
                 handleConfirmPasswordChange={handleConfirmPasswordChange}
                 isButtonActive={isButtonActive}
                 onContinue={() => setIsFirstStep(false)}
-            /> : <RegistrationCoursesForm 
+            /> : <RegistrationFormStep2 
                 firstName={firstName}
                 onSelectedCoursesChanged={handleSelectedCoursesChanged}
                 onConfirm={handleLogin}

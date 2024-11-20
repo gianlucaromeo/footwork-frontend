@@ -1,7 +1,7 @@
 import SwitchButton from './switchButton';
 import RegistrationCoursesOptions from './RegistrationCoursesOptions';
 
-const RegistrationCoursesForm = ({
+const RegistrationFormStep2 = ({
   firstName = "",
   onSelectedCoursesChanged,
   onConfirm,
@@ -33,4 +33,4 @@ const RegistrationCoursesForm = ({
   );
 };
 
-export default RegistrationCoursesForm
+export default RegistrationFormStep2
