@@ -1,10 +1,12 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import InputField from './InputField'
+import Button from './Button'
 import CheckboxContainer from './CheckboxContainer'
 import adminsSerivce from '../services/admins'
 import studentsService from '../services/students'
 import currentUserService from '../services/currentUser'
+import '../global.css'
 
 const LoginForm = () => {
     const [email, setEmail] = useState('');
@@ -122,13 +124,13 @@ const LoginForm = () => {
                   onChange={setIsTeacher} 
                 />
             </div>
-            <div>
-                <button>Cancel</button>
-                <button className={`continue ${isButtonActive ? 'active' : ''}`}
+            <div className='buttonContainer'>
+                <Button text="Cancel" />
+                <Button 
                     onClick={handleContinue}
-                    disabled={!isButtonActive}>
-                    Continue
-                </button>
+                    disabled={!isButtonActive}
+                    text="Continue"
+                />
             </div>
         </div>
     );
