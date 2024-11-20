@@ -11,7 +11,12 @@ const Button = ({
     return (
         <div>
             <button className={style} onClick={onClick} disabled={disabled}>
-                {iconName && <img src={iconName} alt="icon" />}
+                {iconName && (
+                    <div className="icon">
+                        <img src={iconName} alt="icon" />
+                    </div>
+                    )
+                }
                 {text}
             </button>
         </div>
