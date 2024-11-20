@@ -1,0 +1,34 @@
+/* AuthenticationPage */
+.bgImageContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; 
+    align-items: center; 
+    gap: 56px; 
+    width: 100%; 
+    height: 100vh; 
+    background-size: cover;
+    background-position: center;
+    box-sizing: border-box;
+    padding-top: 120px; 
+}
+.join {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 48px;
+}
+.join .titleContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+}
+.bgImageContainer .login {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center; 
+    gap: 16px; 
+    width: 100%; 
+}
