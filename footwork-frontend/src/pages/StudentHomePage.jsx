@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import StudentCourses from '../components/StudentCourses'
+import SectionStudentCourses from '../components/SectionStudentCourses'
 import NavbarProfile from '../components/NavbarProfile'
+import SectionStudentProfile from '../components/SectionStudentProfile'
 
 // Create an enum:
 const Page = {
@@ -15,13 +15,15 @@ const Page = {
 const StudentHomePage = () => {
     const [currentPage, setCurrentPage] = useState(Page.ALL_COURSES)
 
-    const navigate = useNavigate()
-
     return (
         <div>
-            <NavbarProfile onClick={() => navigate('/student/profile')} />
+            <NavbarProfile onClick={() => setCurrentPage(Page.PROFILE)} />
             <div>***Profile Button</div>
-            { currentPage === Page.ALL_COURSES && <StudentCourses /> }
+            { currentPage === Page.ALL_COURSES && <SectionStudentCourses /> }
+            { currentPage === Page.COURSE && <div>***Course</div> }
+            { currentPage === Page.VIDEOS && <div>***Videos</div> }
+            { currentPage === Page.VIDEO && <div>***Video</div> }
+            { currentPage === Page.PROFILE && <SectionStudentProfile /> }
         </div>
     );
 }

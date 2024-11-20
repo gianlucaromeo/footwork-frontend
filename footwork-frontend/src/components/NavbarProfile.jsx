@@ -6,7 +6,7 @@ const NavbarProfile = ({
     return (
         <div>
             <div>
-                <h1>footwork</h1>
+                <div>footwork</div>
             </div>
             <div>
                 <button onClick={onClick}>

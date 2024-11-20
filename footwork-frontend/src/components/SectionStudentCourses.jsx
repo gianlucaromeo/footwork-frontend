@@ -5,7 +5,7 @@ import Tile from './Tile'
 import currentUserService from '../services/currentUser'
 import coursesService from '../services/courses'
 
-const StudentCourses = () => {
+const SectionStudentCourses = () => {
     const [userFirstName, setUserFirstName] = useState(null)
     const [courses, setCourses] = useState([])
 
@@ -40,4 +40,4 @@ const StudentCourses = () => {
     );
 }
 
-export default StudentCourses
+export default SectionStudentCourses
