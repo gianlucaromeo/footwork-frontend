@@ -9,7 +9,7 @@ const getEnrolledCourses = async () => {
     const token = currentUser.getToken()
     return helper.doGet(helper.getEnrolledCoursesEndpoint, {
         headers: {
-            Authorization: `Bearer ${token}`
+            Authorization: token,
         }
     })
 }
