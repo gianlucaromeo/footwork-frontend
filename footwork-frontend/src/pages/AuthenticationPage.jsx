@@ -16,17 +16,12 @@ const AuthenticationPage = () => {
         const checkMobile = () => {
             setIsMobile(window.matchMedia('(max-width: 600px)').matches);
         };
-
-        console.log('Initial isMobile:', window.matchMedia('(max-width: 600px)').matches);
         checkMobile(); // Check on initial load
         window.addEventListener('resize', checkMobile); // Update on resize
-
         return () => {
             window.removeEventListener('resize', checkMobile); // Cleanup
         };
     }, []);
-
-    console.log('isMobile:', isMobile);
 
     return (
         <div>
