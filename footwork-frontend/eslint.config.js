@@ -37,5 +37,16 @@ export default [
         { allowConstantExport: true },
       ],
     },
+    'no-restricted-syntax': [
+      'error',
+      {
+        selector: "CallExpression[callee.object.name='localStorage']",
+        message: 'Do not use `localStorage` directly, use the storage wrapper instead',
+      },
+      {
+        selector: "CallExpression[callee.object.name='sessionStorage']",
+        message: 'Do not use `sessionStorage` directly, use the storage wrapper instead',
+      },
+    ],
   },
 ]
