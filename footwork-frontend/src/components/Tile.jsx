@@ -1,21 +1,10 @@
-import React from 'react';
+const Tile = ({ imageUrl, text }) => {
+    return (
+        <div>
+            <img src={imageUrl} alt={text} />
+            <div>{text}</div>
+        </div>
+    )
+}
 
-const Tile = ({ 
-  backgroundImage, 
-  textInTile 
-}) => {
-  return (
-    <div>      
-      {/* Tile with background image and text inside */}
-      <div
-        style={{
-          backgroundImage: `url(${backgroundImage})`, // Set the background image
-        }}
-      >
-        <div>{textInTile}</div>
-      </div>
-    </div>
-  );
-};
-
-export default Tile;
+export default Tile

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-import ImageCard from './ImageCard'
+import Tile from './Tile'
 
 import currentUserService from '../services/currentUser'
 import coursesService from '../services/courses'
@@ -28,7 +28,7 @@ const StudentCourses = () => {
             <div>
                 {courses.map((course) => {
                     return (
-                        <ImageCard
+                        <Tile
                             key={course.id}
                             imageUrl={course.imageUrl}
                             text={course.name}
