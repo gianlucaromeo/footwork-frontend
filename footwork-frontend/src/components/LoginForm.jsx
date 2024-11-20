@@ -52,18 +52,17 @@ const LoginForm = () => {
                         console.log(response)
 
                         const token = response.data.token
-                        const id = response.data.id
-                        const role = 'admin'
+                        const role = response.data.role
+                        const firstName = response.data.firstName
 
                         currentUserService.setToken(token)
-                        currentUserService.setId(id)
                         currentUserService.setRole(role)
+                        currentUserService.setFirstName(firstName)
                         
                         navigate('/admin/home')
                     })
                     .catch((error) => {
-                        const errorMessage = error.response.data.error
-                        console.log(errorMessage)
+                        console.log('Error while logging in', error)
                         //
                         // TODO: Understand which error message we get from the
                         // backend and set it here. 
@@ -81,17 +80,17 @@ const LoginForm = () => {
                         console.log(response)
 
                         const token = response.data.token
-                        const id = response.data.id
-                        const role = 'student'
+                        const role = response.data.role
+                        const firstName = response.data.firstName
+
                         currentUserService.setToken(token)
-                        currentUserService.setId(id)
                         currentUserService.setRole(role)
+                        currentUserService.setFirstName(firstName)
 
                         navigate('/student/home')
                     })
                     .catch((error) => {
-                        const errorMessage = error.response.data.error
-                        console.log(errorMessage)
+                        console.log('Error while logging in', error)
                         //
                         // TODO: Understand which error message we get from the
                         // backend and set it here. 

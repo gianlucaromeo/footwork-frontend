@@ -1,6 +1,5 @@
 import { Routes, Route } from 'react-router-dom'
 import AuthenticationPage from './pages/AuthenticationPage'
-import RegistrationFinalStepPage from './pages/RegistrationFinalStepPage'
 import LoginPage from './pages/LoginPage'
 import RegistrationPage from './pages/RegistrationPage'
 import AdminHomePage from './pages/AdminHomePage'
@@ -12,7 +11,6 @@ function App() {
       <Route path="/" element={<AuthenticationPage />} />
       <Route path="/login" element={<LoginPage />} />
       <Route path="/registration" element={<RegistrationPage />} />
-      <Route path="/registration-final-step" element={<RegistrationFinalStepPage />} />
 
       <Route path="/admin/home" element={<AdminHomePage />} />
 
