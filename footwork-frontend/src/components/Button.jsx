@@ -9,7 +9,6 @@ const Button = ({
     style += disabled ? ' disabled' : ' enabled'
 
     return (
-        <div>
             <button className={style} onClick={onClick} disabled={disabled}>
                 {iconName && (
                     <div className="icon">
@@ -19,7 +18,6 @@ const Button = ({
                 }
                 {text}
             </button>
-        </div>
     );
 };
 

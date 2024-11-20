@@ -1,14 +1,28 @@
+import { useNavigate } from 'react-router-dom';
+import Button from './Button';
+
 const NavbarRegister = () => {
+    const navigate = useNavigate();
+    const isButtonActive = false;
+
     return (
-        <div>
-            <div>
-                <h1>Footwork</h1>
-            </div>
-            <div>
-                <btnPrimaryMEnabled>Register</btnPrimaryMEnabled>
-            </div>
-            <div>
-                <btnPrimaryMEnabled>Login</btnPrimaryMEnabled>
+        <div className="navbar">
+            <div className="content">
+                <div className="logo"></div>
+                <div className="buttonContainer">
+                    <Button 
+                        className="btn-text s"
+                        onClick={() => navigate('/registration')}
+                        disabled={isButtonActive}
+                        text="Register"
+                    />
+                    <Button 
+                        className="btn-primary s"
+                        onClick={() => navigate('/login')}
+                        disabled={isButtonActive}
+                        text="Login"
+                    />
+                </div>
             </div>
         </div>
     );

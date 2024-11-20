@@ -189,6 +189,9 @@ h5 { font-size: var(--h5-size); }
 }
 
 /* Button states */
+.enabled:hover {
+    cursor: pointer;
+}
 .btn-primary.enabled {
     color: var(--black);
     background: var(--neon-green);  
