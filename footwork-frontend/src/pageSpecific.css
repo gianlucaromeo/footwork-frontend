@@ -75,3 +75,40 @@
         min-height: 735px; 
     }
 }
+
+/*-----------------------------StudentHomePage:-----------------------------*/
+.studentHomepage {
+    display: flex;
+    justify-content: center; /* Centers child content horizontally */
+    width: 100%;
+    height: 100%;
+}
+.studentDashboard {
+    display: flex;
+    max-width: 1496px;
+    flex-direction: column;
+    align-items: center;
+    flex: 1 0 0;
+    align-self: stretch;
+}
+.headerContainer {
+    display: flex;
+    padding: 84px 48px 108px 48px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+    align-self: stretch;
+}
+.classesContainer {
+    display: flex;
+    max-height: 800px;
+    padding: 0px 48px 48px 48px;
+    align-items: center;
+    flex: 1 0 0;
+    align-self: stretch;
+}
+@media (max-height: 860px) {
+    .headerContainer {
+        padding: 48px 48px 84px 48px;
+    }
+}
