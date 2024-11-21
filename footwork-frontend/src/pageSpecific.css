@@ -47,9 +47,31 @@
     flex: 1 0 0;
     align-self: stretch;
 }
+@media (max-height: 600px) {
+    .centerContent {
+        height: auto; 
+        min-height: 547px; 
+    }
+}
 /*-----------------------------LoginPage Mobile:-----------------------------*/
 @media (max-width: 600px) {
     .centerContent {
         height: calc(100vh - 104px);
+    }
+}
+
+/*-----------------------------RegistrationPage:-----------------------------*/
+.centerContentReg {
+    height: calc(100vh - 125px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1 0 0;
+    align-self: stretch;
+}
+@media (max-height: 860px) {
+    .centerContentReg {
+        height: auto; 
+        min-height: 735px; 
     }
 }

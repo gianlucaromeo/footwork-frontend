@@ -29,6 +29,7 @@ const LoginForm = () => {
             window.removeEventListener('resize', checkMobile); // Cleanup
         };
     }, []);
+    
     const validateEmail = (email) => {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return emailRegex.test(email);

@@ -27,7 +27,7 @@ const InputField = ({
                 />
                 )}
                 {
-                    errorMessage != '' ? <div className="error">{errorMessage}</div> : <div></div>
+                    errorMessage != '' ? <div className="error">{errorMessage}</div> : null
             }
         </div>
     )

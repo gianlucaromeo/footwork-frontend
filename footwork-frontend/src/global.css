@@ -69,7 +69,7 @@ html, body {
     height: 100%;
     margin: 0;
     padding: 0;
-    overflow: hidden;
+    overflow: auto;
     overflow-x: hidden;
 }
 
@@ -285,6 +285,9 @@ button .icon img { /*adjusted img because of code*/
 
 /*-----------------------------Navbar:-----------------------------*/
 .navbar {
+    position: sticky;
+    top: 0; 
+    z-index: 1000;
     display: flex;
     padding: 48px 48px 32px 48px;
     justify-content: center;
@@ -810,8 +813,9 @@ input.error:focus {
 .registrationForm {
     display: flex;
     width: 548px;
-    max-height: 707px;
+    height: auto;
     padding: 48px;
+    box-sizing: border-box;
     flex-direction: column;
     justify-content: center;
     align-items: center;

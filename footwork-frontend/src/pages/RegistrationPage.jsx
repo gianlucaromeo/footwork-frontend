@@ -1,6 +1,9 @@
 import { useState } from 'react'
 import RegistrationFormStep1 from '../components/RegistrationFormStep1'
 import RegistrationFormStep2 from '../components/RegistrationFormStep2'
+import NavbarLogo from '../components/NavbarLogo'
+import '../global.css';
+import '../pageSpecific.css';
 
 import adminService from '../services/admins'
 import studentService from '../services/students'
@@ -103,30 +106,32 @@ const RegistrationPage = () => {
 
     return (
         <div>
-            <h1>Registration Page</h1>
-            {isFristStep ? <RegistrationFormStep1 
-                firstName={firstName}
-                lastName={lastName}
-                email={email}
-                password={password}
-                confirmPassword={confirmPassword}
-                firstNameError={firstNameError}
-                lastNameError={lastNameError}
-                emailError={emailError}
-                passwordError={passwordError}
-                handleFirstNameChange={handleFirstNameChange}
-                handleLastNameChange={handleLastNameChange}
-                handleEmailChange={handleEmailChange}
-                handlePasswordChange={handlePasswordChange}
-                handleConfirmPasswordChange={handleConfirmPasswordChange}
-                isButtonActive={isButtonActive}
-                onContinue={() => setIsFirstStep(false)}
-            /> : <RegistrationFormStep2 
-                firstName={firstName}
-                onSelectedCoursesChanged={handleSelectedCoursesChanged}
-                onConfirm={handleLogin}
-                onIsStudentChanged={handleIsStudentChange}
-            />}
+            <NavbarLogo />
+            <div className="centerContentReg">
+                {isFristStep ? <RegistrationFormStep1 
+                    firstName={firstName}
+                    lastName={lastName}
+                    email={email}
+                    password={password}
+                    confirmPassword={confirmPassword}
+                    firstNameError={firstNameError}
+                    lastNameError={lastNameError}
+                    emailError={emailError}
+                    passwordError={passwordError}
+                    handleFirstNameChange={handleFirstNameChange}
+                    handleLastNameChange={handleLastNameChange}
+                    handleEmailChange={handleEmailChange}
+                    handlePasswordChange={handlePasswordChange}
+                    handleConfirmPasswordChange={handleConfirmPasswordChange}
+                    isButtonActive={isButtonActive}
+                    onContinue={() => setIsFirstStep(false)}
+                /> : <RegistrationFormStep2 
+                    firstName={firstName}
+                    onSelectedCoursesChanged={handleSelectedCoursesChanged}
+                    onConfirm={handleLogin}
+                    onIsStudentChanged={handleIsStudentChange}
+                />}
+            </div>
         </div>
     )
 }
