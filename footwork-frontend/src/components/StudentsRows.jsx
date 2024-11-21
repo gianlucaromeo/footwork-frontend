@@ -5,13 +5,10 @@ import CheckboxContainer from './CheckboxContainer';
 const StudentsRows = ({
     lastname = "",       // Last name of student
     firstname = "",      // First name of student
-    onClick,             // Row click handler
-    onDelete             // Delete handler
+    onDelete             // Delete handler for the icon
 }) => {
     return (
-        <button
-            onClick={onClick} // Handle row click
-        >
+        <div>
             <div>
                 {lastname}
             </div>
@@ -25,7 +22,7 @@ const StudentsRows = ({
             </div>
             <div
                 onClick={(e) => {
-                    e.stopPropagation(); // Prevent row's onClick from triggering
+                    e.stopPropagation(); // Prevent propagation in case it's wrapped in a clickable parent
                     onDelete(); // Call delete handler
                 }}
             >
@@ -34,7 +31,7 @@ const StudentsRows = ({
                     alt="Delete"
                 />
             </div>
-        </button>
+        </div>
     );
 };
 
