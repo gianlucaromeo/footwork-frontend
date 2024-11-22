@@ -1,8 +1,7 @@
 const Tile = ({ imageUrl, text }) => {
     return (
-        <div>
-            <img src={imageUrl} alt={text} />
-            <div>{text}</div>
+        <div className="tile" style={{ backgroundImage: `url(${imageUrl})` }}>
+          <div className="tileText">{text}</div>
         </div>
     )
 }

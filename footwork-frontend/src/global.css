@@ -528,6 +528,7 @@ input.error:focus {
     display: inline-block;
     width: 33.33%;
     max-width: 500px;
+    height: calc(100vh - 480px);
     max-height: 500px;
     padding: 60px 48px;
     box-sizing: border-box;
@@ -555,7 +556,12 @@ input.error:focus {
     margin: 0 0 12px 0;
     width: auto;
 }
-
+@media (max-height: 860px) {
+    .tile {
+        padding: 24px 24px;
+        height: calc(100vh - 424px);
+    }
+}
 /*-----------------------------Tile Mobile:-----------------------------*/
 @media (max-width: 600px) {
     .tileContainer {

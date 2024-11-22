@@ -22,10 +22,14 @@ const SectionStudentCourses = () => {
     }, [])
 
     return (
-        <div>
-            <h3>Hi {userFirstName}</h3>
-            <div>Your available courses</div>
-            <div>
+        <div className="studentDashboard">
+            <div className="headerContainer">
+                <div className="titleSubtitle">
+                    <h2>Hi {userFirstName}</h2>
+                    <div className="copy-large-reg">Your available dance classes</div>
+                </div>
+            </div>
+            <div className="classesContainer">
                 {courses.map((course) => {
                     return (
                         <Tile
