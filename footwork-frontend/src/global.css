@@ -615,7 +615,7 @@ input.error:focus {
 }
 .card .informationContainer {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 24px;
     align-self: stretch;
 }

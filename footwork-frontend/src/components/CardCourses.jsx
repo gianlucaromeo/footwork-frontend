@@ -42,7 +42,7 @@ const CardCourses = ({ showRequestButton = true }) => {
                     {showRequestButton && (
                         <div className="buttonContainer">
                             <Button 
-                                className="btn-primary m"
+                                className="btn-primary xs"
                                 disabled={!isAnyCheckboxChecked}
                                 text="Request Access"
                             />
