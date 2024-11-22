@@ -19,11 +19,11 @@ const StudentHomePage = () => {
         <div>
             <NavbarProfile onClick={() => setCurrentPage(Page.PROFILE)} />
             <div className="studentHomepage">
-            { currentPage === Page.ALL_COURSES && <SectionStudentCourses /> }
-            { currentPage === Page.COURSE && <div>***Course</div> }
-            { currentPage === Page.VIDEOS && <div>***Videos</div> }
-            { currentPage === Page.VIDEO && <div>***Video</div> }
-            { currentPage === Page.PROFILE && <SectionStudentProfile /> }
+                { currentPage === Page.ALL_COURSES && <SectionStudentCourses /> }
+                { currentPage === Page.COURSE && <div>***Course</div> }
+                { currentPage === Page.VIDEOS && <div>***Videos</div> }
+                { currentPage === Page.VIDEO && <div>***Video</div> }
+                { currentPage === Page.PROFILE && <SectionStudentProfile /> }
             </div>
         </div>
 

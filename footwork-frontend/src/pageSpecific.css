@@ -112,3 +112,31 @@
         padding: 48px 48px 84px 48px;
     }
 }
+/*-----------------------------StudentHomePage Mobile:-----------------------------*/
+@media (max-width: 600px) {
+    .studentHomepage {
+        height: 100vh;
+        max-width: 1496px;
+        padding: 0px 32px;
+        flex-direction: column;
+        align-items: center;
+        flex: 1 0 0;
+        align-self: stretch;
+    }
+    .studentDashboard {
+        padding: 48px 0px;
+        align-items: flex-start;
+        justify-content: flex-start;
+        gap: 48px;
+    }
+    .headerContainer {
+        padding: 0px;
+        align-self: stretch;
+    }
+    .classesContainer {
+        max-height: 0px;
+        padding: 0px 8px 48px 8px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}

@@ -8,6 +8,7 @@ import coursesService from '../services/courses'
 const SectionStudentCourses = () => {
     const [userFirstName, setUserFirstName] = useState(null)
     const [courses, setCourses] = useState([])
+    const [isMobile, setIsMobile] = useState(false);
 
     useEffect(() => {
         const firstName = currentUserService.getFirstName()
@@ -19,14 +20,23 @@ const SectionStudentCourses = () => {
             }).catch((error) => {
                 console.log(error)
             })
+
+        const checkMobile = () => {
+             setIsMobile(window.matchMedia('(max-width: 600px)').matches);
+        };
+        checkMobile(); // Check on initial load
+        window.addEventListener('resize', checkMobile); // Update on resize
+        return () => {
+            window.removeEventListener('resize', checkMobile); // Cleanup
+        };
     }, [])
 
     return (
         <div className="studentDashboard">
             <div className="headerContainer">
                 <div className="titleSubtitle">
-                    <h2>Hi {userFirstName}</h2>
-                    <div className="copy-large-reg">Your available dance classes</div>
+                    {isMobile ? <h1>Hi {userFirstName}</h1> : <h2>Hi {userFirstName}</h2>}
+                    <div className={isMobile ? "copy-medium-reg" : "copy-large-reg"}>Your available dance classes</div>
                 </div>
             </div>
             <div className="classesContainer">
