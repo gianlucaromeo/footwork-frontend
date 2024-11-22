@@ -470,6 +470,7 @@ input.error:focus {
 /*-----------------------------Switch Mobile:-----------------------------*/
 @media (max-width: 600px) {
     .switch {
+        background-color: var(--black);
         font-size: var(--h4-size);
     }
 }

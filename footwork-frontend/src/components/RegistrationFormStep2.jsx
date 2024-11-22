@@ -27,8 +27,9 @@ const RegistrationFormStep2 = ({
   return (
     <div className="registrationForm">
       <div className="header">
-        <h3>Register to join Polijazz</h3>
-      </div>
+                <h3>Register to Polijazz</h3>
+                <p>2/2</p>
+            </div>
       <div className="content">
         <div className="titleDescription">
           <div className="copy-xlarge-b">Hi {firstName}</div>
