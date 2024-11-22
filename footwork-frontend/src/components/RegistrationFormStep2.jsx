@@ -49,11 +49,7 @@ const RegistrationFormStep2 = ({
       <div className="buttonContainer">
             <Button 
               className={isMobile ? "btn-text m" : "btn-text s"}
-                // handleContinue not set yet so set to onContinue so that code works!
-                // CHANGE
-                // onClick={handleContinue}
-                onBack={onBack}
-                disabled={isButtonActive}
+                onClick={ onBack }
                 text="Back"
             />
             <Button 

@@ -100,6 +100,12 @@ const RegistrationPage = () => {
         }
     }
 
+    const handleOnBackFromStep2 = () => {
+        setIsFirstStep(true)
+        setCoursesIds([])
+        setIsStudent(true)
+    }
+
     const [ coursesIds, setCoursesIds ] = useState([])
 
     const [ isStudent, setIsStudent ] = useState(true)
@@ -125,10 +131,11 @@ const RegistrationPage = () => {
                     handleConfirmPasswordChange={handleConfirmPasswordChange}
                     isButtonActive={isButtonActive}
                     onContinue={() => setIsFirstStep(false)}
+                    onBack={() => {}}
                 /> : <RegistrationFormStep2 
                     firstName={firstName}
                     onSelectedCoursesChanged={handleSelectedCoursesChanged}
-                    onBack={() => {}}
+                    onBack={ handleOnBackFromStep2 }
                     isButtonActive={true} // NEDDS TO BE CHANGED
                     onConfirm={handleLogin}
                     onIsStudentChanged={handleIsStudentChange}

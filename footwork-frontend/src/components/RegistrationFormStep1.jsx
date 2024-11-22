@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import InputField from './InputField'
 import Button from './Button'
 import '../global.css'
@@ -20,8 +21,11 @@ const RegistrationFormStep1 = ({
     handleConfirmPasswordChange,
     isButtonActive,
     onContinue,
+    onBack,
 }) => {
     const [isMobile, setIsMobile] = useState(false);
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         const checkMobile = () => {
@@ -84,11 +88,7 @@ const RegistrationFormStep1 = ({
             <div className="buttonContainer">
                 <Button 
                     className={isMobile ? "btn-text m" : "btn-text s"}
-                    // handleContinue not set yet so set to onContinue so that code works!
-                    // CHANGE
-                    // onClick={handleContinue}
-                    onClick={onContinue}
-                    disabled={isButtonActive}
+                    onClick={ () => navigate("/") }
                     text="Cancel"
                 />
                 <Button 
