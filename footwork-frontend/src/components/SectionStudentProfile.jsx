@@ -2,7 +2,6 @@ import CardCourses from './CardCourses';
 import CardInformation from './CardInformation';
 import TitleWithArrow from './TitleWithArrow';
 import Button from './Button';
-import Chip from './Chip';
 import deleteIcon from '../assets/icons/delete-white.png';
 
 const SectionStudentProfile = () => {
@@ -14,7 +13,6 @@ const SectionStudentProfile = () => {
                 />
             </div>
             <div className="cardContainer">
-                <Chip text="Test"/>
                 <CardInformation/>
                 <CardCourses/>
             </div>

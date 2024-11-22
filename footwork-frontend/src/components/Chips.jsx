@@ -5,12 +5,14 @@ const Chips = ({
     title = ""
 }) => {
     return (
-        <div>
+        <div className="chipContainer">
             <div>
                 {title}
             </div>
-            {/* @Gianluca: add this from db*/}
-            <Chip title= {title}/>
+            <div className="chips">
+                {/* @Gianluca: add this from db*/}
+                <Chip text= {title}/>
+            </div>
         </div>
     );
 };

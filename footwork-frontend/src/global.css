@@ -741,7 +741,7 @@ input.error:focus {
     color: var(--white);
     background-color: var(--black);
     border: none;
-    font-size: var(--copy-large);
+    font-size: var(--copy-regular);
     font-weight: var(--weight-regular);
     margin: 0;
 }
