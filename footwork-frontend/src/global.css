@@ -331,8 +331,11 @@ button .icon img { /*adjusted img because of code*/
     display: inline-flex;
 }
 .arrowTitle {
+    background-color: var(--black);
+    color: var(--white);
+    border: none;
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     gap: 12px;
 }
 .arrow {
@@ -625,12 +628,25 @@ input.error:focus {
     gap: 48px;
     flex: 1 0 0;
 }
-.card .informationContainer .column .content, .card .coursesContainer {
+.card .informationContainer .column .content {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
     gap: 24px;
+}
+.card .coursesContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 16px;
+}
+.coursesContainer .courses {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
 }
 .card .informationContainer .column .content .entry {
     color: var(--neon-green);
@@ -836,6 +852,7 @@ input.error:focus {
     justify-content: space-between;
     align-items: center;
     align-self: stretch;
+    gap: 16px;
 }
 .registrationForm .inputFields { /* Page 1/2 */
     display: flex;
