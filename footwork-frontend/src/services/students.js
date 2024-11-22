@@ -1,6 +1,5 @@
 import helper from './helper'
 import currentUserService from './currentUser'
-import courses from './courses'
 
 const login = async (email, password) => {
     return helper.doPost(
@@ -27,7 +26,16 @@ const create = (
     })
 }
 
+const getAllVideos = async () => {
+    return helper.doGet(helper.getStudentVideosEndpoint, {
+        headers: {
+            Authorization: currentUserService.getToken(),
+        }
+    })
+}
+
 export default {
     login,
     create,
+    getAllVideos,
 }

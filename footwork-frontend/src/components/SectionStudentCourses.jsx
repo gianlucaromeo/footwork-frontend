@@ -5,7 +5,7 @@ import Tile from './Tile'
 import currentUserService from '../services/currentUser'
 import coursesService from '../services/courses'
 
-const SectionStudentCourses = () => {
+const SectionStudentCourses = ({onCourseClick}) => {
     const [userFirstName, setUserFirstName] = useState(null)
     const [courses, setCourses] = useState([])
     const [isMobile, setIsMobile] = useState(false);
@@ -46,6 +46,7 @@ const SectionStudentCourses = () => {
                             key={course.id}
                             imageUrl={course.imageUrl}
                             text={course.name}
+                            onClick={() => onCourseClick(course.id)}
                         />
                     )
                 })}

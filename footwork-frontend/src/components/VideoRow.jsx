@@ -2,12 +2,13 @@ import React from 'react';
 import deleteIcon from '../assets/icons/delete-black.png'; 
 
 const VideoRow = ({
-    videoNumber = "",      // Video number (e.g., "1")
-    thumbnail,             // Thumbnail image source
-    title = "",            // Title of the video
+    videoNumber = "",        // TODO Video number (e.g., "1")
+    coverImageUrl,           // Thumbnail image source
+    videoUrl,                // Video source
+    title = "",              // Title of the video
     iconAlt = "Delete Icon", // Alt text for the icon
-    onClick,               // Callback for row click
-    onDelete,              // Callback for delete icon click
+    onClick,                 // Callback for row click
+    onDelete,                // Callback for delete icon click
 }) => {
     return (
         <button
@@ -17,23 +18,19 @@ const VideoRow = ({
                 {videoNumber}
             </div>
             <div>
-                <img
-                    src={thumbnail}
-                    alt="Video Thumbnail"
-                />
+                <video src={videoUrl} controls poster={coverImageUrl} />    
             </div>
             <div>
                 {title}
             </div>
-            <div onClick={(e) => {
-                e.stopPropagation(); // Prevent row's onClick from triggering
-                onDelete(videoNumber); // Call delete handler
-            }}>
-                <img
-                    src={deleteIcon}
-                    alt={iconAlt}
-                />
-            </div>
+            {onDelete && 
+                <div onClick={(e) => {
+                    e.stopPropagation(); // Prevent row's onClick from triggering
+                    onDelete(videoNumber); // Call delete handler
+                }}>
+                    <img src={deleteIcon} alt={iconAlt} />
+                </div>
+             }
         </button>
     );
 };
