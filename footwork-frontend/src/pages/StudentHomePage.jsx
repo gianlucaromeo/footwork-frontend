@@ -2,13 +2,15 @@ import { useEffect, useState } from 'react';
 import SectionStudentCourses from '../components/SectionStudentCourses';
 import NavbarProfile from '../components/NavbarProfile';
 import SectionStudentProfile from '../components/SectionStudentProfile';
-import SectionStudentChoreographies from '../components/SectionStudentChoreographies';
+import SectionStudentCourseChoreographies from '../components/SectionStudentCourseChoreographies';
+import SectionStudentChoreographyVideos from '../components/SectionStudentChoreographyVideos';
 
 // Create an enum:
 const Page = {
     ALL_COURSES: 'all-courses',
     COURSE: 'course',
     COURSE_CHOREOGRAPHIES: 'course-choreographies',
+    CHOREOGRAPHY_VIDEOS: 'choreography-video',
     VIDEOS: 'videos',
     VIDEO: 'video',
     PROFILE: 'profile',
@@ -37,11 +39,12 @@ const StudentHomePage = () => {
 
     // Custom navigation handler, not real navigation
     const navigateTo = (page, courseId = null) => {
-        // Push new state to history
+        // Push the page and courseId into the browser history state
         window.history.pushState({ page, courseId }, '');
         setCurrentPage(page);
-        setCurrentCourseId(courseId);
-    };
+        setCurrentCourseId(courseId); // Save courseId state
+        console.log('Navigated to', page, courseId);
+    };    
 
     return (
         <div>
@@ -53,11 +56,24 @@ const StudentHomePage = () => {
                     />
                 )}
 
-                {currentPage === Page.COURSE_CHOREOGRAPHIES && (
-                    <SectionStudentChoreographies currentCourseId={currentCourseId} />
-                )}
+                {currentPage === Page.COURSE_CHOREOGRAPHIES && 
+                    <SectionStudentCourseChoreographies onClick={
+                        () => navigateTo(
+                            Page.CHOREOGRAPHY_VIDEOS, 
+                            currentCourseId
+                        )
+                    } />
+                }
 
-                {currentPage === Page.VIDEOS && <div>***Videos</div>}
+                {currentPage === Page.CHOREOGRAPHY_VIDEOS && (
+                    <SectionStudentChoreographyVideos 
+                        courseId={currentCourseId}
+                        onBack={() => navigateTo(
+                            Page.COURSE_CHOREOGRAPHIES,
+                            currentCourseId
+                        )}
+                    />
+                )}
 
                 {currentPage === Page.VIDEO && <div>***Video</div>}
 

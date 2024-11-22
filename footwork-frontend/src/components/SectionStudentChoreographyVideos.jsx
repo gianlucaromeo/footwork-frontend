@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import studentsService from '../services/students'
+import coursesService from '../services/courses'
 import VideoColumn from './VideoColumn'
 
-const SectionStudentChoreographies = ({ onBack }) => {
+const SectionStudentChoreographyVideos = ({ courseId, onBack }) => {
     /*
         video: {
             id: number,
@@ -14,12 +15,22 @@ const SectionStudentChoreographies = ({ onBack }) => {
         }
     */
     const [videos, setVideos] = useState([])
+    const [courseName, setCourseName] = useState(null)
 
     useEffect(() => {
+        coursesService.getAll()
+            .then((response) => {
+                const course = response.data.find((course) => 
+                    course.id === courseId
+                )
+                setCourseName(course.name)
+            }).catch((error) => {
+                console.log(error)
+            })
+
         studentsService.getAllVideos()
             .then((response) => {
                 setVideos(response.data)
-                console.log(response.data)
             }).catch((error) => {
                 console.log(error)
             })
@@ -42,6 +53,7 @@ const SectionStudentChoreographies = ({ onBack }) => {
     return (
         <div>
             <VideoColumn
+                courseName={courseName}
                 videos={videos}
                 onVideoRowClicked={(videoId) => {}} // TODO
             />
@@ -49,4 +61,4 @@ const SectionStudentChoreographies = ({ onBack }) => {
     )
 }
 
-export default SectionStudentChoreographies
+export default SectionStudentChoreographyVideos
