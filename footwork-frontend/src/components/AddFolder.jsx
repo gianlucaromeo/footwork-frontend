@@ -2,7 +2,7 @@ import React, { useState } from "react"; // Import useState
 import TitleWithArrow from "./TitleWithArrow";
 import UploadPicture from "./UploadPicture";
 import InputField from "./InputField";
-import SwitchButton from "./switchButton";
+import SwitchButton from "./SwitchButton";
 import Chips from "./Chips";
 import BtnTextS from "./BtnTextS";
 import BtnPrimaryMEnabled from "./BtnPrimaryMEnabled";
