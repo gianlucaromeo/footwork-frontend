@@ -52,47 +52,28 @@ const VideoUploadBox = () => {
 
   return (
     <div
-      style={{
-        width: "300px",
-        height: "200px",
-        border: "2px dashed #ccc",
-        borderRadius: "10px",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        backgroundImage: thumbnail ? `url(${thumbnail})` : "none",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        position: "relative",
-        cursor: "pointer",
-      }}
+      //@Sarah: add the style of the (dotted) container here
       onClick={() => document.getElementById("videoInput").click()}
     >
       {!thumbnail && (
-        <div style={{ textAlign: "center" }}>
+        <div>
           <img
             src={uploadIcon}
             alt="Upload"
-            style={{ width: "50px", height: "50px", marginBottom: "10px" }}
           />
-          <p style={{ fontSize: "14px", color: "#666" }}>Click to upload</p>
+          <p>Click to upload</p>
         </div>
       )}
       <input
         type="file"
         id="videoInput"
         accept="video/*"
-        style={{ display: "none" }}
         onChange={handleFileUpload}
+        //@Sarah: add the style for the inputfield here
       />
       {error && (
         <p
-          style={{
-            position: "absolute",
-            bottom: "-20px",
-            color: "red",
-            fontSize: "12px",
-          }}
+        //*@Sarah: style for error comes here
         >
           {error}
         </p>
