@@ -1,6 +1,6 @@
-const Tile = ({ imageUrl, text }) => {
+const Tile = ({ imageUrl, text, onClick }) => {
     return (
-        <div className="tile" style={{ backgroundImage: `url(${imageUrl})` }}>
+        <div className="tile" style={{ backgroundImage: `url(${imageUrl})` }} onClick={ onClick }>
           <div className="tileText">{text}</div>
         </div>
     )
