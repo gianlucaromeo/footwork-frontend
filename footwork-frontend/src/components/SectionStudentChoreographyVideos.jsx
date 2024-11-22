@@ -1,36 +1,20 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import studentsService from '../services/students'
-import coursesService from '../services/courses'
 import VideoColumn from './VideoColumn'
 
-const SectionStudentChoreographyVideos = ({ courseId, onBack }) => {
-    /*
-        video: {
-            id: number,
-            choreographyId: number,
-            coverImageUrl: string,
-            title: string,
-            videoUrl: string,
-        }
-    */
+const SectionStudentChoreographyVideos = ({
+    onBack
+}) => {
     const [videos, setVideos] = useState([])
-    const [courseName, setCourseName] = useState(null)
+    const [choreographyName, setChoreographyName] = useState('')
 
     useEffect(() => {
-        coursesService.getAll()
-            .then((response) => {
-                const course = response.data.find((course) => 
-                    course.id === courseId
-                )
-                setCourseName(course.name)
-            }).catch((error) => {
-                console.log(error)
-            })
-
         studentsService.getAllVideos()
             .then((response) => {
                 setVideos(response.data)
+                const choreography = response.data[0].choreography.title
+                setChoreographyName(choreography)
             }).catch((error) => {
                 console.log(error)
             })
@@ -53,9 +37,9 @@ const SectionStudentChoreographyVideos = ({ courseId, onBack }) => {
     return (
         <div>
             <VideoColumn
-                courseName={courseName}
+                courseName={choreographyName}
                 videos={videos}
-                onVideoRowClicked={(videoId) => {}} // TODO
+                onVideoRowClicked={(videoId) => { }} // TODO
             />
         </div>
     )

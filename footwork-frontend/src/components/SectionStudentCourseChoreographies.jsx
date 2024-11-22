@@ -25,7 +25,7 @@ const SectionStudentCourseChoreographies = ({onClick}) => {
                         key={choreography.id}
                         imageUrl={choreography.imageUrl}
                         text={choreography.title}
-                        onClick={onClick}
+                        onClick={() => onClick(choreography.id)}
                     />
                 ))}
             </div>

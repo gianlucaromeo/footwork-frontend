@@ -19,6 +19,7 @@ const Page = {
 const StudentHomePage = () => {
     const [currentPage, setCurrentPage] = useState(Page.ALL_COURSES);
     const [currentCourseId, setCurrentCourseId] = useState(null);
+    const [currentChoreographyId, setCurrentChoreographyId] = useState(null);
 
     useEffect(() => {
         // Push initial state
@@ -29,7 +30,8 @@ const StudentHomePage = () => {
             const state = event.state;
             if (state && state.page) {
                 setCurrentPage(state.page);
-                setCurrentCourseId(state.courseId || null); // Optional: handle courseId
+                setCurrentCourseId(state.courseId || null);
+                setCurrentChoreographyId(state.choreographyId || null);
             }
         };
 
@@ -38,12 +40,12 @@ const StudentHomePage = () => {
     }, []);
 
     // Custom navigation handler, not real navigation
-    const navigateTo = (page, courseId = null) => {
-        // Push the page and courseId into the browser history state
-        window.history.pushState({ page, courseId }, '');
+    const navigateTo = (page, courseId = null, choreographyId = null) => {
+        window.history.pushState({ page, courseId, choreographyId }, '');
         setCurrentPage(page);
-        setCurrentCourseId(courseId); // Save courseId state
-        console.log('Navigated to', page, courseId);
+        setCurrentCourseId(courseId);
+        setCurrentChoreographyId(choreographyId);
+        console.log('Navigated to', page, courseId, choreographyId);
     };    
 
     return (
@@ -58,16 +60,18 @@ const StudentHomePage = () => {
 
                 {currentPage === Page.COURSE_CHOREOGRAPHIES && 
                     <SectionStudentCourseChoreographies onClick={
-                        () => navigateTo(
-                            Page.CHOREOGRAPHY_VIDEOS, 
-                            currentCourseId
-                        )
+                        (choreographyId) => {
+                            navigateTo(
+                                Page.CHOREOGRAPHY_VIDEOS,
+                                currentCourseId,
+                                choreographyId
+                            );
+                        }
                     } />
                 }
 
                 {currentPage === Page.CHOREOGRAPHY_VIDEOS && (
                     <SectionStudentChoreographyVideos 
-                        courseId={currentCourseId}
                         onBack={() => navigateTo(
                             Page.COURSE_CHOREOGRAPHIES,
                             currentCourseId
