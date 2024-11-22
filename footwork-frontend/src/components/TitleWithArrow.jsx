@@ -4,10 +4,11 @@ import arrow from "../assets/icons/arrow-left.png";
 const TitleWithArrow = ({
     title = "",
     subtitle = "",
+    onClick
 }) => {
     return (
         <div className="titleSubtitle">
-            <button className="arrowTitle">
+            <button className="arrowTitle" onClick = {onClick}>
                 <div className="arrow"></div>
                 <h2>
                     {title}
