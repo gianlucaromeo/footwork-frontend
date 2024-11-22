@@ -34,9 +34,11 @@ const RegistrationCoursesOptions = ({ onSelectedCoursesChanged }) => {
   }, [selectedCoursesIds, onSelectedCoursesChanged]);
 
   return (
-    <div>
-      <h3>Courses</h3>
-      <p>Which courses do you want to sign up for?</p>
+    <div className="courses">
+      <div className="titleDescription">
+          <div className="copy-large-med">Courses</div>
+          <div className="copy-medium-reg">Which courses do you want to sign up for?</div>
+      </div>
       {courses.map(course => (
         <CheckboxContainer
           key={course.id}

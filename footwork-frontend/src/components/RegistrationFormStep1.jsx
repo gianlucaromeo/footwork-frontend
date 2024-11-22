@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom'
 import InputField from './InputField'
 import Button from './Button'
 import '../global.css'
@@ -21,6 +22,9 @@ const RegistrationFormStep1 = ({
     isButtonActive,
     onContinue,
 }) => {
+    isButtonActive = false;
+
+    const navigate = useNavigate()
     const [isMobile, setIsMobile] = useState(false);
 
     useEffect(() => {
@@ -42,7 +46,7 @@ const RegistrationFormStep1 = ({
             </div>
             <div className="inputFields">
                 <InputField
-                    label="First Name*"
+                    label="first name*"
                     type="text"
                     state ='default'
                     value={firstName}
@@ -50,7 +54,7 @@ const RegistrationFormStep1 = ({
                     errorMessage={firstNameError}
                 />
                 <InputField
-                    label="Last Name*"
+                    label="last name*"
                     type="text"
                     state ='default'
                     value={lastName}
@@ -58,7 +62,7 @@ const RegistrationFormStep1 = ({
                     errorMessage={lastNameError}
                 />
                 <InputField
-                    label="Email*"
+                    label="email*"
                     type="email"
                     state ='default'
                     value={email}
@@ -66,14 +70,14 @@ const RegistrationFormStep1 = ({
                     errorMessage={emailError}
                 />
                 <InputField
-                    label="Password*"
+                    label="password*"
                     type="password"
                     state ='default'
                     value={password}
                     onChange={handlePasswordChange}
                 />
                 <InputField
-                    label="Confirm Password*"
+                    label="confirm password*"
                     type="password"
                     state ='default'
                     value={confirmPassword}
@@ -82,22 +86,22 @@ const RegistrationFormStep1 = ({
                 />
             </div>
             <div className="buttonContainer">
-                    <Button 
-                        className={isMobile ? "btn-text m" : "btn-text s"}
-                        // handleContinue not set yet so set to onContinue so that code works!
-                        // CHANGE
-                        // onClick={handleContinue}
-                        onClick={onContinue}
-                        disabled={isButtonActive}
-                        text="Cancel"
-                    />
-                    <Button 
-                        className={`continue ${isMobile ? 'btn-primary m' : 'btn-primary s'} ${isButtonActive ? 'enabled' : ''}`}
-                        onClick={onContinue}
-                        disabled={!isButtonActive}
-                        text="Continue"
-                    />
-                </div>
+                <Button 
+                    className={isMobile ? "btn-text m" : "btn-text s"}
+                    // handleContinue not set yet so set to onContinue so that code works!
+                    // CHANGE
+                    // onClick={handleContinue}
+                    onClick={onContinue}
+                    disabled={isButtonActive}
+                    text="Cancel"
+                />
+                <Button 
+                    className={`${isMobile ? 'btn-primary m' : 'btn-primary s'} ${isButtonActive ? ' enabled' : ''}`}
+                    onClick={onContinue}
+                    disabled={!isButtonActive}
+                    text="Continue"
+                />
+            </div>
         </div>
     );
 };
