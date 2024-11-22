@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Button from './Button';
 import RegistrationCoursesOptions from './RegistrationCoursesOptions';
 
-const CardCourses = () => {
+const CardCourses = ({ showRequestButton = true }) => {
     const [isMobile, setIsMobile] = useState(false);
     // State to track checkbox states
     const [checkboxStates, setCheckboxStates] = useState({
@@ -39,13 +39,15 @@ const CardCourses = () => {
             {isMobile ? (
                 <>
                     {/* Button container first for mobile */}
-                    <div className="buttonContainer">
-                        <Button 
-                            className="btn-primary m"
-                            disabled={!isAnyCheckboxChecked}
-                            text="Request Access"
-                        />
-                    </div>
+                    {showRequestButton && (
+                        <div className="buttonContainer">
+                            <Button 
+                                className="btn-primary xs"
+                                disabled={!isAnyCheckboxChecked}
+                                text="Request Access"
+                            />
+                        </div>
+                    )}
                     <div className="coursesContainer">
                         <h4>Courses</h4>
                         <RegistrationCoursesOptions
@@ -64,13 +66,15 @@ const CardCourses = () => {
                             onSelectedCoursesChanged={ () => {}}
                         />
                     </div>
-                    <div className="buttonContainer">
-                        <Button 
-                            className="btn-text s"
-                            disabled={!isAnyCheckboxChecked}
-                            text="Request Access"
-                        />
-                    </div>
+                    {showRequestButton && (
+                        <div className="buttonContainer">
+                            <Button 
+                                className="btn-text s"
+                                disabled={!isAnyCheckboxChecked}
+                                text="Request Access"
+                            />
+                        </div>
+                    )}
                 </>
             )}
         </div>

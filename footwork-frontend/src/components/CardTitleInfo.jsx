@@ -5,9 +5,9 @@ const CardTitleInfo = ({
     data = ""
   }) => {
     return(
-        <div>
+        <div className="content">
             <h5>{title}</h5>
-            <div>{data}</div>
+            <div className="entry">{data}</div>
         </div>
 )}
 export default CardTitleInfo
