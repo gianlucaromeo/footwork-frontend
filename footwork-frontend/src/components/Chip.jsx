@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import check from '../assets/icons/check-green.png'; // Import check icon
+import check from '../assets/icons/check-black.png'; // Import check icon
 
 const Chip = ({
     text = "" // Text displayed on the chip
@@ -12,12 +12,14 @@ const Chip = ({
     };
 
     return (
-        <div>
-            <button
+        <div className={`chip ${isSelected ? 'selected' : ''}`}>
+            <button 
+                className={`${isSelected ? 'selected' : ''}`}
                 onClick={handleChipClick}
             >
                 {isSelected && (
-                    <img
+                    <img 
+                        className="icon"
                         src={check}
                         alt="Selected"
                     />

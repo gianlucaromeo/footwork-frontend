@@ -737,10 +737,25 @@ input.error:focus {
     border-radius: 100px;
     border: 2px solid var(--white, #FFF);
 }
+.chip button {
+    color: var(--white);
+    background-color: var(--black);
+    border: none;
+    font-size: var(--copy-large);
+    font-weight: var(--weight-regular);
+    margin: 0;
+}
 .chip.selected {
     background: var(--neon-green, #0F8);
     border: 2px solid var(--neon-green, #0F8);
     color: var(--black, #1A1A1A);
+}
+.chip button.selected {
+    color: var(--black);
+    background-color: var(--neon-green);
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 .chip.selected .icon {
     width: 16px;
