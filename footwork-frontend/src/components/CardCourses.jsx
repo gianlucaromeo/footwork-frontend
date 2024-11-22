@@ -1,15 +1,27 @@
-import React, { useState } from 'react';
-import BtnTextS from './BtnTextS';
-import CheckboxContainer from './CheckboxContainer';
-import BtnPrimaryMEnabled from './BtnPrimaryMEnabled';
+import React, { useState, useEffect } from 'react';
+import Button from './Button';
+import RegistrationCoursesOptions from './RegistrationCoursesOptions';
 
-const CardInformation = () => {
+const CardCourses = () => {
+    const [isMobile, setIsMobile] = useState(false);
     // State to track checkbox states
     const [checkboxStates, setCheckboxStates] = useState({
         beginner: false,
         advanced: false,
         intermediate: false,
     });
+
+    // Detect if the device is mobile
+    useEffect(() => {
+        const checkMobile = () => {
+            setIsMobile(window.matchMedia('(max-width: 600px)').matches);
+        };
+        checkMobile(); // Initial check
+        window.addEventListener('resize', checkMobile); // Re-check on resize
+        return () => {
+            window.removeEventListener('resize', checkMobile); // Cleanup
+        };
+    }, []);
 
     // Handler for checkbox changes
     const handleCheckboxChange = (label, checked) => {
@@ -23,30 +35,46 @@ const CardInformation = () => {
     const isAnyCheckboxChecked = Object.values(checkboxStates).some((state) => state);
 
     return (
-        <div>
-            <h5>Courses</h5>
-            <div>
-                <CheckboxContainer
-                    label="Breakdance beginner"
-                    checked={checkboxStates.beginner}
-                    onChange={(checked) => handleCheckboxChange('beginner', checked)}
-                />
-                <CheckboxContainer
-                    label="Breakdance advanced"
-                    checked={checkboxStates.advanced}
-                    onChange={(checked) => handleCheckboxChange('advanced', checked)}
-                />
-                <CheckboxContainer
-                    label="Contemporary intermediate"
-                    checked={checkboxStates.intermediate}
-                    onChange={(checked) => handleCheckboxChange('intermediate', checked)}
-                />
-            </div>
-            <BtnPrimaryMEnabled disabled={!isAnyCheckboxChecked}>
-                Request Access
-            </BtnPrimaryMEnabled>
+        <div className="card">
+            {isMobile ? (
+                <>
+                    {/* Button container first for mobile */}
+                    <div className="buttonContainer">
+                        <Button 
+                            className="btn-primary m"
+                            disabled={!isAnyCheckboxChecked}
+                            text="Request Access"
+                        />
+                    </div>
+                    <div className="coursesContainer">
+                        <h4>Courses</h4>
+                        <RegistrationCoursesOptions
+                            /*  TODO !!!!!!!!!!!!!!!!!!!!!!!!!!! */
+                            onSelectedCoursesChanged={ () => {}}
+                        />
+                    </div>
+                </>
+            ) : (
+                <>
+                    {/* Courses container first for desktop */}
+                    <div className="coursesContainer">
+                        <h4>Courses</h4>
+                        <RegistrationCoursesOptions
+                            /*  TODO !!!!!!!!!!!!!!!!!!!!!!!!!!! */
+                            onSelectedCoursesChanged={ () => {}}
+                        />
+                    </div>
+                    <div className="buttonContainer">
+                        <Button 
+                            className="btn-text s"
+                            disabled={!isAnyCheckboxChecked}
+                            text="Request Access"
+                        />
+                    </div>
+                </>
+            )}
         </div>
     );
 };
 
-export default CardInformation;
+export default CardCourses;

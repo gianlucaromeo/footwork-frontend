@@ -40,6 +40,8 @@ const RegistrationFormStep2 = ({
           nameButtonRight="teacher"
           contentLeft={<RegistrationCoursesOptions
             onSelectedCoursesChanged={onSelectedCoursesChanged}
+            title="Courses"
+            desc="Which courses do you want to sign up for?"
           />}
           contentRight="We will notify Polijazz about your access request"
           onLeftClick={() => onIsStudentChanged(true)}

@@ -2,7 +2,11 @@ import { useState, useEffect } from 'react'
 import CheckboxContainer from './CheckboxContainer'
 import coursesService from '../services/courses'
 
-const RegistrationCoursesOptions = ({ onSelectedCoursesChanged }) => {
+const RegistrationCoursesOptions = ({ 
+  onSelectedCoursesChanged, 
+  title,
+  desc
+}) => {
   const [courses, setCourses] = useState([]);
   const [selectedCoursesIds, setSelectedCoursesIds] = useState([]);
 
@@ -36,8 +40,8 @@ const RegistrationCoursesOptions = ({ onSelectedCoursesChanged }) => {
   return (
     <div className="courses">
       <div className="titleDescription">
-          <div className="copy-large-med">Courses</div>
-          <div className="copy-medium-reg">Which courses do you want to sign up for?</div>
+          {title && <div className="copy-large-med">{title}</div> }
+          {desc && <div className="copy-medium-reg">{desc}</div> }
       </div>
       {courses.map(course => (
         <CheckboxContainer

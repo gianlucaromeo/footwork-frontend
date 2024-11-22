@@ -6,13 +6,12 @@ const TitleWithArrow = ({
     subtitle = "",
 }) => {
     return (
-        <div>
-            <button>
-                {/* Icon in front of the title */}
-                <img src={arrow} alt="Arrow Icon"/>
-                <h1>
+        <div className="titleSubtitle">
+            <button className="arrowTitle">
+                <div className="arrow"></div>
+                <h2>
                     {title}
-                </h1>
+                </h2>
             </button>
             <div>
                 {subtitle}
