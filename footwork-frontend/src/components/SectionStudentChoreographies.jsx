@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import studentsService from '../services/students'
 import VideoColumn from './VideoColumn'
 
-const SectionStudentChoreographies = () => {
+const SectionStudentChoreographies = ({ onBack }) => {
     /*
         video: {
             id: number,
@@ -23,6 +24,20 @@ const SectionStudentChoreographies = () => {
                 console.log(error)
             })
     }, [])
+
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        const handlePopState = (event) => {
+            onBack();
+        };
+
+        window.addEventListener('popstate', handlePopState);
+
+        return () => {
+            window.removeEventListener('popstate', handlePopState);
+        };
+    }, [navigate]);
 
     return (
         <div>
