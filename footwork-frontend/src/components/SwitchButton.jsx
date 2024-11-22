@@ -24,12 +24,18 @@ const SwitchButton = ({
   };
 
   return (
-    <div>
-      <div>
-        <button onClick={handleLeftClick}>
+    <div className="content">
+      <div className="switchContainer">
+        <button 
+          className={`switch left ${isLeftSelected ? "selected" : ""}`}
+          onClick={handleLeftClick}
+        >
           {nameButtonLeft}
         </button>
-        <button onClick={handleRightClick}>
+        <button 
+        className={`switch right ${!isLeftSelected ? "selected" : ""}`}
+          onClick={handleRightClick}
+        >
           {nameButtonRight}
         </button>
       </div>

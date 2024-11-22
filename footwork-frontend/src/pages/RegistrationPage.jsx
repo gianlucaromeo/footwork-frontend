@@ -128,6 +128,8 @@ const RegistrationPage = () => {
                 /> : <RegistrationFormStep2 
                     firstName={firstName}
                     onSelectedCoursesChanged={handleSelectedCoursesChanged}
+                    onBack={() => {}}
+                    isButtonActive={true} // NEDDS TO BE CHANGED
                     onConfirm={handleLogin}
                     onIsStudentChanged={handleIsStudentChange}
                 />}

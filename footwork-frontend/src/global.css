@@ -448,10 +448,11 @@ input.error:focus {
     justify-content: center;
     align-items: center;
     gap: 10px;
-    border-top: 2px solid var(--neon-green, #0F8);
-    border-bottom: 2px solid var(--neon-green, #0F8);
+    border: 2px solid var(--neon-green, #0F8);
     font-size: var(--h5-size);
     font-family: var(--header-font);
+    background-color: var(--dark-green);
+    color: var(--white);
 }
 .switch.left {
     border-radius: 8px 0px 0px 8px;

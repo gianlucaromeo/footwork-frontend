@@ -1,12 +1,28 @@
-import SwitchButton from './switchButton';
+import { useEffect, useState } from 'react';
+import SwitchButton from './SwitchButton';
+import Button from './Button';
 import RegistrationCoursesOptions from './RegistrationCoursesOptions';
 
 const RegistrationFormStep2 = ({
   firstName = "",
   onSelectedCoursesChanged,
+  onBack,
+  isButtonActive,
   onConfirm,
   onIsStudentChanged
 }) => {
+  const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        const checkMobile = () => {
+            setIsMobile(window.matchMedia('(max-width: 600px)').matches);
+        };
+        checkMobile(); // Check on initial load
+        window.addEventListener('resize', checkMobile); // Update on resize
+        return () => {
+            window.removeEventListener('resize', checkMobile); // Cleanup
+        };
+    }, []);
 
   return (
     <div className="registrationForm">
@@ -35,7 +51,7 @@ const RegistrationFormStep2 = ({
                 // handleContinue not set yet so set to onContinue so that code works!
                 // CHANGE
                 // onClick={handleContinue}
-                onClick={onContinue}
+                onBack={onBack}
                 disabled={isButtonActive}
                 text="Back"
             />
