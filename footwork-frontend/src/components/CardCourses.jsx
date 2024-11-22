@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import BtnTextS from './BtnTextS';
 import CheckboxContainer from './CheckboxContainer';
 import BtnPrimaryMEnabled from './BtnPrimaryMEnabled';
 
-const CardInformation = () => {
+const CardCourses= ({ 
+    showRequestButton = true 
+}) => {
     // State to track checkbox states
     const [checkboxStates, setCheckboxStates] = useState({
         beginner: false,
@@ -42,11 +43,13 @@ const CardInformation = () => {
                     onChange={(checked) => handleCheckboxChange('intermediate', checked)}
                 />
             </div>
-            <BtnPrimaryMEnabled disabled={!isAnyCheckboxChecked}>
-                Request Access
-            </BtnPrimaryMEnabled>
+            {showRequestButton && (
+                <BtnPrimaryMEnabled disabled={!isAnyCheckboxChecked}>
+                    Request Access
+                </BtnPrimaryMEnabled>
+            )}
         </div>
     );
 };
 
-export default CardInformation;
+export default CardCourses;
