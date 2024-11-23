@@ -1,10 +1,9 @@
 import VideoRow from './VideoRow';
 
-const VideoColumn = ({ courseName, videos, onVideoRowClicked, onDeleteVideo }) => {
+const VideoColumn = ({ videos, onVideoRowClicked, onDeleteVideo }) => {
 
   return (
-    <div>
-      <h3>{courseName}</h3>
+    <div className="videoRows">
       {videos.map((video) => (
         <VideoRow
           key={video.id}

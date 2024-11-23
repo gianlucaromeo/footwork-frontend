@@ -99,6 +99,9 @@
     gap: 24px;
     align-self: stretch;
 }
+.studentDahsboard .headerContainer.videos {
+    padding: 48px 8px 24px 8px;
+}
 .classesContainer {
     display: flex;
     max-height: 800px;
@@ -110,6 +113,9 @@
 @media (max-height: 860px) {
     .headerContainer {
         padding: 48px 48px 84px 48px;
+    }
+    .headerContainer.videos {
+        padding: 48px 48px 24px 48px;
     }
 }
 /*-----------------------------StudentHomePage Mobile:-----------------------------*/
@@ -188,13 +194,16 @@
         padding: 0px 0px;
         align-items: stretch;
     }
-    .studentProfile .headerContainer {
+    .studentProfile .headerContainer, .studentDashboard .headerContainer {
         display: flex;
-        padding: 48px 8px;
+        padding: 0px;
         padding-bottom: 0px;
         align-items: flex-start;
         gap: 8px;
         align-self: stretch;
+    }
+    .headerContainer.videos {
+        padding: 0px;
     }
     .cardContainer {
         max-width: none;
