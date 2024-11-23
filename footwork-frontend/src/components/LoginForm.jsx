@@ -132,9 +132,10 @@ const LoginForm = () => {
                 <InputField label='password*' type='password' state ='default' value={password} onChange={handlePasswordChange} />
                 <div>
                     <CheckboxContainer
-                    label='I am a teacher' 
-                    checked={isTeacher} 
-                    onChange={setIsTeacher} 
+                        id={"teacher_checkbox"}
+                        label='I am a teacher' 
+                        checked={isTeacher} 
+                        onChange={setIsTeacher} 
                     />
                 </div>
             </div>
