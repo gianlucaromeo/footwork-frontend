@@ -24,6 +24,7 @@ const getEnrolledCoursesEndpoint = `${coursesEndpoint}/student/all`
 
 /* VIDEOS */
 const getStudentVideosEndpoint = `${videosEndpoint}/student/all`
+const getAdminVideosEndpoint = `${videosEndpoint}/admin/all`
 
 /* COMMON */
 const doPost = async (url, data) => {
@@ -50,6 +51,7 @@ export default {
 
     /* VIDEOS */
     getStudentVideosEndpoint,
+    getAdminVideosEndpoint,
 
     /* COMMON */
     doPost,

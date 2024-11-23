@@ -22,7 +22,16 @@ const create = (
     })
 }
 
+const getAllVideos = async () => {
+    return helper.doGet(helper.getAdminVideosEndpoint, {
+        headers: {
+            Authorization: currentUserService.getToken(),
+        }
+    })
+}
+
 export default {
     login,
     create,
+    getAllVideos,
 }

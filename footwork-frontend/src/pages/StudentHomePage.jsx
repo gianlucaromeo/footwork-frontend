@@ -5,13 +5,11 @@ import SectionStudentProfile from '../components/SectionStudentProfile';
 import SectionStudentCourseChoreographies from '../components/SectionStudentCourseChoreographies';
 import SectionStudentChoreographyVideos from '../components/SectionStudentChoreographyVideos';
 
-// Create an enum:
 const Page = {
     ALL_COURSES: 'all-courses',
     COURSE: 'course',
     COURSE_CHOREOGRAPHIES: 'course-choreographies',
     CHOREOGRAPHY_VIDEOS: 'choreography-video',
-    VIDEOS: 'videos',
     VIDEO: 'video',
     PROFILE: 'profile',
 };
