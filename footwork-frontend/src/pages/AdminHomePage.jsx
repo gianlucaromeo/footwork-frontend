@@ -1,5 +1,9 @@
 import { useEffect, useState } from 'react'
+
+import AdminManageStudentsPage from './AdminManageStudentsPage'
+
 import NavbarProfile from '../components/NavbarProfile'
+
 import SectionAdminCourses from '../components/SectionAdminCourses'
 import SectionAdminCourseChoreographies from '../components/SectionAdminCourseChoreographies'
 import SectionAdminChoreographyVideos from '../components/SectionAdminChoreographyVideos'
@@ -58,11 +62,14 @@ const AdminHomePage = () => {
                         Page.COURSE_CHOREOGRAPHIES, 
                         courseId
                     )}
+                    onManageStudentsClick={() => 
+                        navigateTo(Page.MANAGE_STUDENTS)
+                    }
                 />
             }
             
             {currentPage === Page.MANAGE_STUDENTS &&
-                <div>***Manage Students</div>
+                <AdminManageStudentsPage />
             }
             
             {currentPage === Page.ADD_FOLDER && <div>***Add Folder</div>}
