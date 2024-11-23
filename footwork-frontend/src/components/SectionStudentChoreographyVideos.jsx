@@ -4,7 +4,8 @@ import studentsService from '../services/students'
 import VideoColumn from './VideoColumn'
 
 const SectionStudentChoreographyVideos = ({
-    onBack
+    onBack,
+    choreographyId
 }) => {
     const [videos, setVideos] = useState([])
     const [choreographyName, setChoreographyName] = useState('')
@@ -12,7 +13,8 @@ const SectionStudentChoreographyVideos = ({
     useEffect(() => {
         studentsService.getAllVideos()
             .then((response) => {
-                setVideos(response.data)
+                const videos = response.data.filter(video => video.choreography.id === choreographyId)
+                setVideos(videos)
                 const choreography = response.data[0].choreography.title
                 setChoreographyName(choreography)
             }).catch((error) => {

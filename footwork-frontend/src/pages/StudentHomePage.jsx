@@ -73,6 +73,7 @@ const StudentHomePage = () => {
 
                 {currentPage === Page.CHOREOGRAPHY_VIDEOS && (
                     <SectionStudentChoreographyVideos 
+                        choreographyId={currentChoreographyId}
                         onBack={() => navigateTo(
                             Page.COURSE_CHOREOGRAPHIES,
                             currentCourseId
