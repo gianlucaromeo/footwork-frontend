@@ -48,7 +48,7 @@ const RegistrationPage = () => {
         setEmail(value);
         const isValid = validateEmail(value);
         setEmailError(isValid || value === '' ? '' : 'Please enter a valid email address');
-        checkButtonActivation(firstName, lastName, isValid, password, confirmPassword);
+        checkButtonActivation(firstName, lastName, value, password, confirmPassword);
     };
 
     const handlePasswordChange = (e) => {
@@ -65,7 +65,8 @@ const RegistrationPage = () => {
         checkButtonActivation(firstName, lastName, email, password, value);
     };
 
-    const checkButtonActivation = (first, last, isValidEmail, pass, confirmPass) => {
+    const checkButtonActivation = (first, last, email, pass, confirmPass) => {
+        const isValidEmail = validateEmail(email);
         if (first.trim() && last.trim() && isValidEmail && pass && pass === confirmPass) {
             setIsButtonActive(true);
         } else {
