@@ -57,15 +57,18 @@ const StudentHomePage = () => {
                 )}
 
                 {currentPage === Page.COURSE_CHOREOGRAPHIES && 
-                    <SectionStudentCourseChoreographies onClick={
-                        (choreographyId) => {
-                            navigateTo(
-                                Page.CHOREOGRAPHY_VIDEOS,
-                                currentCourseId,
-                                choreographyId
-                            );
+                    <SectionStudentCourseChoreographies 
+                        currentCourseId={currentCourseId}
+                        onClick={
+                            (choreographyId) => {
+                                navigateTo(
+                                    Page.CHOREOGRAPHY_VIDEOS,
+                                    currentCourseId,
+                                    choreographyId
+                                );
+                            }
                         }
-                    } />
+                    />
                 }
 
                 {currentPage === Page.CHOREOGRAPHY_VIDEOS && (

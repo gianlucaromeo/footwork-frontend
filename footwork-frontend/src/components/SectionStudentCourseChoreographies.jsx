@@ -3,7 +3,7 @@ import Tile from './Tile'
 import TitleWithArrow from './TitleWithArrow'
 import studentsService from '../services/students'
 
-const SectionStudentCourseChoreographies = ({onClick}) => {
+const SectionStudentCourseChoreographies = ({onClick, currentCourseId}) => {
     const [choreographies, setChoreographies] = useState([])
     
     useEffect(() => {
@@ -11,7 +11,11 @@ const SectionStudentCourseChoreographies = ({onClick}) => {
             .then((response) => {
                 const videos = response.data
                 const choreographies = videos.map((video) => video.choreography)
-                setChoreographies([...new Set(choreographies)])
+                const filteredChoreographies = choreographies
+                    .filter((choreography) => 
+                        choreography.courseId === currentCourseId
+                )
+                setChoreographies(filteredChoreographies)
             }).catch((error) => {
                 console.log(error)
             })
