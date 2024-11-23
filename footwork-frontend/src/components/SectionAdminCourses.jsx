@@ -1,11 +1,20 @@
 import { useEffect, useState } from 'react'
 
 import Tile from './Tile'
+import Button from './Button'
 
 import currentUserService from '../services/currentUser'
 import coursesService from '../services/courses'
 
-const SectionAdminCourses = ({onCourseClick}) => {
+import iconCheckGreen from '../assets/icons/check-green.png'
+import iconPlus from '../assets/icons/plus.png'
+
+const SectionAdminCourses = ({
+    onCourseClick,
+    onManageStudentsClick,
+    onAddFolderSubmitted,
+    onAddVideoSubmitted
+}) => {
     const [userFirstName, setUserFirstName] = useState(null)
     const [courses, setCourses] = useState([])
     const [isMobile, setIsMobile] = useState(false);
@@ -40,6 +49,18 @@ const SectionAdminCourses = ({onCourseClick}) => {
                         : <h2>Hi {userFirstName}</h2>
                     }
                 </div>
+            </div>
+            <div>
+                <Button 
+                    text="Manage students"
+                    onClick={onManageStudentsClick}
+                    iconName={iconCheckGreen}
+                />
+                <Button 
+                    text="Add folder or video"
+                    onClick={() => {}}
+                    iconName={iconPlus}
+                />
             </div>
             <div className="classesContainer">
                 {courses.map((course) => {

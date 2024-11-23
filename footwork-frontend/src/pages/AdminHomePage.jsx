@@ -97,6 +97,8 @@ const AdminHomePage = () => {
             }
 
             {currentPage === Page.VIDEO && <div>***Video</div>}
+
+            {currentPage === Page.PROFILE && <div>***Profile</div>}
         </div>
     )
 }
