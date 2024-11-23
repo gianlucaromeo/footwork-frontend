@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import NavbarProfile from '../components/NavbarProfile'
 import SectionAdminCourses from '../components/SectionAdminCourses'
 import SectionAdminCourseChoreographies from '../components/SectionAdminCourseChoreographies'
+import SectionAdminChoreographyVideos from '../components/SectionAdminChoreographyVideos'
 
 const Page = {
     ALL_COURSES: 'all-courses',
@@ -86,7 +87,13 @@ const AdminHomePage = () => {
             }
 
             {currentPage === Page.CHOREOGRAPHY_VIDEOS && 
-                <div>***ChoreographyVideos</div>
+                <SectionAdminChoreographyVideos
+                    choreographyId={currentChoreographyId}
+                    onBack={() => navigateTo(
+                        Page.COURSE_CHOREOGRAPHIES,
+                        currentCourseId
+                    )}
+                />
             }
 
             {currentPage === Page.VIDEO && <div>***Video</div>}
