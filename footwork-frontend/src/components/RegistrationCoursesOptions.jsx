@@ -46,6 +46,7 @@ const RegistrationCoursesOptions = ({
       {courses.map(course => (
         <CheckboxContainer
           key={course.id}
+          id={course.id}
           label={course.name}
           checked={selectedCoursesIds.includes(course.id)}
           onChange={(checked) => handleCheckboxChange(course.id, checked)}

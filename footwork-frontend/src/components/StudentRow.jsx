@@ -18,14 +18,16 @@ const StudentRow = ({
                 {firstName}
             </div>
             <div>
-                {courses.map((course) => (
-                    <CheckboxContainer
-                        key={course.id}
-                        label="X"//{course.name}
-                        onClick={() => console.log(`Student ${studentId} enrolled in course ${course.id}`)}
-                        checked={enrollments.some((enrollment) => enrollment.studentId === studentId && enrollment.courseId === course.id)}
-                    />
-                ))}
+                {courses.map((course) => {
+                    return (
+                        <CheckboxContainer
+                            key={course.id}
+                            id={course.id}
+                            label={course.name}
+                            onChange={(e) => console.log(`Course ${course.id} clicked`)}
+                            checked={enrollments.some((enrollment) => enrollment.studentId === studentId && enrollment.courseId === course.id)} />
+                    );
+                })}
             </div>
             <div
                 onClick={(e) => {
