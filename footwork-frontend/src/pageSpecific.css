@@ -83,7 +83,7 @@
     width: 100%;
     height: 100%;
 }
-.studentDashboard, .studentProfile {
+.studentDashboard, .studentProfile, .adminDashboard {
     display: flex;
     max-width: 1496px;
     flex-direction: column;
@@ -124,7 +124,7 @@
         align-self: stretch;
         justify-content: flex-start;
     }
-    .studentDashboard {
+    .studentDashboard, .adminDashboard {
         padding: 48px 0px;
         align-items: flex-start;
         justify-content: flex-start;
