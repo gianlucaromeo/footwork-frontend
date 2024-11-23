@@ -330,6 +330,9 @@ button .icon img { /*adjusted img because of code*/
     align-items: center;
     display: inline-flex;
 }
+.titleSubtitle .subtitle {
+    padding-left: 64px;
+}
 .arrowTitle {
     background-color: var(--black);
     color: var(--white);
@@ -546,6 +549,9 @@ input.error:focus {
     background-size: cover; /* Ensures background covers the tile */
     background-position: center; /* Centers the background image */
     background-repeat: no-repeat; /* Prevents background from repeating */
+}
+.tile:hover {
+    cursor: pointer;
 }
 .tileText {
     display: flex;

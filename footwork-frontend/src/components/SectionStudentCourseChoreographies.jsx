@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react'
 import Tile from './Tile'
+import TitleWithArrow from './TitleWithArrow'
 import studentsService from '../services/students'
 
 const SectionStudentCourseChoreographies = ({onClick}) => {
     const [choreographies, setChoreographies] = useState([])
-    const [isMobile, setIsMobile] = useState(false)
     
     useEffect(() => {
         studentsService.getAllVideos()
@@ -18,7 +18,14 @@ const SectionStudentCourseChoreographies = ({onClick}) => {
     }, [])
 
     return (
-        <div>
+        <div className="studentDashboard">
+            <div className="headerContainer">
+                <TitleWithArrow
+                    title = "***PLACEHOLDER"
+                    subtitle = "Available dances in this class"
+                    /* ***TODO GIANLUCA PARSE BACK */
+                />
+            </div>
             <div className="classesContainer">
                 {choreographies.map((choreography) => (
                     <Tile
