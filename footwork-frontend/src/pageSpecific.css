@@ -202,6 +202,9 @@
         gap: 8px;
         align-self: stretch;
     }
+    .studentProfile .headerContainer.profile {
+        padding-top: 48px;
+    }
     .headerContainer.videos {
         padding: 0px;
     }

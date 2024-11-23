@@ -7,7 +7,7 @@ import deleteIcon from '../assets/icons/delete-white.png';
 const SectionStudentProfile = () => {
     return (
         <div className="studentProfile">
-            <div className="headerContainer">
+            <div className="headerContainer profile">
                 <TitleWithArrow
                     title = "Back"
                 />
