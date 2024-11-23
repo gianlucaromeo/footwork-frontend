@@ -6,7 +6,7 @@ const studentsEndpoint = `${baseUrl}/students`
 const adminsEndpoint = `${baseUrl}/admins`
 const loginEndpoint = `${baseUrl}/login`
 const coursesEndpoint = `${baseUrl}/courses`
-// const enrollmentsEndpoint = `${baseUrl}/enrollments`
+const enrollmentsEndpoint = `${baseUrl}/enrollments`
 // const choreographiesEndpoint = `${baseUrl}/choreographies`
 const videosEndpoint = `${baseUrl}/videos`
 
@@ -17,6 +17,7 @@ const createAdminEndpoint = `${adminsEndpoint}/`
 /* STUDENT */
 const loginStudentEndpoint = `${loginEndpoint}/student/`
 const createStudentEndpoint = `${studentsEndpoint}/`
+const getAllStudentsEndpoint = `${studentsEndpoint}/`
 
 /* COURSES */
 const getAllCoursesEndpoint = `${coursesEndpoint}/all`
@@ -25,6 +26,9 @@ const getEnrolledCoursesEndpoint = `${coursesEndpoint}/student/all`
 /* VIDEOS */
 const getStudentVideosEndpoint = `${videosEndpoint}/student/all`
 const getAdminVideosEndpoint = `${videosEndpoint}/admin/all`
+
+/* ENROLLMENTS */
+const getAllEnrollmentsEndpoint = `${enrollmentsEndpoint}/`
 
 /* COMMON */
 const doPost = async (url, data) => {
@@ -44,6 +48,7 @@ export default {
     /* STUDENT */
     loginStudentEndpoint,
     createStudentEndpoint,
+    getAllStudentsEndpoint,
 
     /* COURSES */
     getAllCoursesEndpoint,
@@ -52,6 +57,9 @@ export default {
     /* VIDEOS */
     getStudentVideosEndpoint,
     getAdminVideosEndpoint,
+
+    /* ENROLLMENTS */
+    getAllEnrollmentsEndpoint,
 
     /* COMMON */
     doPost,

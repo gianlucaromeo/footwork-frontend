@@ -63,7 +63,11 @@ const AdminHomePage = () => {
                         courseId
                     )}
                     onManageStudentsClick={() => 
-                        navigateTo(Page.MANAGE_STUDENTS)
+                        navigateTo(
+                            Page.MANAGE_STUDENTS,
+                            null,
+                            null,
+                        )
                     }
                 />
             }

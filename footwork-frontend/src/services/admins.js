@@ -30,8 +30,17 @@ const getAllVideos = async () => {
     })
 }
 
+const getAllStudents = async () => {
+    return helper.doGet(helper.getAllStudentsEndpoint, {
+        headers: {
+            Authorization: currentUserService.getToken(),
+        }
+    })
+}
+
 export default {
     login,
     create,
     getAllVideos,
+    getAllStudents,
 }
