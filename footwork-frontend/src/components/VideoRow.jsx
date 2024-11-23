@@ -59,7 +59,7 @@ const VideoRow = ({
                             onPause={handlePause} // Trigger when video pauses
                         ></video>
                         {!isPlaying && (
-                            <imgW
+                            <img
                                 src={playGreenIcon}
                                 alt="Play Icon"
                                 className="playIcon"
@@ -99,7 +99,7 @@ const VideoRow = ({
                             onPause={handlePause} // Trigger when video pauses
                         ></video>
                         {!isPlaying && (
-                            <imgW
+                            <img
                                 src={playGreenIcon}
                                 alt="Play Icon"
                                 className="playIcon"
