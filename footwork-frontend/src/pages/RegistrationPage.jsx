@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import RegistrationFormStep1 from '../components/RegistrationFormStep1'
 import RegistrationFormStep2 from '../components/RegistrationFormStep2'
 import NavbarLogo from '../components/NavbarLogo'
@@ -23,6 +24,8 @@ const RegistrationPage = () => {
     const [lastNameError, setLastNameError] = useState('');
     const [emailError, setEmailError] = useState('');
     const [passwordError, setPasswordError] = useState('');
+
+    const navigate = useNavigate();
 
     const validateEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
@@ -85,6 +88,7 @@ const RegistrationPage = () => {
             studentService.create(firstName, lastName, email, password, coursesIds)
                 .then((response) => {
                     console.log(response)
+                    navigate("/verify")
                 })
                 .catch((error) => {
                     console.log(error)
@@ -93,6 +97,7 @@ const RegistrationPage = () => {
             adminService.create(firstName, lastName, email, password)
                 .then((response) => {
                     console.log(response)
+                    navigate("/verify")
                 })
                 .catch((error) => {
                     console.log(error)

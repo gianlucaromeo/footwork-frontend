@@ -4,6 +4,7 @@ import LoginPage from './pages/LoginPage'
 import RegistrationPage from './pages/RegistrationPage'
 import AdminHomePage from './pages/AdminHomePage'
 import StudentHomePage from './pages/StudentHomePage'
+import VerifyEmailPage from './pages/VerifyEmailPage'
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Route path="/" element={<AuthenticationPage />} />
       <Route path="/login" element={<LoginPage />} />
       <Route path="/registration" element={<RegistrationPage />} />
+      <Route path="/verify" element={<VerifyEmailPage />} />
 
       <Route path="/admin/home" element={<AdminHomePage />} />
 
