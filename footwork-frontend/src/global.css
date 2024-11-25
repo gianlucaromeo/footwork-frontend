@@ -351,6 +351,9 @@ button .icon img { /*adjusted img because of code*/
     align-items: center;
     gap: 12px;
 }
+.arrowTitle:hover {
+    cursor: pointer;
+}
 .arrow {
     background-size: 80%; /* Adjust this percentage to control icon size */
     background-repeat: no-repeat;
@@ -634,6 +637,7 @@ input.error:focus {
 .card {
     display: flex;
     padding: 32px 48px;
+    max-width: 800px;
     flex-direction: column;
     gap: 48px;
     align-self: stretch;

@@ -7,6 +7,7 @@ import NavbarProfile from '../components/NavbarProfile'
 import SectionAdminCourses from '../components/SectionAdminCourses'
 import SectionAdminCourseChoreographies from '../components/SectionAdminCourseChoreographies'
 import SectionAdminChoreographyVideos from '../components/SectionAdminChoreographyVideos'
+import SectionAdminProfile from '../components/SectionAdminProfile'
 
 const Page = {
     ALL_COURSES: 'all-courses',
@@ -110,7 +111,7 @@ const AdminHomePage = () => {
 
                 {currentPage === Page.VIDEO && <div>***Video</div>}
 
-                {currentPage === Page.PROFILE && <div>***Profile</div>}
+                {currentPage === Page.PROFILE && <SectionAdminProfile/>}
             </div>
         </div>
     )

@@ -176,6 +176,9 @@
     gap: 48px;
     align-self: stretch;
 }
+.cardContainer.admin {
+    justify-content: center;
+}
 .studentProfile .mainButtonContainer {
     display: flex;
     flex-direction: column;
@@ -188,10 +191,9 @@
         max-width: 100%; /* Allow it to fill the entire parent width */
         width: 100%; /* Ensure it spans the full width */
         max-height: none; /* Remove any height restrictions */
-        max-height: none;
         display: flex;
-        max-height: 0px;
         padding: 0px 0px;
+        padding-bottom: 24px;
         align-items: stretch;
     }
     .studentProfile .headerContainer, .studentDashboard .headerContainer {
