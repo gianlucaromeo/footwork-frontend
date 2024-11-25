@@ -56,60 +56,62 @@ const AdminHomePage = () => {
         <div>
             <NavbarProfile onClick={() => navigateTo(Page.PROFILE)} />
             
-            {currentPage === Page.ALL_COURSES && 
-                <SectionAdminCourses
-                    onCourseClick={(courseId) => navigateTo(
-                        Page.COURSE_CHOREOGRAPHIES, 
-                        courseId
-                    )}
-                    onManageStudentsClick={() => 
-                        navigateTo(
-                            Page.MANAGE_STUDENTS,
-                            null,
-                            null,
-                        )
-                    }
-                />
-            }
-            
-            {currentPage === Page.MANAGE_STUDENTS &&
-                <AdminManageStudentsPage />
-            }
-            
-            {currentPage === Page.ADD_FOLDER && <div>***Add Folder</div>}
-            
-            {currentPage === Page.ADD_VIDEO && <div>***Add Video</div>}
-            
-            {currentPage === Page.COURSE && <div>***Course</div>}
-            
-            {currentPage === Page.COURSE_CHOREOGRAPHIES && 
-                <SectionAdminCourseChoreographies
-                    currentCourseId={currentCourseId}
-                    onClick={
-                        (choreographyId) => {
+            <div className="adminHomepage">
+                {currentPage === Page.ALL_COURSES && 
+                    <SectionAdminCourses
+                        onCourseClick={(courseId) => navigateTo(
+                            Page.COURSE_CHOREOGRAPHIES, 
+                            courseId
+                        )}
+                        onManageStudentsClick={() => 
                             navigateTo(
-                                Page.CHOREOGRAPHY_VIDEOS,
-                                currentCourseId,
-                                choreographyId
+                                Page.MANAGE_STUDENTS,
+                                null,
+                                null,
                             )
                         }
-                    } 
-                />
-            }
+                    />
+                }
+                
+                {currentPage === Page.MANAGE_STUDENTS &&
+                    <AdminManageStudentsPage />
+                }
+                
+                {currentPage === Page.ADD_FOLDER && <div>***Add Folder</div>}
+                
+                {currentPage === Page.ADD_VIDEO && <div>***Add Video</div>}
+                
+                {currentPage === Page.COURSE && <div>***Course</div>}
+                
+                {currentPage === Page.COURSE_CHOREOGRAPHIES && 
+                    <SectionAdminCourseChoreographies
+                        currentCourseId={currentCourseId}
+                        onClick={
+                            (choreographyId) => {
+                                navigateTo(
+                                    Page.CHOREOGRAPHY_VIDEOS,
+                                    currentCourseId,
+                                    choreographyId
+                                )
+                            }
+                        } 
+                    />
+                }
 
-            {currentPage === Page.CHOREOGRAPHY_VIDEOS && 
-                <SectionAdminChoreographyVideos
-                    choreographyId={currentChoreographyId}
-                    onBack={() => navigateTo(
-                        Page.COURSE_CHOREOGRAPHIES,
-                        currentCourseId
-                    )}
-                />
-            }
+                {currentPage === Page.CHOREOGRAPHY_VIDEOS && 
+                    <SectionAdminChoreographyVideos
+                        choreographyId={currentChoreographyId}
+                        onBack={() => navigateTo(
+                            Page.COURSE_CHOREOGRAPHIES,
+                            currentCourseId
+                        )}
+                    />
+                }
 
-            {currentPage === Page.VIDEO && <div>***Video</div>}
+                {currentPage === Page.VIDEO && <div>***Video</div>}
 
-            {currentPage === Page.PROFILE && <div>***Profile</div>}
+                {currentPage === Page.PROFILE && <div>***Profile</div>}
+            </div>
         </div>
     )
 }

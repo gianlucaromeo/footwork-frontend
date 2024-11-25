@@ -168,11 +168,12 @@ button.logo {
 }
 .btn-admin {
     display: flex;
-    padding: 32px 208px;
-    justify-content: center;
-    align-items: center;
-    gap: 16px;
-    align-self: stretch;
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+    padding: 8px 16px; /* 8px top and bottom, 16px right and left */
+    gap: 16px; /* Space between items inside the button */
+    width: 100%; /* Take the maximum available width */
+    min-height: 88px; /* Ensure a minimum height of 88px */
     border-radius: 8px;
     border: 2px solid var(--neon-green);
     background: none;
@@ -231,9 +232,10 @@ button .icon img { /*adjusted img because of code*/
 @media (max-width: 600px) {
     /* btn-admin */
     .btn-admin {
-        padding: 48px 32px;
+        padding: 16px 8px;
         gap: 8px;
         font-size: var(--copy-medium);
+        min-height: 80px;
     }
     /* Button sizes */
     .m, .s {
@@ -273,6 +275,11 @@ button .icon img { /*adjusted img because of code*/
     background-size: 60%;
     background-repeat: no-repeat;
     background-position: center;
+    width: 32px;
+    height: 32px;
+}
+.iconBtn.more:hover {
+    cursor: pointer;
 }
 
 /*-----------------------------Icon Buttons Mobile:-----------------------------*/
@@ -556,8 +563,18 @@ input.error:focus {
     background-position: center; /* Centers the background image */
     background-repeat: no-repeat; /* Prevents background from repeating */
 }
+.tile.admin {
+    justify-content: space-between;
+}
 .tile:hover {
     cursor: pointer;
+}
+.iconBtnContainer {
+    width: 100%; 
+    height: auto;
+    display: flex;
+    justify-content: flex-end; 
+    align-items: center;
 }
 .tileText {
     display: flex;

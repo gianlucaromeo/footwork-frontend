@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-import Tile from './Tile'
+import TileAdmin from './TileAdmin'
 import Button from './Button'
 
 import currentUserService from '../services/currentUser'
@@ -49,23 +49,25 @@ const SectionAdminCourses = ({
                         : <h2>Hi {userFirstName}</h2>
                     }
                 </div>
-            </div>
-            <div>
-                <Button 
-                    text="Manage students"
-                    onClick={onManageStudentsClick}
-                    iconName={iconCheckGreen}
-                />
-                <Button 
-                    text="Add folder or video"
-                    onClick={() => {}}
-                    iconName={iconPlus}
-                />
+                <div className="buttonContainer">
+                    <Button 
+                        text="Manage students"
+                        onClick={onManageStudentsClick}
+                        iconName={iconCheckGreen}
+                        className="btn-admin"
+                    />
+                    <Button 
+                        text="Add folder or video"
+                        onClick={() => {}}
+                        iconName={iconPlus}
+                        className="btn-admin"
+                    />
+                </div>
             </div>
             <div className="classesContainer">
                 {courses.map((course) => {
                     return (
-                        <Tile
+                        <TileAdmin
                             key={course.id}
                             imageUrl={course.imageUrl}
                             text={course.name}
