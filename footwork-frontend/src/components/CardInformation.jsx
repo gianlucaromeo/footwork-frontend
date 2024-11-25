@@ -24,6 +24,7 @@ const CardInformation = () => {
                 <>
                 {/* Information first for desktop */}
                 <div className="informationContainer">
+                    {/* Edit button 
                     <div className="buttonContainer">
                         <Button 
                             iconName ={editIcon}
@@ -31,6 +32,7 @@ const CardInformation = () => {
                             text="Edit"
                         />
                     </div>
+                    */}
                     <div className="column">
                         <CardTitleInfo title='last name' data= '***Handstand' />
                         <CardTitleInfo title='first name' data= '***Henri' />
@@ -54,6 +56,7 @@ const CardInformation = () => {
                         <CardTitleInfo title='password' data= '***' />
                     </div>
                     </div>
+                    {/* Edit button 
                     <div className="buttonContainer">
                         <Button 
                             iconName ={editIcon}
@@ -61,6 +64,7 @@ const CardInformation = () => {
                             text="Edit"
                         />
                     </div>
+                    */}
                 </>
             )}
         </div>
