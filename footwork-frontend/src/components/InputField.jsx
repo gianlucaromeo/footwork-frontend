@@ -8,6 +8,7 @@ const InputField = ({
     state = "", /* state of InputField can be default, valid or error */
     value = "",
     onChange = () => { },
+    onBlur = () => { },
     errorMessage = "",
 }) => {
     const icon = state === "valid" ? checkIcon : state === "error" ? warningIcon : null;
@@ -18,6 +19,7 @@ const InputField = ({
             <input className={state} type={type}
                     value={value}
                     onChange={onChange}
+                    onBlur={onBlur}
                 />
                 {icon && (
                 <img
