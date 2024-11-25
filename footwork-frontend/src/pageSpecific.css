@@ -72,7 +72,8 @@
 @media (max-height: 860px) {
     .centerContentReg {
         height: auto; 
-        min-height: 735px; 
+        /* min-height: 735px; */
+        /* max-height: calc(100vh - 104px); */
     }
 }
 

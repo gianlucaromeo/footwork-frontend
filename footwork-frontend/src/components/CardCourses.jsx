@@ -10,6 +10,8 @@ const CardCourses = ({ showRequestButton = true }) => {
         advanced: false,
         intermediate: false,
     });
+    // State to check whether request button was pressed
+    const [buttonText, setButtonText] = useState("Request Access");
 
     // Detect if the device is mobile
     useEffect(() => {
@@ -31,6 +33,11 @@ const CardCourses = ({ showRequestButton = true }) => {
         }));
     };
 
+    // Handler for request button changes
+    const handleRequestAccess = () => {
+        setButtonText("Request Sent"); // Change the button text
+    };
+
     // Check if at least one checkbox is selected
     const isAnyCheckboxChecked = Object.values(checkboxStates).some((state) => state);
 
@@ -43,8 +50,10 @@ const CardCourses = ({ showRequestButton = true }) => {
                         <div className="buttonContainer">
                             <Button 
                                 className="btn-primary xs"
-                                disabled={!isAnyCheckboxChecked}
-                                text="Request Access"
+                                disabled={!isAnyCheckboxChecked || buttonText === "Request Sent"}
+                                text={buttonText}
+                                /*  TODO !!!!!!!!!!!!!!!!!!!!!!!!!!! */
+                                onClick={handleRequestAccess} 
                             />
                         </div>
                     )}
@@ -70,8 +79,10 @@ const CardCourses = ({ showRequestButton = true }) => {
                         <div className="buttonContainer">
                             <Button 
                                 className="btn-text s"
-                                disabled={!isAnyCheckboxChecked}
-                                text="Request Access"
+                                disabled={!isAnyCheckboxChecked || buttonText === "Request Sent"}
+                                text={buttonText}
+                                /*  TODO !!!!!!!!!!!!!!!!!!!!!!!!!!! */
+                                onClick={handleRequestAccess} 
                             />
                         </div>
                     )}

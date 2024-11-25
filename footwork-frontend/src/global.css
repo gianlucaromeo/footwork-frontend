@@ -879,6 +879,7 @@ p {
     background: var(--dark-green, #272A28);
 }
 .registrationForm .header {
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -928,8 +929,8 @@ p {
         width: 100%;
         max-width: 100%; /* Prevents the form from exceeding screen width */
         margin: 0; 
-        min-height: 100vh; /* Ensures full viewport height on mobile */
-        height: auto;
+        /* min-height: 100vh; /* Ensures full viewport height on mobile */
+        min-height: 100vh;
         padding: 48px 32px;
         flex-direction: column;
         justify-content: space-between;
