@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react'
-import Tile from './Tile'
+import TileAdmin from './TileAdmin'
+import Button from './Button'
 import TitleWithArrow from './TitleWithArrow'
 import adminService from '../services/admins'
+import iconPlus from '../assets/icons/plus.png'
 
 const SectionAdminCourseChoreographies = ({onClick, currentCourseId}) => {
     const [choreographies, setChoreographies] = useState([])
@@ -23,16 +25,22 @@ const SectionAdminCourseChoreographies = ({onClick, currentCourseId}) => {
 
     return (
         <div className="adminDashboard">
-            <div className="headerContainer">
+            <div className="headerContainer courseChoreographies">
                 <TitleWithArrow
                     title = "***PLACEHOLDER"
                     subtitle = "Available dances in this class"
                     /* ***TODO GIANLUCA PARSE BACK */
                 />
+                <Button 
+                        text="Add folder or video"
+                        onClick={() => {}}
+                        iconName={iconPlus}
+                        className="btn-admin"
+                    />
             </div>
             <div className="classesContainer">
                 {choreographies.map((choreography) => (
-                    <Tile
+                    <TileAdmin
                         key={choreography.id}
                         imageUrl={choreography.imageUrl}
                         text={choreography.title}
