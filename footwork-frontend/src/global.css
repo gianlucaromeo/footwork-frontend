@@ -1234,6 +1234,7 @@ p {
     gap: 24px;
     flex: 1 0 0;
     align-self: stretch;
+    max-width: 1064px;
 }
 .tableContainer .headerRow {
     display: flex;
@@ -1256,6 +1257,10 @@ p {
 }
 .Video {
     width: 400px;
+    flex-shrink: 0;
+}
+.headerRow .title {
+    width: 450px;
     flex-shrink: 0;
 }
 .Video button {
@@ -1312,6 +1317,16 @@ p {
     height: 50px; /* Adjust size as needed */
     cursor: pointer; /* Indicates interactivity */
 }
+.videoTitle {
+    width: 450px;
+}
+.deleteIconContainer {
+    display: flex;
+    width: 71px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
 /*-----------------------------Videos Mobile:-----------------------------*/
 @media (max-width: 600px) {
     .tableContainer {
@@ -1322,6 +1337,9 @@ p {
         gap: 24px;
         flex: 1 0 0;
         align-self: stretch;
+    }
+    .videoTile {
+        width: 295px;
     }
     .videoContainer {
         display: flex;

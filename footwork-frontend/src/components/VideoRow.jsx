@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import React from 'react';
-import deleteIcon from '../assets/icons/delete-black.png'; 
+import deleteIcon from '../assets/icons/delete-white.png'; 
 import playGreenIcon from '../assets/icons/play-green.png';
 
 const VideoRow = ({
@@ -76,6 +76,18 @@ const VideoRow = ({
                     <div className="title">
                         <div className="copy-regular-med">{title}</div>
                     </div>
+                    {onDelete && 
+                            <div onClick={(e) => {
+                                e.stopPropagation(); // Prevent row's onClick from triggering
+                                onDelete(videoNumber); // Call delete handler
+                            }}>
+                                <img 
+                                    src={deleteIcon} 
+                                    alt={iconAlt} 
+                                    style={{ width: "24px", height: "24px" }}
+                                />
+                            </div>
+                    }
                 </div>
             </div>
         )
@@ -110,16 +122,22 @@ const VideoRow = ({
                 </div>
             </div>
             <div>
-                <div className="copy-large-med">{title}</div>
+                <div className="copy-large-med videoTitle">{title}</div>
             </div>
-            {onDelete && 
-                <div onClick={(e) => {
-                    e.stopPropagation(); // Prevent row's onClick from triggering
-                    onDelete(videoNumber); // Call delete handler
-                }}>
-                    <img src={deleteIcon} alt={iconAlt} />
-                </div>
-             }
+            <div className="deleteIconContainer">
+                {onDelete && 
+                    <div onClick={(e) => {
+                        e.stopPropagation(); // Prevent row's onClick from triggering
+                        onDelete(videoNumber); // Call delete handler
+                    }}>
+                        <img 
+                            src={deleteIcon} 
+                            alt={iconAlt} 
+                            style={{ width: "32px", height: "32px" }}
+                        />
+                    </div>
+                }
+             </div>
     </div>
     );
 };
