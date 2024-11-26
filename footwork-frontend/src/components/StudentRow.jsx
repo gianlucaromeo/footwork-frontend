@@ -2,6 +2,7 @@ import React from 'react';
 import { useState, useEffect } from "react";
 import deleteIcon from '../assets/icons/delete-white.png';
 import CheckboxContainer from './CheckboxContainer';
+import PopUpDelete from "../components/PopUpDelete";
 
 const StudentRow = ({
     index, // for determining whether it is an even or uneven number for colouring the bg
@@ -11,6 +12,11 @@ const StudentRow = ({
     courses,
     enrollments,
 }) => {
+    const [isPopupVisible, setIsPopupVisible] = useState(false);
+
+    // Handlers for opening and closing the popup
+    const showPopup = () => setIsPopupVisible(true);
+    const hidePopup = () => setIsPopupVisible(false);
 
     const [isMobile, setIsMobile] = useState(false);
     useEffect(() => {
@@ -83,16 +89,24 @@ const StudentRow = ({
                     <img
                         src={deleteIcon}
                         alt="Delete"
+                        onClick={showPopup}
                         style={{ width: "24px", height: "24px" }}
                     />
                 ) : (
                     <img
                         src={deleteIcon}
                         alt="Delete"
+                        onClick={showPopup}
                         style={{ width: "32px", height: "32px" }}
                     />
                 )}
             </div>
+            {isPopupVisible && 
+                <PopUpDelete 
+                    onClose={hidePopup} 
+                    title = "Student"
+                    text={`Are you sure you want to delete the student: ${lastName}, ${firstName}?`}
+                />}
         </div>
     );
 };

@@ -385,6 +385,9 @@
 .row.right-aligned h5 {
     text-align: right;
 }
+.row.right-aligned img {
+    cursor: pointer;
+}
 /*-----------------------------ManageStudents Mobile:-----------------------------*/
 @media (max-width: 600px) {
     .adminDashboard {

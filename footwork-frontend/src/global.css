@@ -261,6 +261,10 @@ button .icon img { /*adjusted img because of code*/
         width: 24px;
         height: 24px;
     }
+    button .icon img { 
+        width: 24px;
+        height: 24px;
+    }
 }
 
 /*-----------------------------Icon Buttons:-----------------------------*/
