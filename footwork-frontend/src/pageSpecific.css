@@ -309,7 +309,7 @@
     flex: 1 0 0;
     align-self: stretch;
 }
-.headerContainer.courseChoreographies {
+.headerContainer.courseChoreographies, .headerContainer.manageStudents {
     display: flex; 
     flex-direction: row; 
     gap: 24px; 
@@ -334,5 +334,122 @@
         flex-direction: column; 
         align-items: flex-start;
         gap: 48px;
+    }
+}
+/*-----------------------------ManageStudents:-----------------------------*/
+.adminDashboard .contentContainer.manageStudents {
+    padding: 0px 48px;
+    gap: 24px;
+}
+.contentContainer.manageStudents .headerRow {
+    display: flex;
+    flex-direction: row;
+    width: 100%; 
+    padding: 0px 16px 0px 16px;
+}
+.contentContainer.manageStudents .entryRow {
+    display: flex;
+    flex-direction: row;
+    width: 100%; 
+    padding: 24px 16px;
+    background-color: var(--dark-green);
+}
+.entryRow.uneven {
+    background-color: var(--black) !important;
+}
+.contentContainer.manageStudents .headerRow .row,
+.contentContainer.manageStudents .entryRow .row {
+    display: flex;
+    flex: 1 1 0;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start; 
+}
+.contentContainer.manageStudents .headerRow .courses,
+.contentContainer.manageStudents .entryRow .courses {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    max-width: 450px;
+}
+.courses .course {
+    display: flex;
+    width: 150px;
+    justify-content: center;
+    align-items: flex-start;
+}
+.contentContainer.manageStudents .headerRow .row.right-aligned,
+.contentContainer.manageStudents .entryRow .row.right-aligned {
+    justify-content: flex-end;
+}
+.row.right-aligned h5 {
+    text-align: right;
+}
+/*-----------------------------ManageStudents Mobile:-----------------------------*/
+@media (max-width: 600px) {
+    .adminDashboard {
+        padding-right: 0px;
+        padding-left: 0px;
+    }
+    .headerContainer.manageStudents {
+        flex-direction: column; 
+        align-items: flex-start;
+        gap: 24px;
+    }
+    .headerContainer.manageStudents .buttonContainer {
+        display: flex;
+        flex-direction: column; /* Arrange items vertically */
+        align-items: flex-end; /* Align items to the right */
+        justify-content: flex-end; /* Align vertically if needed */
+        width: 100%; /* Ensure the container spans the full width */
+    }
+    .contentContainer.manageStudents .headerRow {
+        width: 100%; 
+        padding: 0px 8px 0px 8px;
+        justify-content: flex-end;
+        gap: 8px;
+    }
+    .contentContainer.manageStudents .entryRow {
+        display: flex;
+        flex-direction: row;
+        width: 100%; 
+        padding: 16px 8px;
+        background-color: var(--dark-green);
+    }
+    .adminDashboard .contentContainer.manageStudents {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 24px;
+        flex: 1 0 0;
+        align-self: stretch;
+        padding: 0px;
+    }
+    .contentContainer.manageStudents .entryRow .names {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 8px;
+        flex: 1 0 0;
+    }
+    .contentContainer.manageStudents .headerRow .courses,
+    .contentContainer.manageStudents .entryRow .courses {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        width: 150px;
+    }
+    .courses .course {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        align-items: flex-start;
+    }
+    .contentContainer.manageStudents .headerRow .row.right-aligned,
+    .contentContainer.manageStudents .entryRow .row.right-aligned {
+        justify-content: flex-end;
+        flex: 0 0 auto;
+        align-items: center;
     }
 }

@@ -81,7 +81,7 @@ html, body {
 }
 
 /*-----------------------------Header Fonts:-----------------------------*/
-h1, h2, h3, h4, h5 {
+h1, h2, h3, h4, h5, h6, h7 {
     font-family: var(--header-font);
     margin: 0px;
     line-height: 1;
@@ -91,6 +91,14 @@ h2 { font-size: var(--h2-size); }
 h3 { font-size: var(--h3-size); }
 h4 { font-size: var(--h4-size); }
 h5 { font-size: var(--h5-size); }
+
+@media (max-width: 600px) {
+    h6 { font-size: var(--h6-size); }
+    h7 { 
+        font-size: var(--h7-size); 
+        text-align: center;
+    }
+}
 
 /*-----------------------------Copy Fonts:-----------------------------*/
 .copy-xlarge-b {
@@ -350,6 +358,9 @@ button .icon img { /*adjusted img because of code*/
     display: flex;
     align-items: center;
     gap: 12px;
+}
+.arrowTitle h2 {
+    text-align: left;
 }
 .arrowTitle:hover {
     cursor: pointer;

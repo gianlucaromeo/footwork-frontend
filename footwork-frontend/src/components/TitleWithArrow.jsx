@@ -14,9 +14,11 @@ const TitleWithArrow = ({
                     {title}
                 </h2>
             </button>
-            <div className="subtitle">
-                {subtitle}
-            </div>
+            {subtitle && (
+                <div className="subtitle">
+                    {subtitle}
+                </div>
+            )}
         </div>
     );
 };

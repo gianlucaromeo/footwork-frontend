@@ -60,7 +60,7 @@ const AdminHomePage = () => {
             <div className="adminHomepage">
                 {currentPage === Page.ALL_COURSES && 
                     <SectionAdminCourses
-                        /* onCourseClick={(courseId) => navigateTo(
+                        onCourseClick={(courseId) => navigateTo(
                             Page.COURSE_CHOREOGRAPHIES, 
                             courseId
                         )}
@@ -70,8 +70,7 @@ const AdminHomePage = () => {
                                 null,
                                 null,
                             )
-                        } */
-                            onCourseClick={(courseId) => navigateTo(Page.COURSE_CHOREOGRAPHIES, courseId)}
+                        }
                     />
                 }
                 

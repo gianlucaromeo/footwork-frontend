@@ -42,10 +42,11 @@ const StudentColumn = () => {
   };
 
   return (
-    <div>
-      {students.map((student) => (
+    <div style={{ width: "100%"}}>
+      {students.map((student, index) => (
         <StudentRow
           key={student.id}
+          index={index}
           studentId={student.id}
           lastName={student.lastName}
           firstName={student.firstName}
