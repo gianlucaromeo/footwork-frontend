@@ -111,6 +111,13 @@ const AdminHomePage = () => {
                                 )
                             }
                         } 
+                        onAddFolderClick={() => 
+                            navigateTo(
+                                Page.ADD_FOLDER,
+                                null,
+                                null,
+                            )
+                        }
                     />
                 }
 

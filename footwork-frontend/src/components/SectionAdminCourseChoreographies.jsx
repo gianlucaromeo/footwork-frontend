@@ -2,11 +2,22 @@ import { useState, useEffect } from 'react'
 import TileAdmin from './TileAdmin'
 import Button from './Button'
 import TitleWithArrow from './TitleWithArrow'
+import PopUpAdd from "../components/PopUpAdd";
 import adminService from '../services/admins'
 import iconPlus from '../assets/icons/plus.png'
 
-const SectionAdminCourseChoreographies = ({onClick, currentCourseId}) => {
+const SectionAdminCourseChoreographies = ({
+    onClick, 
+    currentCourseId,
+    onAddFolderClick,
+    onAddVideoClick
+}) => {
     const [choreographies, setChoreographies] = useState([])
+    const [isPopupVisible, setIsPopupVisible] = useState(false);
+
+    // Handlers for opening and closing the popup
+    const showPopup = () => setIsPopupVisible(true);
+    const hidePopup = () => setIsPopupVisible(false);
     
     useEffect(() => {
         adminService.getAllVideos()
@@ -33,7 +44,7 @@ const SectionAdminCourseChoreographies = ({onClick, currentCourseId}) => {
                 />
                 <Button 
                         text="Add folder or video"
-                        onClick={() => {}}
+                        onClick={showPopup}
                         iconName={iconPlus}
                         className="btn-admin"
                     />
@@ -48,6 +59,11 @@ const SectionAdminCourseChoreographies = ({onClick, currentCourseId}) => {
                     />
                 ))}
             </div>
+            {isPopupVisible && <PopUpAdd 
+                onClose={hidePopup} 
+                onAddFolderClick={onAddFolderClick} 
+                onAddVideoClick={onAddVideoClick} 
+            />}
         </div>
     );
 }

@@ -239,7 +239,7 @@
     padding: 84px 48px 52px 48px;
     flex-direction: column;
     align-items: flex-start;
-    gap: 40px;
+    gap: 24px;
     align-self: stretch;
     width: auto; /* Allow the container to size itself based on its content */
     max-width: 100%; /* Prevent it from exceeding the parent's width */
@@ -315,6 +315,10 @@
     gap: 24px; 
     align-items: center;
     justify-content: space-between; 
+}
+.headerContainer.courseChoreographies {
+    height: 272px;
+    align-items: flex-start;
 }
 .headerContainer.courseChoreographies Button {
     max-width: 529px;

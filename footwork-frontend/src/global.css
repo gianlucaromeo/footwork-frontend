@@ -606,7 +606,6 @@ input.error:focus {
     font-size: var(--h2-size);
     line-height: 1;
     margin: 0 0 12px 0;
-    width: auto;
 }
 @media (max-height: 860px) {
     .tile {
