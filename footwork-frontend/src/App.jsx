@@ -9,11 +9,21 @@ import VerifyEmailPage from './pages/VerifyEmailPage'
 import currentUserService from './services/currentUser'
 
 const ProtectedRouteStudent = ({ element, redirectTo }) => {
+  const isAdminLoggedIn = currentUserService.getRole() === 'admin'
+  if (isAdminLoggedIn) {
+    return <Navigate to="/admin/home" />;
+  }
+
   const isStudentLoggedIn = currentUserService.getRole() === 'student'
   return isStudentLoggedIn ? element : <Navigate to={redirectTo} />;
 }
 
 const ProtectedRouteAdmin = ({ element, redirectTo }) => {
+  const isStudentLoggedIn = currentUserService.getRole() === 'student'
+  if (isStudentLoggedIn) {
+    return <Navigate to="/student/home" />;
+  } 
+
   const isAdminLoggedIn = currentUserService.getRole() === 'admin'
   return isAdminLoggedIn ? element : <Navigate to={redirectTo} />;
 }
