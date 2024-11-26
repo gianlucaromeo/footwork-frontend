@@ -1,13 +1,16 @@
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from 'react';
-import Button from './Button'
-import TitleWithArrow from './TitleWithArrow'
-import UploadVideo from './UploadVideo'
-import InputField from './InputField'
+import choreographiesService from '../services/choreographies';
+import videosService from '../services/videos';
+import Button from './Button';
+import TitleWithArrow from './TitleWithArrow';
+import UploadVideo from './UploadVideo';
+import InputField from './InputField';
 import CoursesOptionsChips from './CoursesOptionsChips';
 import Chip from './Chip';
 
-import choreographiesService from '../services/choreographies'
+// Import the image from the assets folder
+import coverImage from '../assets/images/placeholder-video.jpg'
 
 const SectionAdminAddingVideo = ({
     onClick
@@ -18,8 +21,6 @@ const SectionAdminAddingVideo = ({
     const [video, setVideo] = useState(null);
     const [choreographies, setChoreographies] = useState([]);
 
-    // For dance upload, we need to add a choreography for a course
-    // (e.g. Salsa, Bachata, etc.)
     const [currentCourseId, setCurrentCourseId] = useState(null);
     const [currentChoreographyId, setCurrentChoreographyId] = useState(null);
 
@@ -28,38 +29,44 @@ const SectionAdminAddingVideo = ({
             setChoreographies(response.data);
         }).catch((error) => {
             console.error("Error getting choreographies:", error);
-        })
-    }, [])
+        });
+    }, []);
 
     const handleGoBack = () => {
         navigate(-1);
     };
 
     const handleCreateVideo = async () => {
-        if (!courseImage || !title || !currentCourseId) {
-            alert("Please provide a title, upload a video, select a course, and select a choreography.");
-            return;
-        }
-    
-        const title = title;
-        const courseId = currentCourseId;
-        const choreographyId = currentChoreographyId;
-        const video = video;
-        const folder = "/";
-    
+        console.log("Creating video...");
+        console.log("Title:", title);
+        console.log("Video:", video);
+        console.log("Course ID:", currentCourseId);
+        console.log("Choreography ID:", currentChoreographyId);
+
+        const imageFile = await fetch(coverImage)
+            .then((res) => res.blob())
+            .then((blob) => new File([blob], "placeholder-video.jpg", { type: "image/jpeg" }));
+        
+        const folder = "/"
+
         try {
-            // TODO: Implement this line
-            console.log("Video added successfully!");
-            navigate(-1); // Go back to the previous page
+            // Sending the static image URL (coverImage) to the backend
+            await videosService.createVideo(
+                title,
+                currentChoreographyId,
+                video,
+                imageFile,
+                folder,
+            );
+            console.log("Video created successfully!");
+            navigate(-1);
         } catch (error) {
-            console.error("Error adding video choreography:", error);
-            alert("An error occurred. Please try again.");
+            console.error("Error creating video:", error);
         }
-    }
+    };
 
     const handleCourseChange = (courseId) => {
-        setCurrentCourseId(courseId); // Update the current course ID
-        //setCurrentChoreographyId(null); // Reset the current choreography ID
+        setCurrentCourseId(courseId);
     };
 
     const currentChoreographyBelongsToCurrentCourse = () => {
@@ -68,14 +75,14 @@ const SectionAdminAddingVideo = ({
                 choreography.id === currentChoreographyId &&
                 choreography.courseId === currentCourseId
         );
-    }
+    };
 
     return (
         <div className="adminDashboard">
             <div className="headerContainer">
                 <TitleWithArrow
-                    title = "Add Video"
-                    subtitle = "Upload your video in .mp4 format"
+                    title="Add Video"
+                    subtitle="Upload your video in .mp4 format"
                     onClick={handleGoBack}
                 />
             </div>
@@ -90,32 +97,27 @@ const SectionAdminAddingVideo = ({
                             label="title*"
                             value={title}
                             onChange={(e) => setTitle(e.target.value)}
-                            type = "text"
+                            type="text"
                         />
                         <div className="type">
                             <CoursesOptionsChips
-                                onSelectedCourseChanged={
-                                    (id) => handleCourseChange(id)
-                                }
+                                onSelectedCourseChanged={(id) => handleCourseChange(id)}
                                 title="course*"
                             />
                         </div>
                         <div className="type">
-                        <div className="courses">
-                            <div className="titleDescription">
-                            <div className="copy-medium-reg">dance*</div>
-                            </div>
-                            {choreographies.filter(c => c.courseId === currentCourseId
-                            ).map(choreography => (
-                                <Chip
-                                    key={choreography.id}
-                                    text={choreography.title}
-                                    isSelected={currentChoreographyId === choreography.id}
-                                    onClick={() => setCurrentChoreographyId(
-                                        choreography.id
-                                    )}
-                                />
-                            ))}
+                            <div className="courses">
+                                <div className="titleDescription">
+                                    <div className="copy-medium-reg">dance*</div>
+                                </div>
+                                {choreographies.filter(c => c.courseId === currentCourseId).map(choreography => (
+                                    <Chip
+                                        key={choreography.id}
+                                        text={choreography.title}
+                                        isSelected={currentChoreographyId === choreography.id}
+                                        onClick={() => setCurrentChoreographyId(choreography.id)}
+                                    />
+                                ))}
                             </div>
                         </div>
                     </div>
@@ -123,15 +125,14 @@ const SectionAdminAddingVideo = ({
                 <div className="buttonContainer">
                     <Button
                         className="btn-text s"
-                        text = "Cancel"
+                        text="Cancel"
                         onClick={handleGoBack}
                     />
                     <Button
                         className="btn-primary s"
-                        text = "Save"
-                        onClick={() => handleCreateVideo()}
-                        disabled={!video || !title || !currentCourseId || !currentChoreographyId || !currentChoreographyBelongsToCurrentCourse()
-                        }
+                        text="Save"
+                        onClick={handleCreateVideo}
+                        disabled={!video || !title || !currentCourseId || !currentChoreographyId || !currentChoreographyBelongsToCurrentCourse()}
                     />
                 </div>
             </div>
@@ -139,4 +140,4 @@ const SectionAdminAddingVideo = ({
     );
 }
 
-export default SectionAdminAddingVideo
+export default SectionAdminAddingVideo;
