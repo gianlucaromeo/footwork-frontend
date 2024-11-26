@@ -1209,6 +1209,10 @@ p {
     .popupContainer .bigButtons .bigButtonContainer .bigButton {
         padding: 16px;
     }
+    .popupContainer .bigButtons .bigButtonContainer .bigButton .icon {
+        width: 24px;
+        height: 24px;
+    }
     .popupContainer .bigButtons .bigButtonContainer .bigButton .iconAdd {
         width: 24px;
         height: 24px;
