@@ -1,12 +1,16 @@
 import { useNavigate } from "react-router-dom";
+import { useState } from 'react';
 import Button from './Button'
 import TitleWithArrow from './TitleWithArrow'
 import UploadPicture from './UploadPicture'
 import InputField from './InputField'
 import SwitchButton from './SwitchButton'
 
-const SectionAdminAddingFolder = ({onClick}) => {
+const SectionAdminAddingFolder = ({
+    onClick
+}) => {
     const navigate = useNavigate();
+    const [folderTitle, setFolderTitle] = useState("");
 
     const handleGoBack = () => {
         navigate(-1); // Navigates to the previous page
@@ -14,7 +18,7 @@ const SectionAdminAddingFolder = ({onClick}) => {
 
     return (
         <div className="adminDashboard">
-            <div className="headerContainer courseChoreographies">
+            <div className="headerContainer">
                 <TitleWithArrow
                     title = "Add Folder"
                     subtitle = "Upload your background image as .jpg or .png"
@@ -28,6 +32,9 @@ const SectionAdminAddingFolder = ({onClick}) => {
                         <InputField
                             state="default"
                             label="title"
+                            value={folderTitle}
+                            onChange={(e) => setFolderTitle(e.target.value)}
+                            type = "text"
                         />
                         <div className="type">
                             <div>add this folder as a new</div>
@@ -40,12 +47,12 @@ const SectionAdminAddingFolder = ({onClick}) => {
                 </div>
                 <div className="buttonContainer">
                     <Button
-                        className="btn-text m"
+                        className="btn-text s"
                         text = "Cancel"
                         onClick={handleGoBack}
                     />
                     <Button
-                        className="btn-primary m"
+                        className="btn-primary s"
                         text = "Save"
                         // onClick={saveChanges}
                     />

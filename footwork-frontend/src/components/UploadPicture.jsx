@@ -18,10 +18,10 @@ const UploadPicture = () => {
   };
 
   return (
-    <div
+    <div 
       style={{
-        width: "300px",
-        height: "200px",
+        width: "400px",
+        height: "300px",
         border: "2px dashed #ccc",
         borderRadius: "10px",
         display: "flex",
@@ -33,6 +33,7 @@ const UploadPicture = () => {
         position: "relative",
         cursor: "pointer",
       }}
+      className="uploadContainer"
       onClick={() => document.getElementById("imageInput").click()}
     >
       {!image && (

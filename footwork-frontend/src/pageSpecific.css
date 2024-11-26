@@ -460,10 +460,53 @@
 /*-----------------------------Adding Folder or Video:-----------------------------*/
 .contentContainer.addFolderVideo {
     display: flex;
-    padding: 0px 60px;
+    padding: 0px 60px 48px 60px;
     flex-direction: column;
     align-items: flex-start;
     gap: 48px;
     flex: 1 0 0;
     align-self: stretch;
+}
+.contentContainer.addFolderVideo .buttonContainer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    gap: 48px;
+    align-self: stretch;
+    width: 100%;
+}
+.contentContainer.addFolderVideo .data {
+    display: flex;
+    max-height: 700px;
+    align-items: flex-start;
+    gap: 48px;
+    flex: 1 0 0;
+    align-self: stretch;
+}
+.contentContainer.addFolderVideo .data .titleType {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 32px;
+    flex: 1 0 0;
+    align-self: stretch;
+}
+.titleType input.default {
+    background-color: var(--black);
+}
+.contentContainer.addFolderVideo .data .titleType .type {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+}
+.type .switch.left {
+    background-color: var(--black);
+}
+.type .switch.right {
+    background-color: var(--black);
+}
+.type .switch.selected {
+    background: var(--neon-green, #0F8);
+    color: var(--black, #1A1A1A);
 }
