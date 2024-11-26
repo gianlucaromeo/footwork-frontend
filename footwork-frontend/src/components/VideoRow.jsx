@@ -4,7 +4,7 @@ import deleteIcon from '../assets/icons/delete-white.png';
 import playGreenIcon from '../assets/icons/play-green.png';
 
 const VideoRow = ({
-    videoNumber = "",        // TODO Video number (e.g., "1")
+    videoNumber,        // TODO Video number (e.g., "1")
     coverImageUrl,           // Thumbnail image source
     videoUrl,                // Video source
     title = "",              // Title of the video
