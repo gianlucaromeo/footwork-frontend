@@ -5,14 +5,17 @@ const IconWithSubtitle = ({
     subtitle = "", 
     onClick = () => {} }) => {
   return (
-    <button
-      onClick={onClick}
-    >
-      <div>
-        <div>{icon}</div>
-        <div>{subtitle}</div>
-      </div>
-    </button>
+    <div className="bigButtonContainer">
+      <button
+        onClick={onClick}
+        className="bigButton"
+      >
+        <div>
+          <div className="icon">{icon}</div>
+        </div>
+      </button>
+      <div>{subtitle}</div>
+    </div>
   );
 };
 

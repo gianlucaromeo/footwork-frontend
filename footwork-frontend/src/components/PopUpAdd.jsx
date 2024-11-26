@@ -1,10 +1,10 @@
 import React from 'react';
-import BtnTextS from './BtnTextS';
+import Button from './Button';
 import IconWithSubtitle from './IconWithSubtitle';
-import folder from '../assets/icons/add-folder.png'; // Import the folder image
-import video from '../assets/icons/video.png';
+import folderIcon from '../assets/icons/add-folder.png'; // Import the folder image
+import videoIcon from '../assets/icons/video.png';
 
-const PopUpAdd = () => {
+const PopUpAdd = ({ onClose }) => {
   // Handlers for the clicks on the icons
   const handleFolderClick = () => {
     console.log('Folder icon clicked!');
@@ -17,19 +17,29 @@ const PopUpAdd = () => {
   };
 
   return (
-    <div>
-      <h2>Add</h2>
-      <BtnTextS>Cancel</BtnTextS>
-      <IconWithSubtitle
-        icon={<img src={folder} alt="Folder Icon" />}
-        subtitle="Folder"
-        onClick={handleFolderClick} // Pass the click handler
-      />
-      <IconWithSubtitle
-        icon={<img src={video} alt="Video Icon" />}
-        subtitle="Video"
-        onClick={handleVideoClick} // Pass the click handler
-      />
+    <div className="popupOverlay" onClick={onClose}>
+      <div className="popupContainer" onClick={(e) => e.stopPropagation()}>
+          <div className="titleButton">
+            <h2>Add</h2>
+            <Button 
+                text="cancel" 
+                className="btn-text s"
+                onClick={onClose} 
+            />
+          </div>
+          <div className="bigButtons">
+              <IconWithSubtitle
+                icon={<img src={folderIcon} alt="Folder Icon" />}
+                subtitle="Folder"
+                onClick={handleFolderClick} // Pass the click handler
+              />
+              <IconWithSubtitle
+                icon={<img src={videoIcon} alt="Video Icon" />}
+                subtitle="Video"
+                onClick={handleVideoClick} // Pass the click handler
+              />
+          </div>
+      </div>
     </div>
   );
 };

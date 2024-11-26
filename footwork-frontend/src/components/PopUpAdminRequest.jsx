@@ -3,9 +3,6 @@ import Button from './Button';
 import CardRequest from "./CardRequest";
 
 const PopUpAdminRequest = ({ onClose }) => {
-    const handleButtonClick = () => {
-        console.log("Button clicked!");
-    };
 
     return (
         <div className="popupOverlay" onClick={onClose}>

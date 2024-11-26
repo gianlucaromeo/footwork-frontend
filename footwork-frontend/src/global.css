@@ -1125,7 +1125,15 @@ p {
     align-items: center;
     gap: 10px;
     border-radius: 8px;
-    background: #0F8;
+    background-color: var(--neon-green);
+    border-color: var(--neon-green);
+}
+.bigButton:hover {
+    cursor:pointer;
+}
+.popupContainer .bigButtons .bigButtonContainer .bigButton .icon {
+    width: 48px;
+    height: 48px;
 }
 .popupContainer .bigButtons .bigButtonContainer .bigButton .iconAdd {
     background-size: 80%; 

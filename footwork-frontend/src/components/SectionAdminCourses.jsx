@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 
 import TileAdmin from './TileAdmin'
 import Button from './Button'
+import PopUpAdd from "../components/PopUpAdd";
 
 import currentUserService from '../services/currentUser'
 import coursesService from '../services/courses'
@@ -18,6 +19,11 @@ const SectionAdminCourses = ({
     const [userFirstName, setUserFirstName] = useState(null)
     const [courses, setCourses] = useState([])
     const [isMobile, setIsMobile] = useState(false);
+    const [isPopupVisible, setIsPopupVisible] = useState(false);
+
+    // Handlers for opening and closing the popup
+    const showPopup = () => setIsPopupVisible(true);
+    const hidePopup = () => setIsPopupVisible(false);
 
     useEffect(() => {
         const firstName = currentUserService.getFirstName()
@@ -58,7 +64,7 @@ const SectionAdminCourses = ({
                     />
                     <Button 
                         text="Add folder or video"
-                        onClick={() => {}}
+                        onClick={showPopup}
                         iconName={iconPlus}
                         className="btn-admin"
                     />
@@ -76,6 +82,7 @@ const SectionAdminCourses = ({
                     )
                 })}
             </div>
+            {isPopupVisible && <PopUpAdd onClose={hidePopup} />}
         </div>
     );
 }
