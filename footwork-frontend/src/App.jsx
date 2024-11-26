@@ -1,10 +1,22 @@
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, Navigate } from 'react-router-dom'
 import AuthenticationPage from './pages/AuthenticationPage'
 import LoginPage from './pages/LoginPage'
 import RegistrationPage from './pages/RegistrationPage'
 import AdminHomePage from './pages/AdminHomePage'
 import StudentHomePage from './pages/StudentHomePage'
 import VerifyEmailPage from './pages/VerifyEmailPage'
+
+import currentUserService from './services/currentUser'
+
+const ProtectedRouteStudent = ({ element, redirectTo }) => {
+  const isStudentLoggedIn = currentUserService.getRole() === 'student'
+  return isStudentLoggedIn ? element : <Navigate to={redirectTo} />;
+}
+
+const ProtectedRouteAdmin = ({ element, redirectTo }) => {
+  const isAdminLoggedIn = currentUserService.getRole() === 'admin'
+  return isAdminLoggedIn ? element : <Navigate to={redirectTo} />;
+}
 
 function App() {
   return (
@@ -14,9 +26,9 @@ function App() {
       <Route path="/registration" element={<RegistrationPage />} />
       <Route path="/verify" element={<VerifyEmailPage />} />
 
-      <Route path="/admin/home" element={<AdminHomePage />} />
-
-      <Route path="/student/home" element={<StudentHomePage />} />
+      {/* Protect these routes with ProtectedRoute */}
+      <Route path="/admin/home" element={<ProtectedRouteAdmin element={<AdminHomePage />} redirectTo="/login" />} />
+      <Route path="/student/home" element={<ProtectedRouteStudent element={<StudentHomePage />} redirectTo="/login" />} />
 
       <Route path='/test' element={<h1>Test</h1>} />
     </Routes>
