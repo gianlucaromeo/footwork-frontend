@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Button from './Button';
-import RegistrationCoursesOptions from './RegistrationCoursesOptions';
+import CoursesOptions from './CoursesOptions';
 
 const CardCourses = ({ showRequestButton = true }) => {
     const [isMobile, setIsMobile] = useState(false);
@@ -59,7 +59,7 @@ const CardCourses = ({ showRequestButton = true }) => {
                     )}
                     <div className="coursesContainer">
                         <h4>Courses</h4>
-                        <RegistrationCoursesOptions
+                        <CoursesOptions
                             /*  TODO !!!!!!!!!!!!!!!!!!!!!!!!!!! */
                             onSelectedCoursesChanged={ () => {}}
                         />
@@ -70,7 +70,7 @@ const CardCourses = ({ showRequestButton = true }) => {
                     {/* Courses container first for desktop */}
                     <div className="coursesContainer">
                         <h4>Courses</h4>
-                        <RegistrationCoursesOptions
+                        <CoursesOptions
                             /*  TODO !!!!!!!!!!!!!!!!!!!!!!!!!!! */
                             onSelectedCoursesChanged={ () => {}}
                         />

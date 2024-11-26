@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import SwitchButton from './SwitchButton';
 import Button from './Button';
-import RegistrationCoursesOptions from './RegistrationCoursesOptions';
+import CoursesOptions from './CoursesOptions';
 
 const RegistrationFormStep2 = ({
   firstName = "",
@@ -38,7 +38,7 @@ const RegistrationFormStep2 = ({
         <SwitchButton 
           nameButtonLeft="student" 
           nameButtonRight="teacher"
-          contentLeft={<RegistrationCoursesOptions
+          contentLeft={<CoursesOptions
             onSelectedCoursesChanged={onSelectedCoursesChanged}
             title="Courses"
             desc="Which courses do you want to sign up for?"

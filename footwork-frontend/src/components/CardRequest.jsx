@@ -1,7 +1,7 @@
 import React from "react";
 import CardTitleInfo from "./CardTitleInfo";
 import Button from "./Button";
-import RegistrationCoursesOptions from './RegistrationCoursesOptions';
+import CoursesOptions from './CoursesOptions';
 
 
 const CardRequest = () => {
@@ -14,7 +14,7 @@ const CardRequest = () => {
                 </div>
                 <div className="coursesContainer">
                     <h5>Courses</h5>
-                    <RegistrationCoursesOptions
+                    <CoursesOptions
                         /*  ***TODO !!!!!!!!!!!!!!!!!!!!!!!!!!! */
                         onSelectedCoursesChanged={ () => {}}
                     />

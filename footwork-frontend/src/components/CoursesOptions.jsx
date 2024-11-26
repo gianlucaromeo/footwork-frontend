@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import CheckboxContainer from './CheckboxContainer'
 import coursesService from '../services/courses'
 
-const RegistrationCoursesOptions = ({ 
+const CoursesOptions = ({ 
   onSelectedCoursesChanged, 
   title,
   desc
@@ -56,4 +56,4 @@ const RegistrationCoursesOptions = ({
   );
 };
 
-export default RegistrationCoursesOptions
+export default CoursesOptions
