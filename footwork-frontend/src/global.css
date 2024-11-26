@@ -1226,9 +1226,17 @@ p {
     }
 }
 /*-----------------------------Videos:-----------------------------*/
+.centerTable {
+    display: flex; /* Make it a flex container */
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+    width: 100%; /* Ensure full width */
+    height: 100%; /* Optional: Ensure full height for vertical centering */
+}
 .tableContainer {
     display: flex;
     padding: 48px 108px 0px 108px;
+    margin-bottom: 48px;
     flex-direction: column;
     align-items: flex-start;
     gap: 24px;

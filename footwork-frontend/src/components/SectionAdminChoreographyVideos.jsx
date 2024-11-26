@@ -54,7 +54,7 @@ const SectionAdminChoreographyVideos = ({
     }, [navigate]);
 
     return (<div className="adminDashboard">
-        <div className="headerContainer courseChoreographies">
+        <div className="headerContainer courseChoreographies availableVideos">
             <TitleWithArrow
                 title = "***PLACEHOLDER"
                 subtitle = "Available videos in this class"
@@ -68,23 +68,25 @@ const SectionAdminChoreographyVideos = ({
                     className="btn-admin"
                 />
         </div>
-        <div className="tableContainer">
-                {/* Only render headerRow if not mobile */}
-                {!isMobile && (
-                    <div className="headerRow">
-                        <div className="Nr">
-                            <h4 className="center">Nr</h4>
+        <div className="centerTable">
+            <div className="tableContainer">
+                    {/* Only render headerRow if not mobile */}
+                    {!isMobile && (
+                        <div className="headerRow">
+                            <div className="Nr">
+                                <h4 className="center">Nr</h4>
+                            </div>
+                            <h4 className="Video">Video</h4>
+                            <h4 className="title">Title</h4>
+                            <h4>Delete</h4>
                         </div>
-                        <h4 className="Video">Video</h4>
-                        <h4 className="title">Title</h4>
-                        <h4>Delete</h4>
-                    </div>
-                )}
-                <VideoColumn
-                    videos={videos}
-                    onVideoRowClicked={(videoId) => { }} // TODO
-                    onDeleteVideo={() => {}}
-                />
+                    )}
+                    <VideoColumn
+                        videos={videos}
+                        onVideoRowClicked={(videoId) => { }} // TODO
+                        onDeleteVideo={() => {}}
+                    />
+                </div>
             </div>
     </div>
         
