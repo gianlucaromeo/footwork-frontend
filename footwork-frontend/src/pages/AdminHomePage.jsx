@@ -9,6 +9,7 @@ import SectionAdminCourseChoreographies from '../components/SectionAdminCourseCh
 import SectionAdminChoreographyVideos from '../components/SectionAdminChoreographyVideos'
 import SectionAdminProfile from '../components/SectionAdminProfile'
 import SectionAdminAddingFolder from '../components/SectionAdminAddingFolder'
+import SectionAdminAddingVideo from '../components/SectionAdminAddingVideo'
 
 const Page = {
     ALL_COURSES: 'all-courses',
@@ -95,7 +96,7 @@ const AdminHomePage = () => {
                 
                 {currentPage === Page.ADD_FOLDER && <SectionAdminAddingFolder/>}
                 
-                {currentPage === Page.ADD_VIDEO && <div>***Add Video</div>}
+                {currentPage === Page.ADD_VIDEO && <SectionAdminAddingVideo/>}
                 
                 {currentPage === Page.COURSE && <div>***Course</div>}
                 
