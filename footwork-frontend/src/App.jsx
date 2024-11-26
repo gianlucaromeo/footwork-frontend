@@ -43,7 +43,7 @@ function App() {
     <Routes>
       <Route path="/" element={<AuthenticationPage />} />
       <Route path="/login" element={<ProtectedRouteAuthentication element={<LoginPage />} />} />
-      <Route path="/register" element={<ProtectedRouteAuthentication element={<RegistrationPage />} />} />
+      <Route path="/registration" element={<ProtectedRouteAuthentication element={<RegistrationPage />} />} />
       <Route path="/verify" element={<VerifyEmailPage />} />
 
       {/* Protect these routes with ProtectedRoute */}
