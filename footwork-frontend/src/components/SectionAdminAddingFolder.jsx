@@ -5,6 +5,7 @@ import TitleWithArrow from './TitleWithArrow'
 import UploadPicture from './UploadPicture'
 import InputField from './InputField'
 import SwitchButton from './SwitchButton'
+import CoursesOptionsChips from './CoursesOptionsChips';
 
 import coursesService from '../services/courses'
 
@@ -16,6 +17,9 @@ const SectionAdminAddingFolder = ({
     const [courseImage, setCourseImage] = useState(null);
     const [isCourse, setIsCourse] = useState(true); // If false, it's a dance
     const [courseTitle, setCourseTitle] = useState("");
+
+    // For dance upload, we need to add a dance type (e.g. Salsa, Bachata, etc.)
+    const [currentCourse, setCurrentCourse] = useState(null);
 
     const handleGoBack = () => {
         navigate(-1); // Navigates to the previous page
@@ -71,6 +75,12 @@ const SectionAdminAddingFolder = ({
                                 nameButtonRight = "Dance"
                                 onLeftClick={() => setIsCourse(true)}
                                 onRightClick={() => setIsCourse(false)}
+                                contentLeft={
+                                    <CoursesOptionsChips
+                                        onSelectedCourseChanged={(course) => setCurrentCourse(course)}
+                                        title="in this course:"
+                                    />
+                                }
                             />
                         </div>
                     </div>
@@ -87,6 +97,11 @@ const SectionAdminAddingFolder = ({
                         onClick={() => isCourse 
                             ? handleCreateCourse() 
                             : console.log("Dance")}
+                        disabled={
+                            isCourse 
+                                ? !courseImage || !courseTitle || !currentCourse 
+                                : !courseImage || !courseTitle
+                        }
                     />
                 </div>
             </div>
