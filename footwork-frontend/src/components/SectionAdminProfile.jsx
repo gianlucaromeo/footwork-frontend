@@ -4,6 +4,8 @@ import TitleWithArrow from './TitleWithArrow';
 import Button from './Button';
 import deleteIcon from '../assets/icons/delete-white.png';
 
+import currentUserService from '../services/currentUser';
+
 const SectionAdminProfile = () => {
     const navigate = useNavigate();
 
@@ -27,6 +29,10 @@ const SectionAdminProfile = () => {
                 <Button 
                     className="btn-primary s"
                     text="Logout"
+                    onClick={() => {
+                        currentUserService.clearUser()
+                        navigate("/login")
+                    }}
                 />
             </div>
         </div>
