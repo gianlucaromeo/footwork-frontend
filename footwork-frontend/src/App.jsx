@@ -28,7 +28,7 @@ const ProtectedRouteAdmin = ({ element, redirectTo }) => {
   return isAdminLoggedIn ? element : <Navigate to={redirectTo} />;
 }
 
-const ProtectedRouteLogin = ({ element }) => {
+const ProtectedRouteAuthentication = ({ element }) => {
   const isStudentLoggedIn = currentUserService.getRole() === 'student'
   if (isStudentLoggedIn) {
     return <Navigate to="/student/home" />;
@@ -42,8 +42,8 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<AuthenticationPage />} />
-      <Route path="/login" element={<ProtectedRouteLogin element={<LoginPage />} />} />
-      <Route path="/registration" element={<RegistrationPage />} />
+      <Route path="/login" element={<ProtectedRouteAuthentication element={<LoginPage />} />} />
+      <Route path="/register" element={<ProtectedRouteAuthentication element={<RegistrationPage />} />} />
       <Route path="/verify" element={<VerifyEmailPage />} />
 
       {/* Protect these routes with ProtectedRoute */}
