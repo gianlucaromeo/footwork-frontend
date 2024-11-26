@@ -32,6 +32,7 @@ const createChoreographyEndpoint = `${choreographiesEndpoint}/`
 /* VIDEOS */
 const getStudentVideosEndpoint = `${videosEndpoint}/student/all`
 const getAdminVideosEndpoint = `${videosEndpoint}/admin/all`
+const createVideoEndpoint = `${videosEndpoint}/`
 
 /* ENROLLMENTS */
 const getAllEnrollmentsEndpoint = `${enrollmentsEndpoint}/`
@@ -69,6 +70,7 @@ export default {
     /* VIDEOS */
     getStudentVideosEndpoint,
     getAdminVideosEndpoint,
+    createVideoEndpoint,
 
     /* ENROLLMENTS */
     getAllEnrollmentsEndpoint,
