@@ -18,6 +18,7 @@ const createAdminEndpoint = `${adminsEndpoint}/`
 const loginStudentEndpoint = `${loginEndpoint}/student/`
 const createStudentEndpoint = `${studentsEndpoint}/`
 const getAllStudentsEndpoint = `${studentsEndpoint}/`
+const profileEndpoint = `${studentsEndpoint}/profile`
 
 /* COURSES */
 const getAllCoursesEndpoint = `${coursesEndpoint}/all`
@@ -54,6 +55,7 @@ export default {
     loginStudentEndpoint,
     createStudentEndpoint,
     getAllStudentsEndpoint,
+    profileEndpoint,
 
     /* COURSES */
     getAllCoursesEndpoint,

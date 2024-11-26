@@ -2,7 +2,11 @@ import React, { useState, useEffect } from 'react';
 import Button from './Button';
 import CoursesOptions from './CoursesOptions';
 
-const CardCourses = ({ showRequestButton = true }) => {
+import coursesService from '../services/courses';
+
+const CardCoursesStudentProfile = ({ showRequestButton = true }) => {
+    const [enrolledCourses, setEnrolledCourses] = useState([]);
+
     const [isMobile, setIsMobile] = useState(false);
     // State to track checkbox states
     const [checkboxStates, setCheckboxStates] = useState({
@@ -23,6 +27,16 @@ const CardCourses = ({ showRequestButton = true }) => {
         return () => {
             window.removeEventListener('resize', checkMobile); // Cleanup
         };
+    }, []);
+
+    // Fetch enrolled courses
+    useEffect(() => {
+        coursesService.getEnrolledCourses()
+            .then((response) => {
+                setEnrolledCourses(response.data);
+            }).catch((error) => {
+                console.log(error);
+            });
     }, []);
 
     // Handler for checkbox changes
@@ -92,4 +106,4 @@ const CardCourses = ({ showRequestButton = true }) => {
     );
 };
 
-export default CardCourses;
+export default CardCoursesStudentProfile;

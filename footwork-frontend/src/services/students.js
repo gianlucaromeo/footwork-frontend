@@ -34,8 +34,17 @@ const getAllVideos = async () => {
     })
 }
 
+const getProfile = async () => {
+    return helper.doGet(helper.profileEndpoint, {
+        headers: {
+            Authorization: currentUserService.getToken(),
+        }
+    })
+}
+
 export default {
     login,
     create,
     getAllVideos,
+    getProfile,
 }

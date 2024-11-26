@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import CardTitleInfo from './CardTitleInfo'
-import Button from './Button'
-import editIcon from '../assets/icons/edit.png';
 
-const CardInformation = () => {
+const CardInformation = ({
+    firstName,
+    lastName,
+    email,
+}) => {
     const [isMobile, setIsMobile] = useState(false);
 
     // Detect if the device is mobile
@@ -34,12 +36,12 @@ const CardInformation = () => {
                     </div>
                     */}
                     <div className="column">
-                        <CardTitleInfo title='last name' data= '***Handstand' />
-                        <CardTitleInfo title='first name' data= '***Henri' />
+                        <CardTitleInfo title='last name' data={lastName} />
+                        <CardTitleInfo title='first name' data={firstName} />
                     </div>
                     <div className="column">
-                        <CardTitleInfo title='email' data= '***henrihandstand@gmail.com' />
-                        <CardTitleInfo title='password' data= '***' />
+                        <CardTitleInfo title='email' data={email} />
+                        <CardTitleInfo title='password' data='******' />
                     </div>
                 </div>
                 </>
@@ -48,12 +50,12 @@ const CardInformation = () => {
                 {/* Information first for desktop */}
                 <div className="informationContainer">
                     <div className="column">
-                        <CardTitleInfo title='last name' data= '***Handstand' />
-                        <CardTitleInfo title='first name' data= '***Henri' />
+                        <CardTitleInfo title='last name' data={lastName} />
+                        <CardTitleInfo title='first name' data={firstName} />
                     </div>
                     <div className="column">
-                        <CardTitleInfo title='email' data= '***henrihandstand@gmail.com' />
-                        <CardTitleInfo title='password' data= '***' />
+                        <CardTitleInfo title='email' data={email} />
+                        <CardTitleInfo title='password' data= '******' />
                     </div>
                     </div>
                     {/* Edit button 

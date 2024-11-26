@@ -16,7 +16,7 @@ const SectionAdminProfile = () => {
                 />
             </div>
             <div className="cardContainer admin">
-                <CardInformation/>
+                {/* TODO <CardInformation/> with info */}
             </div>
             <div className="mainButtonContainer">
                 <Button 
