@@ -22,6 +22,7 @@ const getAllStudentsEndpoint = `${studentsEndpoint}/`
 /* COURSES */
 const getAllCoursesEndpoint = `${coursesEndpoint}/all`
 const getEnrolledCoursesEndpoint = `${coursesEndpoint}/student/all`
+const createCourseEndpoint = `${coursesEndpoint}/`
 
 /* VIDEOS */
 const getStudentVideosEndpoint = `${videosEndpoint}/student/all`
@@ -31,9 +32,9 @@ const getAdminVideosEndpoint = `${videosEndpoint}/admin/all`
 const getAllEnrollmentsEndpoint = `${enrollmentsEndpoint}/`
 
 /* COMMON */
-const doPost = async (url, data) => {
-  return axios.post(url, data)
-}
+const doPost = async (url, data, config = {}) => {
+  return axios.post(url, data, config);
+};
 
 const doGet = async (url, config) => {
     return axios.get(url, config)
@@ -53,6 +54,7 @@ export default {
     /* COURSES */
     getAllCoursesEndpoint,
     getEnrolledCoursesEndpoint,
+    createCourseEndpoint,
 
     /* VIDEOS */
     getStudentVideosEndpoint,

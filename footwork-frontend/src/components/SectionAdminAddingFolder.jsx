@@ -6,15 +6,41 @@ import UploadPicture from './UploadPicture'
 import InputField from './InputField'
 import SwitchButton from './SwitchButton'
 
+import coursesService from '../services/courses'
+
 const SectionAdminAddingFolder = ({
     onClick
 }) => {
     const navigate = useNavigate();
-    const [folderTitle, setFolderTitle] = useState("");
+
+    const [courseImage, setCourseImage] = useState(null);
+    const [isCourse, setIsCourse] = useState(true); // If false, it's a dance
+    const [courseTitle, setCourseTitle] = useState("");
 
     const handleGoBack = () => {
         navigate(-1); // Navigates to the previous page
     };
+
+    const handleCreateCourse = async () => {
+        if (!courseImage || !courseTitle) {
+            alert("Please provide a title and upload an image.");
+            return;
+        }
+    
+        const fileName = courseTitle;
+        const folderName = "/"; // courseTitle;
+        const coverImage = courseImage;
+    
+        try {
+            await coursesService.createCourse(fileName, folderName, coverImage);
+            console.log("Course created successfully!");
+            navigate(-1); // Go back to the previous page
+        } catch (error) {
+            console.error("Error creating course:", error);
+            alert("An error occurred. Please try again.");
+        }
+    };
+    
 
     return (
         <div className="adminDashboard">
@@ -27,13 +53,15 @@ const SectionAdminAddingFolder = ({
             </div>
             <div className="contentContainer addFolderVideo">
                 <div className="data">
-                    <UploadPicture/>
+                    <UploadPicture 
+                        onFileUploaded={(file) => setCourseImage(file)} 
+                    />
                     <div className="titleType">
                         <InputField
                             state="default"
                             label="title"
-                            value={folderTitle}
-                            onChange={(e) => setFolderTitle(e.target.value)}
+                            value={courseTitle}
+                            onChange={(e) => setCourseTitle(e.target.value)}
                             type = "text"
                         />
                         <div className="type">
@@ -41,6 +69,8 @@ const SectionAdminAddingFolder = ({
                             <SwitchButton
                                 nameButtonLeft = "Course"
                                 nameButtonRight = "Dance"
+                                onLeftClick={() => setIsCourse(true)}
+                                onRightClick={() => setIsCourse(false)}
                             />
                         </div>
                     </div>
@@ -54,7 +84,9 @@ const SectionAdminAddingFolder = ({
                     <Button
                         className="btn-primary s"
                         text = "Save"
-                        // onClick={saveChanges}
+                        onClick={() => isCourse 
+                            ? handleCreateCourse() 
+                            : console.log("Dance")}
                     />
                 </div>
             </div>

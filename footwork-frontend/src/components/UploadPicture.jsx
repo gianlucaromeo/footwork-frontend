@@ -1,17 +1,20 @@
 import React, { useState } from "react";
 import uploadIcon from "../assets/icons/upload.png"; // Upload icon
 
-const UploadPicture = () => {
-  const [image, setImage] = useState(null); // State for the image thumbnail
-  const [error, setError] = useState(""); // State for any upload errors
+const UploadPicture = ( {onFileUploaded }) => {
+  const [imageFile, setImageFile] = useState(null); 
+  const [imageUrl, setImageUrl] = useState("");
+  const [error, setError] = useState("");
 
   const handleFileUpload = (event) => {
     const file = event.target.files[0];
 
     if (file && file.type.startsWith("image/")) {
-      const imageURL = URL.createObjectURL(file);
-      setImage(imageURL); // Set the uploaded image as thumbnail
-      setError(""); // Clear any errors
+      setImageFile(file);
+      setImageUrl(URL.createObjectURL(file)); 
+      setError("");
+      onFileUploaded(file);
+      console.log(file.type)
     } else {
       setError("Please upload a valid image file."); // Set an error message
     }
@@ -27,7 +30,7 @@ const UploadPicture = () => {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        backgroundImage: image ? `url(${image})` : "none",
+        backgroundImage: imageUrl ? `url(${imageUrl})` : "none",
         backgroundSize: "cover",
         backgroundPosition: "center",
         position: "relative",
@@ -36,7 +39,7 @@ const UploadPicture = () => {
       className="uploadContainer"
       onClick={() => document.getElementById("imageInput").click()}
     >
-      {!image && (
+      {!imageUrl && (
         <div style={{ textAlign: "center" }}>
           <img
             src={uploadIcon}
