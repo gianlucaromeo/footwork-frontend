@@ -103,6 +103,11 @@
 .studentDahsboard .headerContainer.videos {
     padding: 48px 8px 24px 8px;
 }
+.allClasses {
+    padding-bottom: 24px;
+    margin: 0;
+    gap: 0;
+}
 .classesContainer {
     display: flex;
     max-height: 800px;
@@ -142,7 +147,7 @@
         align-self: stretch;
     }
     .classesContainer {
-        padding: 0px 8px 48px 8px;
+        padding: 0px 8px 0px 8px;
         flex-direction: column;
         align-items: flex-start;
         max-height: 100%;

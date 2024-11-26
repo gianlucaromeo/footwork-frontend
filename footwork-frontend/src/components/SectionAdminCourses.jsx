@@ -27,6 +27,14 @@ const SectionAdminCourses = ({
     const showPopup = () => setIsPopupVisible(true);
     const hidePopup = () => setIsPopupVisible(false);
 
+    const chunkArray = (array, size) => {
+        const chunks = [];
+        for (let i = 0; i < array.length; i += size) {
+            chunks.push(array.slice(i, i + size));
+        }
+        return chunks;
+    };    
+
     useEffect(() => {
         const firstName = currentUserService.getFirstName()
         setUserFirstName(firstName)
@@ -72,17 +80,19 @@ const SectionAdminCourses = ({
                     />
                 </div>
             </div>
-            <div className="classesContainer">
-                {courses.map((course) => {
-                    return (
-                        <TileAdmin
-                            key={course.id}
-                            imageUrl={course.imageUrl}
-                            text={course.name}
-                            onClick={() => onCourseClick(course.id)}
-                        />
-                    )
-                })}
+            <div className="allClasses">
+                {chunkArray(courses, 3).map((chunk, index) => (
+                    <div className="classesContainer" key={index}>
+                        {chunk.map((course) => (
+                            <TileAdmin
+                                key={course.id}
+                                imageUrl={course.imageUrl}
+                                text={course.name}
+                                onClick={() => onCourseClick(course.id)}
+                            />
+                        ))}
+                    </div>
+                ))}
             </div>
             {isPopupVisible && <PopUpAdd 
                 onClose={hidePopup} 

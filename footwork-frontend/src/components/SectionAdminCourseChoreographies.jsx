@@ -18,6 +18,14 @@ const SectionAdminCourseChoreographies = ({
     // Handlers for opening and closing the popup
     const showPopup = () => setIsPopupVisible(true);
     const hidePopup = () => setIsPopupVisible(false);
+
+    const chunkArray = (array, size) => {
+        const chunks = [];
+        for (let i = 0; i < array.length; i += size) {
+            chunks.push(array.slice(i, i + size));
+        }
+        return chunks;
+    };
     
     useEffect(() => {
         choreographiesService.getAll()
@@ -43,14 +51,18 @@ const SectionAdminCourseChoreographies = ({
                         className="btn-admin"
                     />
             </div>
-            <div className="classesContainer">
-                {choreographies.map((choreography) => (
-                    <TileAdmin
-                        key={choreography.id}
-                        imageUrl={choreography.imageUrl}
-                        text={choreography.title}
-                        onClick={() => onClick(choreography.id)}
-                    />
+            <div className="allClasses">
+                {chunkArray(choreographies, 3).map((chunk, index) => (
+                    <div className="classesContainer" key={index}>
+                        {chunk.map((choreography) => (
+                            <TileAdmin
+                                key={choreography.id}
+                                imageUrl={choreography.imageUrl}
+                                text={choreography.title}
+                                onClick={() => onCourseClick(choreography.id)}
+                            />
+                        ))}
+                    </div>
                 ))}
             </div>
             {isPopupVisible && <PopUpAdd 
