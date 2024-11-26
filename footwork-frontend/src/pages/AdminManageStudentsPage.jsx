@@ -37,6 +37,7 @@ const AdminManageStudentsPage = () => {
                     />
                     <div className="buttonContainer">
                         <Button 
+                            /* ***TODO Add number of requests, if 0 then button disabled */
                             text="***Requests"
                             onClick={showPopup}
                             className="btn-primary s"
@@ -83,6 +84,7 @@ const AdminManageStudentsPage = () => {
                     /* ***TODO GIANLUCA ADD NAVIGATION BACK TO ADMIN COURSES */
                 />
                 <Button 
+                    /* ***TODO Add number of requests, if 0 then button disabled */
                     text="***Requests"
                     onClick={showPopup}
                     className="btn-primary s"

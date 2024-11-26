@@ -456,3 +456,14 @@
         align-items: center;
     }
 }
+
+/*-----------------------------Adding Folder or Video:-----------------------------*/
+.contentContainer.addFolderVideo {
+    display: flex;
+    padding: 0px 60px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 48px;
+    flex: 1 0 0;
+    align-self: stretch;
+}

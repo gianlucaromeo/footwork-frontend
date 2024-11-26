@@ -8,6 +8,7 @@ import SectionAdminCourses from '../components/SectionAdminCourses'
 import SectionAdminCourseChoreographies from '../components/SectionAdminCourseChoreographies'
 import SectionAdminChoreographyVideos from '../components/SectionAdminChoreographyVideos'
 import SectionAdminProfile from '../components/SectionAdminProfile'
+import SectionAdminAddingFolder from '../components/SectionAdminAddingFolder'
 
 const Page = {
     ALL_COURSES: 'all-courses',
@@ -71,6 +72,20 @@ const AdminHomePage = () => {
                                 null,
                             )
                         }
+                        onAddFolderClick={() => 
+                            navigateTo(
+                                Page.ADD_FOLDER,
+                                null,
+                                null,
+                            )
+                        }
+                        onAddVideoClick={() => 
+                            navigateTo(
+                                Page.ADD_VIDEO,
+                                null,
+                                null,
+                            )
+                        }
                     />
                 }
                 
@@ -78,7 +93,7 @@ const AdminHomePage = () => {
                     <AdminManageStudentsPage />
                 }
                 
-                {currentPage === Page.ADD_FOLDER && <div>***Add Folder</div>}
+                {currentPage === Page.ADD_FOLDER && <SectionAdminAddingFolder/>}
                 
                 {currentPage === Page.ADD_VIDEO && <div>***Add Video</div>}
                 

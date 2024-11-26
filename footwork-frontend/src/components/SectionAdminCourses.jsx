@@ -13,6 +13,8 @@ import iconPlus from '../assets/icons/plus.png'
 const SectionAdminCourses = ({
     onCourseClick,
     onManageStudentsClick,
+    onAddFolderClick,
+    onAddVideoClick,
     onAddFolderSubmitted,
     onAddVideoSubmitted
 }) => {
@@ -82,7 +84,11 @@ const SectionAdminCourses = ({
                     )
                 })}
             </div>
-            {isPopupVisible && <PopUpAdd onClose={hidePopup} />}
+            {isPopupVisible && <PopUpAdd 
+                onClose={hidePopup} 
+                onAddFolderClick={onAddFolderClick} 
+                onAddVideoClick={onAddVideoClick} 
+            />}
         </div>
     );
 }

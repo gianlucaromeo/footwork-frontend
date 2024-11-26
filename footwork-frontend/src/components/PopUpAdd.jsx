@@ -4,18 +4,12 @@ import IconWithSubtitle from './IconWithSubtitle';
 import folderIcon from '../assets/icons/add-folder.png'; // Import the folder image
 import videoIcon from '../assets/icons/video.png';
 
-const PopUpAdd = ({ onClose }) => {
-  // Handlers for the clicks on the icons
-  const handleFolderClick = () => {
-    console.log('Folder icon clicked!');
-    // Add your folder-specific logic here
-  };
-
-  const handleVideoClick = () => {
-    console.log('Video icon clicked!');
-    // Add your video-specific logic here
-  };
-
+const PopUpAdd = ({ 
+  onClose,
+  onAddFolderClick,
+  onAddVideoClick
+}) => {
+  
   return (
     <div className="popupOverlay" onClick={onClose}>
       <div className="popupContainer" onClick={(e) => e.stopPropagation()}>
@@ -31,12 +25,12 @@ const PopUpAdd = ({ onClose }) => {
               <IconWithSubtitle
                 icon={<img src={folderIcon} alt="Folder Icon" />}
                 subtitle="Folder"
-                onClick={handleFolderClick} // Pass the click handler
+                onClick={onAddFolderClick}
               />
               <IconWithSubtitle
                 icon={<img src={videoIcon} alt="Video Icon" />}
                 subtitle="Video"
-                onClick={handleVideoClick} // Pass the click handler
+                onClick={onAddVideoClick}
               />
           </div>
       </div>
