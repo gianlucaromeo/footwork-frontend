@@ -39,8 +39,6 @@ function App() {
       {/* Protect these routes with ProtectedRoute */}
       <Route path="/admin/home" element={<ProtectedRouteAdmin element={<AdminHomePage />} redirectTo="/login" />} />
       <Route path="/student/home" element={<ProtectedRouteStudent element={<StudentHomePage />} redirectTo="/login" />} />
-
-      <Route path='/test' element={<h1>Test</h1>} />
     </Routes>
   )
 }
