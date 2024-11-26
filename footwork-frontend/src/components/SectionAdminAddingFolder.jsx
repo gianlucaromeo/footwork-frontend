@@ -8,6 +8,7 @@ import SwitchButton from './SwitchButton'
 import CoursesOptionsChips from './CoursesOptionsChips';
 
 import coursesService from '../services/courses'
+import choreographiesService from '../services/choreographies'
 
 const SectionAdminAddingFolder = ({
     onClick
@@ -16,22 +17,23 @@ const SectionAdminAddingFolder = ({
 
     const [courseImage, setCourseImage] = useState(null);
     const [isCourse, setIsCourse] = useState(true); // If false, it's a dance
-    const [courseTitle, setCourseTitle] = useState("");
+    const [title, setTitle] = useState("");
 
-    // For dance upload, we need to add a dance type (e.g. Salsa, Bachata, etc.)
-    const [currentCourse, setCurrentCourse] = useState(null);
+    // For dance upload, we need to add a choreography for a course
+    // (e.g. Salsa, Bachata, etc.)
+    const [currentCourseId, setCurrentCourseId] = useState(null);
 
     const handleGoBack = () => {
-        navigate(-1); // Navigates to the previous page
+        navigate(-1);
     };
 
     const handleCreateCourse = async () => {
-        if (!courseImage || !courseTitle) {
+        if (!courseImage || !title) {
             alert("Please provide a title and upload an image.");
             return;
         }
     
-        const fileName = courseTitle;
+        const fileName = title;
         const folderName = "/"; // courseTitle;
         const coverImage = courseImage;
     
@@ -44,6 +46,32 @@ const SectionAdminAddingFolder = ({
             alert("An error occurred. Please try again.");
         }
     };
+
+    const handleCreateChoreography = async () => {
+        if (!courseImage || !title || !currentCourseId) {
+            alert("Please provide a title, upload an image, and select a course.");
+            return;
+        }
+    
+        const title = title;
+        const courseId = currentCourseId;
+        const coverImage = courseImage;
+        const folder = "/"; // courseTitle;
+    
+        try {
+            await choreographiesService.createChoreography(
+                title,
+                courseId, 
+                coverImage, 
+                folder
+            );
+            console.log("Choreography created successfully!");
+            navigate(-1); // Go back to the previous page
+        } catch (error) {
+            console.error("Error creating choreography:", error);
+            alert("An error occurred. Please try again.");
+        }
+    }
     
 
     return (
@@ -64,8 +92,8 @@ const SectionAdminAddingFolder = ({
                         <InputField
                             state="default"
                             label="title"
-                            value={courseTitle}
-                            onChange={(e) => setCourseTitle(e.target.value)}
+                            value={title}
+                            onChange={(e) => setTitle(e.target.value)}
                             type = "text"
                         />
                         <div className="type">
@@ -75,9 +103,9 @@ const SectionAdminAddingFolder = ({
                                 nameButtonRight = "Dance"
                                 onLeftClick={() => setIsCourse(true)}
                                 onRightClick={() => setIsCourse(false)}
-                                contentLeft={
+                                contentRight={
                                     <CoursesOptionsChips
-                                        onSelectedCourseChanged={(course) => setCurrentCourse(course)}
+                                        onSelectedCourseChanged={(id) => setCurrentCourseId(id)}
                                         title="in this course:"
                                     />
                                 }
@@ -96,11 +124,12 @@ const SectionAdminAddingFolder = ({
                         text = "Save"
                         onClick={() => isCourse 
                             ? handleCreateCourse() 
-                            : console.log("Dance")}
+                            : handleCreateChoreography()
+                        }
                         disabled={
                             isCourse 
-                                ? !courseImage || !courseTitle || !currentCourse 
-                                : !courseImage || !courseTitle
+                                ? !courseImage || !title
+                                : !courseImage || !title || !currentCourseId
                         }
                     />
                 </div>

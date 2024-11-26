@@ -7,7 +7,7 @@ const adminsEndpoint = `${baseUrl}/admins`
 const loginEndpoint = `${baseUrl}/login`
 const coursesEndpoint = `${baseUrl}/courses`
 const enrollmentsEndpoint = `${baseUrl}/enrollments`
-// const choreographiesEndpoint = `${baseUrl}/choreographies`
+const choreographiesEndpoint = `${baseUrl}/choreographies`
 const videosEndpoint = `${baseUrl}/videos`
 
 /* ADMIN */
@@ -23,6 +23,9 @@ const getAllStudentsEndpoint = `${studentsEndpoint}/`
 const getAllCoursesEndpoint = `${coursesEndpoint}/all`
 const getEnrolledCoursesEndpoint = `${coursesEndpoint}/student/all`
 const createCourseEndpoint = `${coursesEndpoint}/`
+
+/* CHOREOGRAPHIES */
+const createChoreographyEndpoint = `${choreographiesEndpoint}/`
 
 /* VIDEOS */
 const getStudentVideosEndpoint = `${videosEndpoint}/student/all`
@@ -55,6 +58,9 @@ export default {
     getAllCoursesEndpoint,
     getEnrolledCoursesEndpoint,
     createCourseEndpoint,
+
+    /* CHOREOGRAPHIES */
+    createChoreographyEndpoint,
 
     /* VIDEOS */
     getStudentVideosEndpoint,
