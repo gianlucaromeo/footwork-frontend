@@ -28,11 +28,21 @@ const ProtectedRouteAdmin = ({ element, redirectTo }) => {
   return isAdminLoggedIn ? element : <Navigate to={redirectTo} />;
 }
 
+const ProtectedRouteLogin = ({ element }) => {
+  const isStudentLoggedIn = currentUserService.getRole() === 'student'
+  if (isStudentLoggedIn) {
+    return <Navigate to="/student/home" />;
+  }
+
+  const isAdminLoggedIn = currentUserService.getRole() === 'admin'
+  return isAdminLoggedIn ? <Navigate to="/admin/home" /> : element;
+}
+
 function App() {
   return (
     <Routes>
       <Route path="/" element={<AuthenticationPage />} />
-      <Route path="/login" element={<LoginPage />} />
+      <Route path="/login" element={<ProtectedRouteLogin element={<LoginPage />} />} />
       <Route path="/registration" element={<RegistrationPage />} />
       <Route path="/verify" element={<VerifyEmailPage />} />
 
