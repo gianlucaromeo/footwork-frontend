@@ -3,8 +3,8 @@ import TileAdmin from './TileAdmin'
 import Button from './Button'
 import TitleWithArrow from './TitleWithArrow'
 import PopUpAdd from "../components/PopUpAdd";
-import adminService from '../services/admins'
 import iconPlus from '../assets/icons/plus.png'
+import choreographiesService from '../services/choreographies'
 
 const SectionAdminCourseChoreographies = ({
     onClick, 
@@ -20,15 +20,9 @@ const SectionAdminCourseChoreographies = ({
     const hidePopup = () => setIsPopupVisible(false);
     
     useEffect(() => {
-        adminService.getAllVideos()
+        choreographiesService.getAll()
             .then((response) => {
-                const videos = response.data
-                const choreographies = videos.map((video) => video.choreography)
-                const filteredChoreographies = choreographies
-                    .filter((choreography) => 
-                        choreography.courseId === currentCourseId
-                )
-                setChoreographies(filteredChoreographies)
+                setChoreographies(response.data.filter(choreography => choreography.courseId === currentCourseId))
             }).catch((error) => {
                 console.log(error)
             })

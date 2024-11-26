@@ -25,6 +25,7 @@ const getEnrolledCoursesEndpoint = `${coursesEndpoint}/student/all`
 const createCourseEndpoint = `${coursesEndpoint}/`
 
 /* CHOREOGRAPHIES */
+const getChoreographiesEndpoint = `${choreographiesEndpoint}/admin/all`
 const createChoreographyEndpoint = `${choreographiesEndpoint}/`
 
 /* VIDEOS */
@@ -60,6 +61,7 @@ export default {
     createCourseEndpoint,
 
     /* CHOREOGRAPHIES */
+    getChoreographiesEndpoint,
     createChoreographyEndpoint,
 
     /* VIDEOS */
