@@ -6,7 +6,7 @@ import RegistrationCoursesOptions from './RegistrationCoursesOptions';
 
 const CardRequest = () => {
     return(
-        <div className="card">
+        <div className="card request">
             <div className="informationContainer">
                 <div className="column">
                     <CardTitleInfo title='last name' data= '***Handstand' />
@@ -15,7 +15,7 @@ const CardRequest = () => {
                 <div className="coursesContainer">
                     <h5>Courses</h5>
                     <RegistrationCoursesOptions
-                        /*  TODO !!!!!!!!!!!!!!!!!!!!!!!!!!! */
+                        /*  ***TODO !!!!!!!!!!!!!!!!!!!!!!!!!!! */
                         onSelectedCoursesChanged={ () => {}}
                     />
                 </div>

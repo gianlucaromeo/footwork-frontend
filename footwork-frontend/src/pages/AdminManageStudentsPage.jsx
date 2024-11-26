@@ -3,9 +3,15 @@ import StudentColumn from '../components/StudentColumn';
 import Button from '../components/Button'
 import TitleWithArrow from '../components/TitleWithArrow';
 import deleteIcon from '../assets/icons/delete-white.png';
+import PopUpAdminRequest from "../components/PopUpAdminRequest";
 
 const AdminManageStudentsPage = () => {
     const [isMobile, setIsMobile] = useState(false);
+    const [isPopupVisible, setIsPopupVisible] = useState(false);
+
+    // Handlers for opening and closing the popup
+    const showPopup = () => setIsPopupVisible(true);
+    const hidePopup = () => setIsPopupVisible(false);
 
     // Detect screen size and set `isMobile`
     useEffect(() => {
@@ -32,7 +38,7 @@ const AdminManageStudentsPage = () => {
                     <div className="buttonContainer">
                         <Button 
                             text="***Requests"
-                            onClick={() => {}}
+                            onClick={showPopup}
                             className="btn-primary s"
                         />
                     </div>
@@ -63,6 +69,7 @@ const AdminManageStudentsPage = () => {
                     </div>
                     <StudentColumn />
                 </div>
+                {isPopupVisible && <PopUpAdminRequest onClose={hidePopup} />}
             </div>
         );
     }
@@ -77,7 +84,7 @@ const AdminManageStudentsPage = () => {
                 />
                 <Button 
                     text="***Requests"
-                    onClick={() => {}}
+                    onClick={showPopup}
                     className="btn-primary s"
                 />
             </div>
@@ -109,6 +116,7 @@ const AdminManageStudentsPage = () => {
                 </div>
                 <StudentColumn />
             </div>
+            {isPopupVisible && <PopUpAdminRequest onClose={hidePopup} />}
         </div>
     )
 }
