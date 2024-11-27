@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
+
 import Button from './Button';
-import CoursesOptions from './CoursesOptions';
+import CheckboxContainer from './CheckboxContainer'
 
 import coursesService from '../services/courses';
 
 const CardCoursesStudentProfile = ({ showRequestButton = true }) => {
+    const [allCourses , setAllCourses] = useState([]);
     const [enrolledCourses, setEnrolledCourses] = useState([]);
+    const [selectedCoursesIds, setSelectedCoursesIds] = useState([]);
 
     const [isMobile, setIsMobile] = useState(false);
     // State to track checkbox states
@@ -34,23 +37,35 @@ const CardCoursesStudentProfile = ({ showRequestButton = true }) => {
         coursesService.getEnrolledCourses()
             .then((response) => {
                 setEnrolledCourses(response.data);
+                setSelectedCoursesIds(response.data.map(course => course.id));
             }).catch((error) => {
                 console.log(error);
             });
     }, []);
 
-    // Handler for checkbox changes
-    const handleCheckboxChange = (label, checked) => {
-        setCheckboxStates((prevState) => ({
-            ...prevState,
-            [label]: checked,
-        }));
-    };
+    // Fetch all courses
+    useEffect(() => {
+        coursesService.getAll()
+            .then((response) => {
+                setAllCourses(response.data);
+            }).catch((error) => {
+                console.log(error);
+            });
+    }, []);
 
     // Handler for request button changes
     const handleRequestAccess = () => {
         setButtonText("Request Sent"); // Change the button text
     };
+
+    const handleCheckboxChange = (courseId, checked) => {
+        setSelectedCoursesIds((prevSelectedCoursesIds) => {
+          const updatedSelectedCourses = checked
+            ? [...prevSelectedCoursesIds, courseId]
+            : prevSelectedCoursesIds.filter(course => course !== courseId);
+          return updatedSelectedCourses;
+        });
+      };
 
     // Check if at least one checkbox is selected
     const isAnyCheckboxChecked = Object.values(checkboxStates).some((state) => state);
@@ -74,9 +89,10 @@ const CardCoursesStudentProfile = ({ showRequestButton = true }) => {
                     <div className="coursesContainer">
                         <h4>Courses</h4>
                         <CoursesOptions
-                            /*  TODO !!!!!!!!!!!!!!!!!!!!!!!!!!! */
-                            onSelectedCoursesChanged={ () => {}}
-                        />
+                            courses={allCourses}
+                            selectedCoursesIds={selectedCoursesIds}
+                            onSelectedCoursesChanged={handleCheckboxChange}
+                            />
                     </div>
                 </>
             ) : (
@@ -85,9 +101,10 @@ const CardCoursesStudentProfile = ({ showRequestButton = true }) => {
                     <div className="coursesContainer">
                         <h4>Courses</h4>
                         <CoursesOptions
-                            /*  TODO !!!!!!!!!!!!!!!!!!!!!!!!!!! */
-                            onSelectedCoursesChanged={ () => {}}
-                        />
+                            courses={allCourses}
+                            selectedCoursesIds={selectedCoursesIds}
+                            onSelectedCoursesChanged={handleCheckboxChange}
+                            />
                     </div>
                     {showRequestButton && (
                         <div className="buttonContainer">
@@ -105,5 +122,32 @@ const CardCoursesStudentProfile = ({ showRequestButton = true }) => {
         </div>
     );
 };
+
+const CoursesOptions = ({ 
+    onSelectedCoursesChanged,
+    courses,
+    selectedCoursesIds,
+    title,
+    desc
+  }) => {
+    return (
+      <div className="courses">
+        <div className="titleDescription">
+            {title && <div className="copy-large-med">{title}</div>}
+            {desc && <div className="copy-medium-reg">{desc}</div>}
+        </div>
+        {courses.map(course => (
+          <CheckboxContainer
+            key={course.id}
+            id={course.id}
+            label={course.name}
+            checked={selectedCoursesIds.includes(course.id)}
+            onChange={(checked) => onSelectedCoursesChanged(course.id, checked)} // Directly notify parent
+          />
+        ))}
+      </div>
+    );
+  };
+  
 
 export default CardCoursesStudentProfile;
