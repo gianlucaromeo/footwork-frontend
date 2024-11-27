@@ -9,7 +9,7 @@ import SectionAdminChoreographyVideos from '../components/SectionAdminChoreograp
 import SectionAdminProfile from '../components/SectionAdminProfile'
 import SectionAdminAddingFolder from '../components/SectionAdminAddingFolder'
 import SectionAdminAddingVideo from '../components/SectionAdminAddingVideo'
-import SectionAdminManageStudents from './SectionAdminManageStudents'
+import SectionAdminManageStudents from '../components/SectionAdminManageStudents'
 
 const Page = {
     ALL_COURSES: 'all-courses',

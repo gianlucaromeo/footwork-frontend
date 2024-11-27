@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
-import StudentColumn from '../components/StudentColumn';
-import Button from '../components/Button'
-import TitleWithArrow from '../components/TitleWithArrow';
+import StudentColumn from './StudentColumn';
+import Button from './Button'
+import TitleWithArrow from './TitleWithArrow';
 import deleteIcon from '../assets/icons/delete-white.png';
-import PopUpAdminRequest from "../components/PopUpAdminRequest";
+import PopUpAdminRequest from "./PopUpAdminRequest";
 
 const SectionAdminManageStudents = ({onBack}) => {
     const [isMobile, setIsMobile] = useState(false);
