@@ -116,6 +116,7 @@
     align-items: center;
     flex: 1 0 0;
     align-self: stretch;
+    gap: 8px;
 }
 @media (max-height: 860px) {
     .headerContainer {
@@ -240,6 +241,7 @@
     align-items: center;
     align-self: stretch;
     height: 100%; /* Ensure it matches the height of adminHomepage */
+    overflow: visible;
 }
 .adminDashboard .headerContainer {
     display: flex;
@@ -274,12 +276,14 @@
     .adminDashboard {
         display: flex;
         max-width: 1496px;
+        max-width: 100%;
         height: 100%;
         padding: 48px 8px 0px 8px;
         flex-direction: column;
         align-items: center;
         gap: 48px;
         align-self: stretch;
+        overflow: visible;
     }
     .adminDashboard .headerContainer {
         display: flex;
@@ -313,8 +317,9 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 48px;
-    flex: 1 0 0;
+    flex: 1 0 auto;
     align-self: stretch;
+    overflow: visible;
 }
 .headerContainer.courseChoreographies, .headerContainer.manageStudents {
     display: flex; 
@@ -338,8 +343,9 @@
         flex-direction: column;
         align-items: flex-start;
         gap: 48px;
-        flex: 1 0 0;
+        flex: 1 0 auto;
         align-self: stretch;
+        overflow: visible;
     }
     .headerContainer.courseChoreographies {
         flex-direction: column; 
@@ -352,6 +358,9 @@
 .adminDashboard .contentContainer.manageStudents {
     padding: 0px 48px;
     gap: 24px;
+    width: 100%;
+    box-sizing: border-box; /* Ensure padding is included in width */
+    overflow-x: auto;
 }
 .contentContainer.manageStudents .headerRow {
     display: flex;
@@ -374,6 +383,7 @@
     display: flex;
     flex: 1 1 0;
     flex-direction: row;
+    min-width: 148px;
     align-items: center;
     justify-content: flex-start; 
 }
@@ -381,14 +391,16 @@
 .contentContainer.manageStudents .entryRow .courses {
     display: flex;
     align-items: center;
-    gap: 32px;
-    max-width: 450px;
+    gap: 16px;
 }
 .courses .course {
     display: flex;
-    width: 150px;
+    width: 132px;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
+}
+.courses .course h5 {
+    text-align: center;
 }
 .contentContainer.manageStudents .headerRow .row.right-aligned,
 .contentContainer.manageStudents .entryRow .row.right-aligned {
@@ -439,6 +451,9 @@
         flex: 1 0 0;
         align-self: stretch;
         padding: 0px;
+        width: 100%;
+        box-sizing: border-box; /* Ensure padding is included in width */
+        overflow-x: auto;
     }
     .contentContainer.manageStudents .entryRow .names {
         display: flex;
