@@ -4,21 +4,31 @@ import Button from "./Button";
 import CoursesOptions from './CoursesOptions';
 
 
-const CardRequest = () => {
+const CardRequest = ({students}) => {
     return(
         <div className="card request">
             <div className="informationContainer">
-                <div className="column">
-                    <CardTitleInfo title='last name' data= '***Handstand' />
-                    <CardTitleInfo title='first name' data= '***Henri' />
-                </div>
-                <div className="coursesContainer">
-                    <h5>Courses</h5>
-                    <CoursesOptions
-                        /*  ***TODO !!!!!!!!!!!!!!!!!!!!!!!!!!! */
-                        onSelectedCoursesChanged={ () => {}}
-                    />
-                </div>
+                {students.map((student) => 
+                    <>
+                        <div className="column">
+                            <CardTitleInfo 
+                                title='last name' 
+                                data={student.firstName}
+                            />
+                            <CardTitleInfo 
+                                title='first name' 
+                                data={student.lastName}
+                            />
+                        </div>
+                        <div className="coursesContainer">
+                            <h5>Courses</h5>
+                            <CoursesOptions
+                                /*  ***TODO !!!!!!!!!!!!!!!!!!!!!!!!!!! */
+                                onSelectedCoursesChanged={ () => {}}
+                            />
+                        </div>
+                    </>
+                )}
             </div>
             <div className="buttonContainer">
                 <Button 
