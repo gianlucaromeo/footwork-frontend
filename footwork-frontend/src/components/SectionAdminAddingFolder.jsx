@@ -18,6 +18,15 @@ const SectionAdminAddingFolder = ({
     const [courseImage, setCourseImage] = useState(null);
     const [isCourse, setIsCourse] = useState(true); // If false, it's a dance
     const [title, setTitle] = useState("");
+    const [titleState, setTitleState] = useState("default"); // State for validation
+
+    const handleTitleBlur = () => {
+        if (!title.trim()) {
+            setTitleState("error"); // Set state to error if the title is empty
+        } else {
+            setTitleState("valid"); // Set state to valid if the title is non-empty
+        }
+    };
 
     // For dance upload, we need to add a choreography for a course
     // (e.g. Salsa, Bachata, etc.)
@@ -83,55 +92,59 @@ const SectionAdminAddingFolder = ({
                     onClick={handleGoBack}
                 />
             </div>
-            <div className="contentContainer addFolderVideo">
-                <div className="data">
-                    <UploadPicture 
-                        onFileUploaded={(file) => setCourseImage(file)} 
-                    />
-                    <div className="titleType">
-                        <InputField
-                            state="default"
-                            label="title"
-                            value={title}
-                            onChange={(e) => setTitle(e.target.value)}
-                            type = "text"
+            <div className="centered">
+                <div className="contentContainer addFolderVideo">
+                    <div className="data">
+                        <UploadPicture 
+                            onFileUploaded={(file) => setCourseImage(file)} 
                         />
-                        <div className="type">
-                            <div>add this folder as a new</div>
-                            <SwitchButton
-                                nameButtonLeft = "Course"
-                                nameButtonRight = "Dance"
-                                onLeftClick={() => setIsCourse(true)}
-                                onRightClick={() => setIsCourse(false)}
-                                contentRight={
-                                    <CoursesOptionsChips
-                                        onSelectedCourseChanged={(id) => setCurrentCourseId(id)}
-                                        title="in this course:"
-                                    />
-                                }
+                        <div className="titleType">
+                            <InputField
+                                state={titleState}
+                                label="title*"
+                                value={title}
+                                onChange={(e) => setTitle(e.target.value)}
+                                onBlur={handleTitleBlur}
+                                type = "text"
+                                errorMessage={titleState === "error" ? "Please provide a title" : ""}
                             />
+                            <div className="type">
+                                <div>add this folder as a new</div>
+                                <SwitchButton
+                                    nameButtonLeft = "Course"
+                                    nameButtonRight = "Dance"
+                                    onLeftClick={() => setIsCourse(true)}
+                                    onRightClick={() => setIsCourse(false)}
+                                    contentRight={
+                                        <CoursesOptionsChips
+                                            onSelectedCourseChanged={(id) => setCurrentCourseId(id)}
+                                            title="in the course:"
+                                        />
+                                    }
+                                />
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div className="buttonContainer">
-                    <Button
-                        className="btn-text s"
-                        text = "Cancel"
-                        onClick={handleGoBack}
-                    />
-                    <Button
-                        className="btn-primary s"
-                        text = "Save"
-                        onClick={() => isCourse 
-                            ? handleCreateCourse() 
-                            : handleCreateChoreography()
-                        }
-                        disabled={
-                            isCourse 
-                                ? !courseImage || !title
-                                : !courseImage || !title || !currentCourseId
-                        }
-                    />
+                    <div className="buttonContainer">
+                        <Button
+                            className="btn-text s"
+                            text = "Cancel"
+                            onClick={handleGoBack}
+                        />
+                        <Button
+                            className="btn-primary s"
+                            text = "Save"
+                            onClick={() => isCourse 
+                                ? handleCreateCourse() 
+                                : handleCreateChoreography()
+                            }
+                            disabled={
+                                isCourse 
+                                    ? !courseImage || !title
+                                    : !courseImage || !title || !currentCourseId
+                            }
+                        />
+                    </div>
                 </div>
             </div>
         </div>

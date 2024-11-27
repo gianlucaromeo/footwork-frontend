@@ -25,30 +25,33 @@ const UploadPicture = ( {onFileUploaded }) => {
       style={{
         width: "400px",
         height: "300px",
-        border: "2px dashed #ccc",
-        borderRadius: "10px",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
         backgroundImage: imageUrl ? `url(${imageUrl})` : "none",
         backgroundSize: "cover",
         backgroundPosition: "center",
         position: "relative",
         cursor: "pointer",
       }}
-      className="uploadContainer"
+      className={`uploadContainer ${imageUrl ? "selected" : ""}`}
       onClick={() => document.getElementById("imageInput").click()}
     >
-      {!imageUrl && (
-        <div style={{ textAlign: "center" }}>
-          <img
-            src={uploadIcon}
-            alt="Upload"
-            style={{ width: "50px", height: "50px", marginBottom: "10px" }}
-          />
-          <p style={{ fontSize: "14px", color: "#666" }}>Click to upload</p>
-        </div>
-      )}
+      <div
+        style={{
+          textAlign: "center",
+          position: "absolute",
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
+          zIndex: 2, // Ensure it layers above the image
+          pointerEvents: "none", // Prevent clicks interfering with the upload
+        }}
+      >
+        <img
+          src={uploadIcon}
+          alt="Upload"
+          style={{ width: "50px", height: "50px", marginBottom: "10px" }}
+        />
+        <p>Click to upload</p>
+      </div>
       <input
         type="file"
         id="imageInput"

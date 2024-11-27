@@ -420,7 +420,9 @@ input {
     background-color: var(--dark-green);
     color: var(--white);
 }
-
+.titleType input {
+    background-color: var(--black);
+}
 /* States (default, valid, or error) */
 input.default {
     border: 2px solid var(--white);
@@ -741,7 +743,7 @@ input.error:focus {
     gap: 10px;
     align-self: stretch;
     box-sizing: border-box;
-    border-radius: 8px;
+    border-radius: 10px;
     border: 2px dashed var(--white, #FFF);
     background: rgba(255, 255, 255, 0.10);
 }
@@ -791,9 +793,12 @@ input.error:focus {
     color: var(--white);
     background-color: var(--black);
     border: none;
-    font-size: var(--copy-regular);
+    font-size: var(--copy-medium);
     font-weight: var(--weight-regular);
     margin: 0;
+}
+.chip button:hover {
+    cursor: pointer;
 }
 .chip.selected {
     background: var(--neon-green, #0F8);

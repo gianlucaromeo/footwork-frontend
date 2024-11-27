@@ -29,18 +29,20 @@ const CoursesOptionsChips = ({
   
 
   return (
-    <div className="courses">
+    <div className="selectedDanceContainer">
       <div className="titleDescription">
           {title && <div className="copy-medium-reg">{title}</div> }
       </div>
-      {courses.map(course => (
-        <Chip
-          key={course.id}
-          text={course.name}
-          isSelected={selectedCourseId === course.id}
-          onClick={(isSelected) => handleChipChange(course.id, isSelected)}
-        />
-      ))}
+      <div className="chipsContainer">
+        {courses.map(course => (
+          <Chip
+            key={course.id}
+            text={course.name}
+            isSelected={selectedCourseId === course.id}
+            onClick={(isSelected) => handleChipChange(course.id, isSelected)}
+          />
+        ))}
+      </div>
     </div>
   );
 };
