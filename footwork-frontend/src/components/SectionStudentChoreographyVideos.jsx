@@ -55,7 +55,7 @@ const SectionStudentChoreographyVideos = ({
                 <TitleWithArrow
                     title = {choreographyName}
                     subtitle = "Available dances in this class"
-                    /* ***TODO GIANLUCA PARSE BACK */
+                    onClick = {onBack}
                 />
             </div>
             <div className="tableContainer">
