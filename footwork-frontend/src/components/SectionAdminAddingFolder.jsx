@@ -63,7 +63,6 @@ const SectionAdminAddingFolder = ({
             return;
         }
     
-        const title = title;
         const courseId = currentCourseId;
         const coverImage = courseImage;
         const folder = "/"; // courseTitle;
