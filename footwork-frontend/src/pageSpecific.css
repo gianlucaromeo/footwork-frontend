@@ -552,3 +552,18 @@
     align-self: stretch;
     flex-wrap: wrap;
 }
+/*-----------------------------Adding Folder or Video Mobile:-----------------------------*/
+@media (max-width: 600px) {
+    .contentContainer.addFolderVideo {
+        padding: 0px;
+    }
+    .contentContainer.addFolderVideo .data {
+        max-height: none;
+        flex-direction: column;
+    }
+    .contentContainer.addFolderVideo .buttonContainer {
+        justify-content: center;
+        align-items: center;
+        padding-bottom: 48px;
+    }
+}

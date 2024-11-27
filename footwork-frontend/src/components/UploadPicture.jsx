@@ -23,8 +23,6 @@ const UploadPicture = ( {onFileUploaded }) => {
   return (
     <div 
       style={{
-        width: "400px",
-        height: "300px",
         backgroundImage: imageUrl ? `url(${imageUrl})` : "none",
         backgroundSize: "cover",
         backgroundPosition: "center",

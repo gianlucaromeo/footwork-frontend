@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Button from './Button'
 import TitleWithArrow from './TitleWithArrow'
 import UploadPicture from './UploadPicture'
@@ -14,6 +14,7 @@ const SectionAdminAddingFolder = ({
     onClick
 }) => {
     const navigate = useNavigate();
+    const [isMobile, setIsMobile] = useState(false);
 
     const [courseImage, setCourseImage] = useState(null);
     const [isCourse, setIsCourse] = useState(true); // If false, it's a dance
@@ -82,10 +83,21 @@ const SectionAdminAddingFolder = ({
         }
     }
     
+    useEffect(() => {
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth <= 600); // Adjust breakpoint as needed
+        };
+    
+        checkMobile(); // Check on initial load
+        window.addEventListener("resize", checkMobile); // Update on resize
+        return () => {
+            window.removeEventListener("resize", checkMobile); // Cleanup
+        };
+    }, []);
 
     return (
         <div className="adminDashboard">
-            <div className="headerContainer">
+            <div className="headerContainer addFolderVideo">
                 <TitleWithArrow
                     title = "Add Folder"
                     subtitle = "Upload your background image as .jpg or .png"
@@ -109,7 +121,7 @@ const SectionAdminAddingFolder = ({
                                 errorMessage={titleState === "error" ? "Please provide a title" : ""}
                             />
                             <div className="type">
-                                <div>add this folder as a new</div>
+                                <div>add this folder as a new*</div>
                                 <SwitchButton
                                     nameButtonLeft = "Course"
                                     nameButtonRight = "Dance"
@@ -118,7 +130,7 @@ const SectionAdminAddingFolder = ({
                                     contentRight={
                                         <CoursesOptionsChips
                                             onSelectedCourseChanged={(id) => setCurrentCourseId(id)}
-                                            title="in the course:"
+                                            title="in the course*"
                                         />
                                     }
                                 />
@@ -126,24 +138,44 @@ const SectionAdminAddingFolder = ({
                         </div>
                     </div>
                     <div className="buttonContainer">
-                        <Button
-                            className="btn-text s"
-                            text = "Cancel"
-                            onClick={handleGoBack}
-                        />
-                        <Button
-                            className="btn-primary s"
-                            text = "Save"
-                            onClick={() => isCourse 
-                                ? handleCreateCourse() 
-                                : handleCreateChoreography()
-                            }
-                            disabled={
-                                isCourse 
-                                    ? !courseImage || !title
-                                    : !courseImage || !title || !currentCourseId
-                            }
-                        />
+                        {isMobile ? (
+                            <Button
+                                className="btn-primary s"
+                                text="Save"
+                                onClick={() =>
+                                    isCourse
+                                        ? handleCreateCourse()
+                                        : handleCreateChoreography()
+                                }
+                                disabled={
+                                    isCourse
+                                        ? !courseImage || !title
+                                        : !courseImage || !title || !currentCourseId
+                                }
+                            />
+                        ) : (
+                            <>
+                                <Button
+                                    className="btn-text s"
+                                    text="Cancel"
+                                    onClick={handleGoBack}
+                                />
+                                <Button
+                                    className="btn-primary s"
+                                    text="Save"
+                                    onClick={() =>
+                                        isCourse
+                                            ? handleCreateCourse()
+                                            : handleCreateChoreography()
+                                    }
+                                    disabled={
+                                        isCourse
+                                            ? !courseImage || !title
+                                            : !courseImage || !title || !currentCourseId
+                                    }
+                                />
+                            </>
+                        )}
                     </div>
                 </div>
             </div>
