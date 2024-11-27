@@ -3,9 +3,13 @@ import Button from './Button';
 import CardRequest from "./CardRequest";
 
 import adminsService from '../services/admins';
+import enrollmentsService from "../services/enrollments";
+import coursesService from "../services/courses";
 
 const PopUpAdminRequest = ({ onClose }) => {
     const [unverifiedStudents, setUnverifiedStudents] = useState([]);
+    const [enrolledCourses, setEnrolledCourses] = useState([]);
+    const [courses, setCourses] = useState([]);
 
     useEffect(() => {
         adminsService
@@ -14,6 +18,28 @@ const PopUpAdminRequest = ({ onClose }) => {
                 setUnverifiedStudents(response.data.filter(student =>
                     !student.verifiedByAdmin
                 ));
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+    }, []);
+
+    useEffect(() => {
+        enrollmentsService
+            .getAllEnrollments()
+            .then((response) => {
+                setEnrolledCourses(response.data);
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+    }, []);
+
+    useEffect(() => {
+        coursesService
+            .getAll()
+            .then((response) => {
+                setCourses(response.data);
             })
             .catch((error) => {
                 console.error('Error:', error);
@@ -31,7 +57,11 @@ const PopUpAdminRequest = ({ onClose }) => {
                         onClick={onClose} 
                     />
                 </div>
-                <CardRequest students={unverifiedStudents}/>
+                <CardRequest 
+                    students={unverifiedStudents}
+                    enrollments={enrolledCourses}
+                    courses={courses}
+                />
             </div>
         </div>
     );
