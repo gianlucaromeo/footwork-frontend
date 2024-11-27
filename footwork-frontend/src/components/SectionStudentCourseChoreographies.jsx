@@ -1,10 +1,18 @@
 import { useState, useEffect } from 'react'
+
 import Tile from './Tile'
 import TitleWithArrow from './TitleWithArrow'
-import studentsService from '../services/students'
 
-const SectionStudentCourseChoreographies = ({onClick, currentCourseId}) => {
+import studentsService from '../services/students'
+import coursesService from '../services/courses'
+
+const SectionStudentCourseChoreographies = ({
+    onClick,
+    onBack, 
+    currentCourseId
+}) => {
     const [choreographies, setChoreographies] = useState([])
+    const [courseName, setCourseName] = useState('')
     
     useEffect(() => {
         studentsService.getAllVideos()
@@ -15,19 +23,32 @@ const SectionStudentCourseChoreographies = ({onClick, currentCourseId}) => {
                     .filter((choreography) => 
                         choreography.courseId === currentCourseId
                 )
-                setChoreographies(filteredChoreographies)
+                // Remove duplicates with same ids
+                setChoreographies([...new Map(filteredChoreographies.map(item => [item.id, item])).values()])
             }).catch((error) => {
                 console.log(error)
-            })
+            })        
     }, [])
+
+    useEffect(() => {
+        coursesService.getAll()
+            .then((response) => {
+                const courses = response.data
+                const course = courses.find((course) => course.id === currentCourseId)
+                setCourseName(course.name)
+            }).catch((error) => {
+                console.log(error)
+            }
+        )
+    })
 
     return (
         <div className="studentDashboard">
             <div className="headerContainer">
                 <TitleWithArrow
-                    title = "***PLACEHOLDER"
+                    title = {courseName}
                     subtitle = "Available dances in this class"
-                    /* ***TODO GIANLUCA PARSE BACK */
+                    onClick = {onBack}
                 />
             </div>
             <div className="classesContainer">

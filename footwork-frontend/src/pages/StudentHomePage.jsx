@@ -59,6 +59,7 @@ const StudentHomePage = () => {
                 {currentPage === Page.COURSE_CHOREOGRAPHIES && 
                     <SectionStudentCourseChoreographies 
                         currentCourseId={currentCourseId}
+                        onBack={() => navigateTo(Page.ALL_COURSES)}
                         onClick={
                             (choreographyId) => {
                                 navigateTo(
