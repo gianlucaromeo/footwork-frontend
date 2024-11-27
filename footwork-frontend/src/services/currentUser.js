@@ -1,6 +1,7 @@
 let token = localStorage.getItem('token') || null
 let firstName = localStorage.getItem('firstName') || null
 let role = localStorage.getItem('role') || null
+let isVerifiedByAdmin = localStorage.getItem('isVerifiedByAdmin') || null
 
 const setToken = (newToken) => {
     token = `Bearer ${newToken}`
@@ -29,13 +30,24 @@ const getRole = () => {
     return role || localStorage.getItem('role')
 }
 
+const setIsVerifiedByAdmin = (newIsVerifiedByAdmin) => {
+    isVerifiedByAdmin = newIsVerifiedByAdmin
+    localStorage.setItem('isVerifiedByAdmin', newIsVerifiedByAdmin)
+}
+
+const getIsVerifiedByAdmin = () => {
+    return localStorage.getItem('isVerifiedByAdmin') === 'true' || false
+}
+
 const clearUser = () => {
     token = null
     firstName = null
     role = null
+    isVerifiedByAdmin = null
     localStorage.removeItem('token')
     localStorage.removeItem('firstName')
     localStorage.removeItem('role')
+    localStorage.removeItem('isVerifiedByAdmin')
 }
 
 export default {
@@ -45,5 +57,7 @@ export default {
     getFirstName,
     setRole,
     getRole,
+    setIsVerifiedByAdmin,
+    getIsVerifiedByAdmin,
     clearUser,
 }

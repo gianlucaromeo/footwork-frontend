@@ -95,10 +95,12 @@ const LoginForm = () => {
                         const token = response.data.token
                         const role = response.data.role
                         const firstName = response.data.firstName
+                        const isVerifiedByAdmin = response.data.verifiedByAdmin
 
                         currentUserService.setToken(token)
                         currentUserService.setRole(role)
                         currentUserService.setFirstName(firstName)
+                        currentUserService.setIsVerifiedByAdmin(isVerifiedByAdmin)
 
                         navigate('/student/home')
                     })
