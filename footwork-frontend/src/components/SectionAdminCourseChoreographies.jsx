@@ -12,6 +12,7 @@ const SectionAdminCourseChoreographies = ({
     currentCourseId,
     onAddFolderClick,
     onAddVideoClick,
+    onEditFolderClick,
     onBack,
 }) => {
     const [choreographies, setChoreographies] = useState([])
@@ -73,6 +74,7 @@ const SectionAdminCourseChoreographies = ({
                                 imageUrl={choreography.imageUrl}
                                 text={choreography.title}
                                 onClick={() => onClick(choreography.id)}
+                                onEditFolderClick={onEditFolderClick}
                             />
                         ))}
                     </div>

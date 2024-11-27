@@ -1,10 +1,12 @@
 const TileAdmin = ({ 
     imageUrl, 
     text,
-    onClick
+    onClick,
+    onEditFolderClick
 }) => {
     const handleButtonClick = () => {
         console.log("Button clicked!");
+        onEditFolderClick();
     };
 
     return (

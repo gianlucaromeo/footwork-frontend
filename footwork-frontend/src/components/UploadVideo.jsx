@@ -22,8 +22,6 @@ const UploadVideo = ({ onFileUploaded }) => {
   return (
     <div
       style={{
-        width: "400px",
-        height: "300px",
         borderRadius: "10px",
         display: "flex",
         alignItems: "center",

@@ -10,6 +10,7 @@ import SectionAdminProfile from '../components/SectionAdminProfile'
 import SectionAdminAddingFolder from '../components/SectionAdminAddingFolder'
 import SectionAdminAddingVideo from '../components/SectionAdminAddingVideo'
 import SectionAdminManageStudents from '../components/SectionAdminManageStudents'
+import SectionAdminEditFolder from '../components/SectionAdminEditFolder'
 
 const Page = {
     ALL_COURSES: 'all-courses',
@@ -21,6 +22,7 @@ const Page = {
     MANAGE_STUDENTS: 'manage-students',
     ADD_FOLDER: 'add-course',
     ADD_VIDEO: 'add-video',
+    EDIT_FOLDER: 'edit-folder',
 }
 
 const AdminHomePage = () => {
@@ -87,6 +89,13 @@ const AdminHomePage = () => {
                                 null,
                             )
                         }
+                        onEditFolderClick={() => 
+                            navigateTo(
+                                Page.EDIT_FOLDER,
+                                null,
+                                null,
+                            ) 
+                        }
                     />
                 }
                 
@@ -99,6 +108,8 @@ const AdminHomePage = () => {
                 {currentPage === Page.ADD_FOLDER && <SectionAdminAddingFolder/>}
                 
                 {currentPage === Page.ADD_VIDEO && <SectionAdminAddingVideo/>}
+
+                {currentPage === Page.EDIT_FOLDER && <SectionAdminEditFolder/>}
                 
                 {currentPage === Page.COURSE && <div>***Course</div>}
                 
@@ -120,6 +131,20 @@ const AdminHomePage = () => {
                                 null,
                                 null,
                             )
+                        }
+                        onAddVideoClick={() => 
+                            navigateTo(
+                                Page.ADD_VIDEO,
+                                null,
+                                null,
+                            )
+                        }
+                        onEditFolderClick={() => 
+                            navigateTo(
+                                Page.EDIT_FOLDER,
+                                null,
+                                null,
+                            ) 
                         }
                         onBack={() => navigateTo(Page.ALL_COURSES)}
                     />

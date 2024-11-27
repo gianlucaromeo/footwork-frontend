@@ -283,7 +283,7 @@ button .icon img { /*adjusted img because of code*/
 }
 .iconBtn.more {
     background: var(--dark-green, #272A28);
-    background-image: url('./assets/icons/dots.png');
+    background-image: url('./assets/icons/edit-green.png');
     background-size: 60%;
     background-repeat: no-repeat;
     background-position: center;

@@ -564,6 +564,8 @@
     .contentContainer.addFolderVideo .buttonContainer {
         justify-content: center;
         align-items: center;
+        gap: 24px;
         padding-bottom: 48px;
+        flex-direction: column;
     }
 }

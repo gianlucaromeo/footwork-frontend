@@ -15,6 +15,7 @@ const SectionAdminCourses = ({
     onManageStudentsClick,
     onAddFolderClick,
     onAddVideoClick,
+    onEditFolderClick
 }) => {
     const [userFirstName, setUserFirstName] = useState(null)
     const [courses, setCourses] = useState([])
@@ -87,6 +88,7 @@ const SectionAdminCourses = ({
                                 imageUrl={course.imageUrl}
                                 text={course.name}
                                 onClick={() => onCourseClick(course.id)}
+                                onEditFolderClick={onEditFolderClick}
                             />
                         ))}
                     </div>
