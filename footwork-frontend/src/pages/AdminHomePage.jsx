@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 
-import AdminManageStudentsPage from './AdminManageStudentsPage'
 
 import NavbarProfile from '../components/NavbarProfile'
 
@@ -10,6 +9,7 @@ import SectionAdminChoreographyVideos from '../components/SectionAdminChoreograp
 import SectionAdminProfile from '../components/SectionAdminProfile'
 import SectionAdminAddingFolder from '../components/SectionAdminAddingFolder'
 import SectionAdminAddingVideo from '../components/SectionAdminAddingVideo'
+import SectionAdminManageStudents from './SectionAdminManageStudents'
 
 const Page = {
     ALL_COURSES: 'all-courses',
@@ -91,7 +91,9 @@ const AdminHomePage = () => {
                 }
                 
                 {currentPage === Page.MANAGE_STUDENTS &&
-                    <AdminManageStudentsPage />
+                    <SectionAdminManageStudents onBack={() => 
+                        navigateTo(Page.ALL_COURSES)
+                    } />
                 }
                 
                 {currentPage === Page.ADD_FOLDER && <SectionAdminAddingFolder/>}

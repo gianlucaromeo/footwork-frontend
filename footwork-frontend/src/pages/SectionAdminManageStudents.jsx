@@ -5,7 +5,7 @@ import TitleWithArrow from '../components/TitleWithArrow';
 import deleteIcon from '../assets/icons/delete-white.png';
 import PopUpAdminRequest from "../components/PopUpAdminRequest";
 
-const AdminManageStudentsPage = () => {
+const SectionAdminManageStudents = ({onBack}) => {
     const [isMobile, setIsMobile] = useState(false);
     const [isPopupVisible, setIsPopupVisible] = useState(false);
 
@@ -33,7 +33,7 @@ const AdminManageStudentsPage = () => {
                 <div className="headerContainer manageStudents">
                     <TitleWithArrow
                         title = "Manage Students"
-                        /* ***TODO GIANLUCA ADD NAVIGATION BACK TO ADMIN COURSES */
+                        onClick={onBack}
                     />
                     <div className="buttonContainer">
                         <Button 
@@ -81,7 +81,7 @@ const AdminManageStudentsPage = () => {
             <div className="headerContainer manageStudents">
                 <TitleWithArrow
                     title = "Manage Students"
-                    /* ***TODO GIANLUCA ADD NAVIGATION BACK TO ADMIN COURSES */
+                    onClick={onBack}
                 />
                 <Button 
                     /* ***TODO Add number of requests, if 0 then button disabled */
@@ -123,4 +123,4 @@ const AdminManageStudentsPage = () => {
     )
 }
 
-export default AdminManageStudentsPage;
+export default SectionAdminManageStudents;
