@@ -21,7 +21,7 @@ const SectionAdminChoreographyVideos = ({
                     video => video.choreography.id === choreographyId
                 )
                 setVideos(videos)
-                const choreography = response.data[0].choreography.title
+                const choreography = videos[0].choreography.title
                 setChoreographyName(choreography)
             }).catch((error) => {
                 console.log(error)
@@ -56,9 +56,9 @@ const SectionAdminChoreographyVideos = ({
     return (<div className="adminDashboard">
         <div className="headerContainer courseChoreographies availableVideos">
             <TitleWithArrow
-                title = "***PLACEHOLDER"
+                title = {choreographyName}
                 subtitle = "Available videos in this class"
-                /* ***TODO GIANLUCA PARSE BACK */
+                onClick = {onBack}
             />
             <Button 
                     text="Add video"
