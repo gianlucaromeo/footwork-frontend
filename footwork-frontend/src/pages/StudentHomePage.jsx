@@ -84,7 +84,9 @@ const StudentHomePage = () => {
 
                 {currentPage === Page.VIDEO && <div>***Video</div>}
 
-                {currentPage === Page.PROFILE && <SectionStudentProfile />}
+                {currentPage === Page.PROFILE && <SectionStudentProfile 
+                    onBack={() => navigateTo(Page.ALL_COURSES)}
+                />}
             </div>
         </div>
     );

@@ -11,7 +11,7 @@ import studentsService from '../services/students';
 import coursesService from '../services/courses';
 import currentUserService from '../services/currentUser';
 
-const SectionStudentProfile = () => {
+const SectionStudentProfile = ({onBack}) => {
     const [student, setStudent] = useState({});
     const [enrolledCourses, setEnrolledCourses] = useState([]);
 
@@ -40,6 +40,7 @@ const SectionStudentProfile = () => {
             <div className="headerContainer profile">
                 <TitleWithArrow
                     title = "Back"
+                    onClick={onBack}
                 />
             </div>
             <div className="cardContainer">
