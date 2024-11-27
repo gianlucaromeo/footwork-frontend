@@ -710,6 +710,14 @@ input.error:focus {
     gap: 24px;
     align-self: stretch;
 }
+.scrollingRequests {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 24px;
+    height: 380px;
+    overflow-y: auto;
+}
 
 /*-----------------------------Card Mobile:-----------------------------*/
 @media (max-width: 600px) {

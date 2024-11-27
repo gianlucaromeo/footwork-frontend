@@ -5,42 +5,44 @@ import CheckboxContainer from "./CheckboxContainer";
 
 const CardRequest = ({students, enrollments, courses}) => {
     return(
-        <div className="card request">
-            <div className="informationContainer">
+        <div className="scrollingRequests">
             {students.map((student) => (
                 <React.Fragment key={student.id}>
-                    <div className="column">
-                        <CardTitleInfo 
-                            title="last name" 
-                            data={student.firstName}
-                        />
-                        <CardTitleInfo 
-                            title="first name" 
-                            data={student.lastName}
-                        />
-                    </div>
-                    <div className="coursesContainer">
-                        <h5>Courses</h5>
-                        <CoursesOptions
-                            onSelectedCoursesChanged={() => {}}
-                            courses={courses}
-                            selectedCoursesIds={enrollments.filter(enrollment => enrollment.studentId === student.id).map(enrollment => enrollment.courseId)}
-                            studentId={student.id}
-                        />
+                    <div className="card request">
+                        <div className="informationContainer">
+                            <div className="column">
+                                <CardTitleInfo 
+                                    title="last name" 
+                                    data={student.firstName}
+                                />
+                                <CardTitleInfo 
+                                    title="first name" 
+                                    data={student.lastName}
+                                />
+                            </div>
+                            <div className="coursesContainer">
+                                <h5>Courses</h5>
+                                <CoursesOptions
+                                    onSelectedCoursesChanged={() => {}}
+                                    courses={courses}
+                                    selectedCoursesIds={enrollments.filter(enrollment => enrollment.studentId === student.id).map(enrollment => enrollment.courseId)}
+                                    studentId={student.id}
+                                />
+                            </div>
+                        </div>
+                        <div className="buttonContainer">
+                            <Button 
+                                className="btn-text s"
+                                text="Deny"
+                            />
+                            <Button 
+                                className="btn-primary s"
+                                text="Confirm"
+                            />
+                        </div>
                     </div>
                 </React.Fragment>
             ))}
-            </div>
-            <div className="buttonContainer">
-                <Button 
-                    className="btn-text s"
-                    text="Deny"
-                />
-                <Button 
-                    className="btn-primary s"
-                    text="Confirm"
-                />
-            </div>
         </div>
     )
 }
