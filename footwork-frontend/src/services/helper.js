@@ -13,6 +13,7 @@ const videosEndpoint = `${baseUrl}/videos`
 /* ADMIN */
 const loginAdminEndpoint = `${loginEndpoint}/admin/`
 const createAdminEndpoint = `${adminsEndpoint}/`
+const adminProfileEndpoint = `${adminsEndpoint}/profile`
 
 /* STUDENT */
 const loginStudentEndpoint = `${loginEndpoint}/student/`
@@ -51,6 +52,7 @@ export default {
     /* ADMIN */
     loginAdminEndpoint,
     createAdminEndpoint,
+    adminProfileEndpoint,
 
     /* STUDENT */
     loginStudentEndpoint,

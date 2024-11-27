@@ -1,13 +1,27 @@
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import CardInformation from './CardInformation';
 import TitleWithArrow from './TitleWithArrow';
 import Button from './Button';
 import deleteIcon from '../assets/icons/delete-white.png';
 
-import currentUserService from '../services/currentUser';
+import adminsService from '../services/admins';
 
 const SectionAdminProfile = () => {
     const navigate = useNavigate();
+
+    const [adminData, setAdminData] = useState({})
+
+    useEffect(() => {
+        adminsService
+            .getProfile()
+            .then((response) => {
+                    setAdminData(response.data)
+            })
+            .catch((error) => {
+                console.log(error)
+            })
+    }, [])
 
     return (
         <div className="studentProfile">
@@ -18,7 +32,11 @@ const SectionAdminProfile = () => {
                 />
             </div>
             <div className="cardContainer admin">
-                {/* TODO <CardInformation/> with info */}
+                <CardInformation
+                    firstName={adminData.firstName}
+                    lastName={adminData.lastName}
+                    email={adminData.email}
+                />
             </div>
             <div className="mainButtonContainer">
                 <Button 

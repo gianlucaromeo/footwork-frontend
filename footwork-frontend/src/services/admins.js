@@ -38,9 +38,18 @@ const getAllStudents = async () => {
     })
 }
 
+const getProfile = async () => {
+    return helper.doGet(helper.adminProfileEndpoint, {
+        headers: {
+            Authorization: currentUserService.getToken(),
+        }
+    })
+}
+
 export default {
     login,
     create,
     getAllVideos,
     getAllStudents,
+    getProfile,
 }
