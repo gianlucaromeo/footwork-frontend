@@ -62,16 +62,17 @@ const StudentRow = ({
             </div> */}
             <div className="courses">
                 {courses.map((course) => {
+                    const isEnrolled = enrollments.some(
+                        (enrollment) =>
+                            enrollment.studentId === studentId &&
+                            enrollment.courseId === course.id
+                    )
                     return (
                         <div className="course" key={course.id}>
                             <CheckboxContainer
                                 id={course.id}
                                 onChange={(e) => console.log(`Course ${course.id} clicked`)}
-                                checked={enrollments.some(
-                                    (enrollment) =>
-                                        enrollment.studentId === studentId &&
-                                        enrollment.courseId === course.id
-                                )}
+                                checked={isEnrolled}
                             />
                         </div>
                     );

@@ -18,21 +18,24 @@ const StudentColumn = () => {
       }).catch((error) => {
           console.log(error);
       });
+  }, []);
 
+  useEffect(() => {
     adminsService.getAllStudents()
       .then((response) => {
         setStudents(response.data);
       }).catch((error) => {
         console.log(error);
     });
+  }, []);
 
+  useEffect(() => {
     enrollmentsService.getAllEnrollments()
       .then((response) => {
         setEnrollments(response.data);
       }).catch((error) => {
         console.log(error);
     });
-
   }, []);
 
   // Handle delete icon click

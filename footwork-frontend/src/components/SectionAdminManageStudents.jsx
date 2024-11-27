@@ -5,9 +5,12 @@ import TitleWithArrow from './TitleWithArrow';
 import deleteIcon from '../assets/icons/delete-white.png';
 import PopUpAdminRequest from "./PopUpAdminRequest";
 
+import coursesService from '../services/courses';
+
 const SectionAdminManageStudents = ({onBack}) => {
     const [isMobile, setIsMobile] = useState(false);
     const [isPopupVisible, setIsPopupVisible] = useState(false);
+    const [courses, setCourses] = useState([]);
 
     // Handlers for opening and closing the popup
     const showPopup = () => setIsPopupVisible(true);
@@ -25,6 +28,14 @@ const SectionAdminManageStudents = ({onBack}) => {
             window.removeEventListener('resize', checkMobile);
         };
     }, []);
+
+    useEffect(() => {
+        coursesService.getAll().then((response) => {
+            setCourses(response.data);
+        }).catch((error) => {
+            console.error('Error:', error);
+        })
+    })
 
     // Structure for mobile
     if (isMobile) {
@@ -47,18 +58,11 @@ const SectionAdminManageStudents = ({onBack}) => {
                 <div className="contentContainer manageStudents">
                     <div className="headerRow">
                         <div className="courses">
-                            <div className="course">
-                                {/* ***TODO GIANLUCA GET NAME */}
-                                <h7>***Course 1</h7>
-                            </div>
-                            <div className="course">
-                                {/* ***TODO GIANLUCA GET NAME */}
-                                <h7>***Course 2</h7>
-                            </div>
-                            <div className="course">
-                                {/* ***TODO GIANLUCA GET NAME */}
-                                <h7>***Course 3</h7>
-                            </div>
+                            {courses.map((course) => (
+                                <div className="course" key={course.id}>
+                                    <h5>{course.name}</h5>
+                                </div>
+                            ))}
                         </div>
                         <div className="row right-aligned">
                             <img
@@ -99,19 +103,12 @@ const SectionAdminManageStudents = ({onBack}) => {
                         <h5>first name</h5>
                     </div>
                     <div className="courses">
-                        <div className="course">
-                            {/* ***TODO GIANLUCA GET NAME */}
-                            <h5>***Course 1</h5>
+                            {courses.map((course) => (
+                                <div className="course" key={course.id}>
+                                    <h5>{course.name}</h5>
+                                </div>
+                            ))}
                         </div>
-                        <div className="course">
-                            {/* ***TODO GIANLUCA GET NAME */}
-                            <h5>***Course 2</h5>
-                        </div>
-                        <div className="course">
-                            {/* ***TODO GIANLUCA GET NAME */}
-                            <h5>***Course 3</h5>
-                        </div>
-                    </div>
                     <div className="row right-aligned">
                         <h5>delete</h5>
                     </div>
