@@ -5,15 +5,18 @@ import TitleWithArrow from './TitleWithArrow'
 import PopUpAdd from "../components/PopUpAdd";
 import iconPlus from '../assets/icons/plus.png'
 import choreographiesService from '../services/choreographies'
+import coursesService from '../services/courses'
 
 const SectionAdminCourseChoreographies = ({
     onClick, 
     currentCourseId,
     onAddFolderClick,
-    onAddVideoClick
+    onAddVideoClick,
+    onBack,
 }) => {
     const [choreographies, setChoreographies] = useState([])
     const [isPopupVisible, setIsPopupVisible] = useState(false);
+    const [currentCourseName, setCurrentCourseName] = useState('')
 
     // Handlers for opening and closing the popup
     const showPopup = () => setIsPopupVisible(true);
@@ -36,13 +39,23 @@ const SectionAdminCourseChoreographies = ({
             })
     }, [])
 
+    useEffect(() => {
+        coursesService.getAll()
+            .then((response) => {
+                const course = response.data.find(course => course.id === currentCourseId)
+                setCurrentCourseName(course.name)
+            }).catch((error) => {
+                console.log(error)
+            })
+    })
+
     return (
         <div className="adminDashboard">
             <div className="headerContainer courseChoreographies">
                 <TitleWithArrow
-                    title = "***PLACEHOLDER"
+                    title = {currentCourseName}
                     subtitle = "Available dances in this class"
-                    /* ***TODO GIANLUCA PARSE BACK */
+                    onClick={onBack}
                 />
                 <Button 
                         text="Add folder or video"

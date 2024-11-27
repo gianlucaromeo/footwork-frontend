@@ -121,6 +121,7 @@ const AdminHomePage = () => {
                                 null,
                             )
                         }
+                        onBack={() => navigateTo(Page.ALL_COURSES)}
                     />
                 }
 
