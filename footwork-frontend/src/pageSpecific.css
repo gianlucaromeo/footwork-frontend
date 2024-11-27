@@ -107,6 +107,7 @@
     padding-bottom: 24px;
     margin: 0;
     gap: 0;
+    width: 100%;
 }
 .classesContainer {
     display: flex;
