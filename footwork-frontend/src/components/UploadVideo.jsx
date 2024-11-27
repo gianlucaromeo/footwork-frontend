@@ -24,16 +24,14 @@ const UploadVideo = ({ onFileUploaded }) => {
       style={{
         width: "400px",
         height: "300px",
-        border: "2px dashed #ccc",
         borderRadius: "10px",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
         position: "relative",
         cursor: "pointer",
-        backgroundColor: "#f9f9f9",
       }}
-      className="uploadContainer"
+      className={`uploadContainer ${videoUrl ? "selected" : ""}`}
       onClick={() => document.getElementById("videoInput").click()}
     >
       {!videoUrl && (
