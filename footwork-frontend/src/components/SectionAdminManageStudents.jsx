@@ -56,23 +56,25 @@ const SectionAdminManageStudents = ({onBack}) => {
                     </div>
                 </div>
                 <div className="contentContainer manageStudents">
-                    <div className="headerRow">
-                        <div className="courses">
-                            {courses.map((course) => (
-                                <div className="course" key={course.id}>
-                                    <h5>{course.name}</h5>
-                                </div>
-                            ))}
+                    <div class="rowContainer">
+                        <div className="headerRow">
+                            <div className="courses">
+                                {courses.map((course) => (
+                                    <div className="course" key={course.id}>
+                                        <h5>{course.name}</h5>
+                                    </div>
+                                ))}
+                            </div>
+                            <div className="row right-aligned">
+                                <img
+                                    src={deleteIcon}
+                                    alt="Delete"
+                                    style={{ width: "24px", height: "24px", visibility: "hidden" }}
+                                />
+                            </div>
                         </div>
-                        <div className="row right-aligned">
-                            <img
-                                src={deleteIcon}
-                                alt="Delete"
-                                style={{ width: "24px", height: "24px", visibility: "hidden" }}
-                            />
-                        </div>
+                        <StudentColumn />
                     </div>
-                    <StudentColumn />
                 </div>
                 {isPopupVisible && <PopUpAdminRequest onClose={hidePopup} />}
             </div>
@@ -95,25 +97,27 @@ const SectionAdminManageStudents = ({onBack}) => {
                 />
             </div>
             <div className="contentContainer manageStudents">
-                <div className="headerRow">
-                    <div className="row">
-                        <h5>last name</h5>
-                    </div>
-                    <div className="row">
-                        <h5>first name</h5>
-                    </div>
-                    <div className="courses">
-                            {courses.map((course) => (
-                                <div className="course" key={course.id}>
-                                    <h5>{course.name}</h5>
-                                </div>
-                            ))}
+                <div class="rowContainer">
+                    <div className="headerRow">
+                        <div className="row">
+                            <h5>last name</h5>
                         </div>
-                    <div className="row right-aligned">
-                        <h5>delete</h5>
+                        <div className="row">
+                            <h5>first name</h5>
+                        </div>
+                        <div className="courses">
+                                {courses.map((course) => (
+                                    <div className="course" key={course.id}>
+                                        <h5>{course.name}</h5>
+                                    </div>
+                                ))}
+                            </div>
+                        <div className="row right-aligned">
+                            <h5>delete</h5>
+                        </div>
                     </div>
+                    <StudentColumn />
                 </div>
-                <StudentColumn />
             </div>
             {isPopupVisible && <PopUpAdminRequest onClose={hidePopup} />}
         </div>

@@ -242,6 +242,7 @@
     align-self: stretch;
     height: 100%; /* Ensure it matches the height of adminHomepage */
     overflow: visible;
+    width: 100%;
 }
 .adminDashboard .headerContainer {
     display: flex;
@@ -327,6 +328,7 @@
     gap: 24px; 
     align-items: center;
     justify-content: space-between; 
+    width: 100%;
 }
 .headerContainer.courseChoreographies {
     height: 272px;
@@ -356,22 +358,34 @@
 }
 /*-----------------------------ManageStudents:-----------------------------*/
 .adminDashboard .contentContainer.manageStudents {
-    padding: 0px 48px;
-    gap: 24px;
-    width: 100%;
-    box-sizing: border-box; /* Ensure padding is included in width */
-    overflow-x: auto;
+    display: flex;
+    overflow-x: auto; 
+    overflow-y: hidden; 
+    padding-left: 48px; 
+}
+.contentContainer.manageStudents .rowContainer {
+    display: flex;
+    flex-direction: column; /* Stack rows vertically */
+    min-width: fit-content; /* Ensure the container adjusts to its content width */
+    width: max-content; /* Hug its content exactly */
+    overflow: visible; /* Allow child elements to render fully */
+    padding-right: 48px;
+    gap: 16px;
 }
 .contentContainer.manageStudents .headerRow {
     display: flex;
     flex-direction: row;
-    width: 100%; 
-    padding: 0px 16px 0px 16px;
+    align-items: center; /* Center items vertically */
+    padding: 0 16px; /* Consistent padding */
+    min-width: 100%; /* Allow each row to fill its container */
+    box-sizing: border-box; /* Include padding in width calculation */
 }
 .contentContainer.manageStudents .entryRow {
     display: flex;
     flex-direction: row;
-    width: 100%; 
+    align-items: center; /* Center items vertically */
+    min-width: 100%; /* Allow each row to fill its container */
+    box-sizing: border-box; /* Include padding in width calculation */
     padding: 24px 16px;
     background-color: var(--dark-green);
 }
@@ -381,9 +395,8 @@
 .contentContainer.manageStudents .headerRow .row,
 .contentContainer.manageStudents .entryRow .row {
     display: flex;
-    flex: 1 1 0;
     flex-direction: row;
-    min-width: 148px;
+    width: 200px;
     align-items: center;
     justify-content: flex-start; 
 }
@@ -392,6 +405,9 @@
     display: flex;
     align-items: center;
     gap: 16px;
+    flex-wrap: nowrap; /* Prevent wrapping of courses */
+    width: auto; /* Hug its content */
+    overflow: visible; /* Prevent clipping */
 }
 .courses .course {
     display: flex;
@@ -404,6 +420,7 @@
 }
 .contentContainer.manageStudents .headerRow .row.right-aligned,
 .contentContainer.manageStudents .entryRow .row.right-aligned {
+    width: 124px;
     justify-content: flex-end;
 }
 .row.right-aligned h5 {
