@@ -24,7 +24,7 @@ const SectionStudentProfile = ({onBack}) => {
             }).catch((error) => {
                 console.log(error);
             });
-    })
+    }, [])
 
     useEffect(() => {
         coursesService.getEnrolledCourses()
@@ -33,7 +33,7 @@ const SectionStudentProfile = ({onBack}) => {
             }).catch((error) => {
                 console.log(error);
             });
-    })
+    }, [])
 
     return (
         <div className="studentProfile">

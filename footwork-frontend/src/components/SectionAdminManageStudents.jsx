@@ -35,7 +35,7 @@ const SectionAdminManageStudents = ({onBack}) => {
         }).catch((error) => {
             console.error('Error:', error);
         })
-    })
+    }, [])
 
     // Structure for mobile
     if (isMobile) {
