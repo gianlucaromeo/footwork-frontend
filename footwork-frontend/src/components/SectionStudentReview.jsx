@@ -3,7 +3,7 @@ const SectionStudentReview = () => {
     return (
             <div className="reviewContainer">
                 <div className="titleSubtitle review">
-                    <h2>Welcome ***NAME</h2>
+                    <h2>Welcome!</h2>
                     <p>Your account is under review by a teacher</p>
                 </div>
                 <div className="notification">

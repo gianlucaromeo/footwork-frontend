@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import NavbarProfile from '../components/NavbarProfile';
 import SectionStudentProfile from '../components/SectionStudentProfile';
+import SectionStudentReview from '../components/SectionStudentReview';
 
 const Page = {
     HOME: 'home',
@@ -37,7 +38,7 @@ const StudentUnverifiedPage = () => {
         <div>
             <NavbarProfile onClick={() => navigateTo(Page.PROFILE)} />
             <div className="studentHomepage">
-                {currentPage === Page.HOME && <div>***HOME WAITING TODO</div>}
+                {currentPage === Page.HOME && <SectionStudentReview/>}
 
                 {currentPage === Page.PROFILE && <SectionStudentProfile 
                     onBack={() => navigateTo(Page.HOME)}
