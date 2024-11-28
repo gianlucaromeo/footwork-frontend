@@ -30,9 +30,26 @@ const createCourse = async (fileName, folderName, coverImage) => {
     })
 }
 
+const updateCourse = async (courseId, fileName, folderName, coverImage) => {
+    const token = currentUser.getToken();
+
+    const formData = new FormData();
+    formData.append('name', fileName)
+    formData.append('folder', folderName)
+    formData.append('coverImage', coverImage)
+
+    return helper.doPut(`${helper.updateCourseEndpoint}/${courseId}`, formData, {
+        headers: {
+            Authorization: token,
+            'Content-Type': 'multipart/form-data', // Important for file upload
+        },
+    })
+}
+
 
 export default {
     getAll,
     getEnrolledCourses,
     createCourse,
+    updateCourse,
 }

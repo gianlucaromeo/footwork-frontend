@@ -29,6 +29,7 @@ const deleteStudentAccountEndpoint = `${studentsEndpoint}/`
 const getAllCoursesEndpoint = `${coursesEndpoint}/all`
 const getEnrolledCoursesEndpoint = `${coursesEndpoint}/student/all`
 const createCourseEndpoint = `${coursesEndpoint}/`
+const updateCourseEndpoint = `${coursesEndpoint}/`
 
 /* CHOREOGRAPHIES */
 const getChoreographiesEndpoint = `${choreographiesEndpoint}/admin/all`
@@ -82,6 +83,7 @@ export default {
     getAllCoursesEndpoint,
     getEnrolledCoursesEndpoint,
     createCourseEndpoint,
+    updateCourseEndpoint,
 
     /* CHOREOGRAPHIES */
     getChoreographiesEndpoint,

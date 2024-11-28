@@ -74,7 +74,7 @@ const SectionAdminEditFolder = ({
         navigate(-1);
     };
 
-    const handleCreateCourse = async () => {
+    const handleUpdateCourse = async () => {
         if (!courseImage || !title) {
             alert("Please provide a title and upload an image.");
             return;
@@ -85,11 +85,16 @@ const SectionAdminEditFolder = ({
         const coverImage = courseImage;
     
         try {
-            await coursesService.createCourse(fileName, folderName, coverImage);
-            console.log("Course edited successfully!");
+            await coursesService.updateCourse(
+                courseId, 
+                fileName, 
+                folderName, 
+                coverImage
+            );
+            console.log("Course updated successfully!");
             navigate(-1); // Go back to the previous page
         } catch (error) {
-            console.error("Error editing course:", error);
+            console.error("Error updating course:", error);
             alert("An error occurred. Please try again.");
         }
     };
@@ -170,7 +175,7 @@ const SectionAdminEditFolder = ({
                                     onClick={() =>
                                         isCourse
                                         /* ***TODO: handleEditCourse()? */
-                                            ? handleCreateCourse()
+                                            ? handleUpdateCourse()
                                             : handleCreateChoreography()
                                     }
                                     disabled={
@@ -205,7 +210,7 @@ const SectionAdminEditFolder = ({
                                     onClick={() =>
                                         isCourse
                                          /* ***TODO: handleEditCourse()? */
-                                            ? handleCreateCourse()
+                                            ? handleUpdateCourse()
                                             : handleCreateChoreography()
                                     }
                                     disabled={
