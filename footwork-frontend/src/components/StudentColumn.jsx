@@ -20,13 +20,18 @@ const StudentColumn = () => {
       });
   }, []);
 
-  useEffect(() => {
+
+  const fetchStudents = () => {
     adminsService.getAllStudents()
       .then((response) => {
         setStudents(response.data);
       }).catch((error) => {
         console.log(error);
     });
+  }
+
+  useEffect(() => {
+    fetchStudents()
   }, []);
 
   const fetchEnrollments = () => {
@@ -43,9 +48,15 @@ const StudentColumn = () => {
   }, []);
 
   // Handle delete icon click
-  const handleDelete = (id) => {
-    console.log(`Delete Student ${id}`);
-    setStudents(students.filter((student) => student.id !== id)); // Remove student from the list
+  const handleDelete = (studentId) => {
+    adminsService.deleteStudentAccount(studentId)
+        .then(() => {
+            console.log(`Deleted student ${studentId}`);
+            fetchStudents();
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
   };
 
   const handleOnCourseChange = (studentId, courseId, checked) => {
@@ -78,6 +89,7 @@ const StudentColumn = () => {
           courses={courses}
           enrollments={enrollments}
           onCoursesChange={handleOnCourseChange}
+          onDelete={handleDelete}
         />
       ))}
     </div>

@@ -4,6 +4,8 @@ import deleteIcon from '../assets/icons/delete-white.png';
 import CheckboxContainer from './CheckboxContainer';
 import PopUpDelete from "../components/PopUpDelete";
 
+import adminsService from '../services/admins';
+
 const StudentRow = ({
     index, // for determining whether it is an even or uneven number for colouring the bg
     studentId,
@@ -12,6 +14,7 @@ const StudentRow = ({
     courses,
     enrollments,
     onCoursesChange,
+    onDelete,
 }) => {
     const [isPopupVisible, setIsPopupVisible] = useState(false);
 
@@ -101,6 +104,10 @@ const StudentRow = ({
                     onClose={hidePopup} 
                     title = "Student"
                     text={`Are you sure you want to delete the student: ${lastName}, ${firstName}?`}
+                    onDelete={() => {
+                        onDelete(studentId);
+                        hidePopup();
+                    }}
                 />}
         </div>
     );

@@ -3,7 +3,7 @@ import Button from "./Button";
 import TrashIcon from "../assets/icons/delete-white.png"
 
 const PopUpDelete = ({ 
-    onClick, // what should happen onDelete?
+    onDelete, // what should happen onDelete?
     onClose,
     title, 
     text
@@ -25,7 +25,7 @@ const PopUpDelete = ({
                         text="delete"
                         className="btn-text m"
                         iconName={TrashIcon}
-                        onClick={onClick}
+                        onClick={onDelete}
                     />
                 </div>
             </div>

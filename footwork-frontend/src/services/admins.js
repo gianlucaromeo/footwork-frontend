@@ -63,6 +63,14 @@ const deleteOwnAccount = async () => {
     })
 }
 
+const deleteStudentAccount = async (studentId) => {
+    return helper.doDelete(`${helper.deleteStudentAccountFromAdminEndpoint}/${studentId}`, {}, {
+        headers: {
+            Authorization: currentUserService.getToken(),
+        }
+    })
+}
+
 export default {
     login,
     create,
@@ -71,4 +79,5 @@ export default {
     getProfile,
     verifyStudent,
     deleteOwnAccount,
+    deleteStudentAccount,
 }
