@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import CardTitleInfo from "./CardTitleInfo";
 import Button from "./Button";
 import CheckboxContainer from "./CheckboxContainer";
+import PopUpDelete from "../components/PopUpDelete";
 
 import adminsService from "../services/admins";
 
@@ -13,6 +14,18 @@ const CardRequest = ({
     onStudentVerified,
     onDeny,
 }) => {
+
+    const [popupVisibility, setPopupVisibility] = useState({});
+
+    // Handlers for opening and closing the popup for a specific student
+    const showPopup = (studentId) => {
+        setPopupVisibility((prev) => ({ ...prev, [studentId]: true }));
+    };
+
+    const hidePopup = (studentId) => {
+        setPopupVisibility((prev) => ({ ...prev, [studentId]: false }));
+    };
+
     return(
         <div className="scrollingRequests">
             {students.map((student) => (
@@ -49,7 +62,9 @@ const CardRequest = ({
                             <Button 
                                 className="btn-text s"
                                 text="Deny"
-                                onClick={() => onDeny(student.id)}
+                                onClick={() => showPopup(student.id)}
+                                // onClick={() => onDeny(student.id)}
+                                
                             />
                             <Button 
                                 className="btn-primary s"
@@ -58,6 +73,17 @@ const CardRequest = ({
                             />
                         </div>
                     </div>
+                    {popupVisibility[student.id] && 
+                        <PopUpDelete 
+                            key={`${student.id}-deny-popup`}
+                            onClose={() => hidePopup(student.id)} 
+                            title="Deny"
+                            text={`Are you sure you want to deny and delete the student: ${student.lastName}, ${student.firstName}?`}
+                            onDelete={() => {
+                                onDeny(student.id);
+                                hidePopup(student.id);
+                            }}
+                        />}
                 </React.Fragment>
             ))}
         </div>
