@@ -78,7 +78,7 @@ const CoursesOptions = ({
         {courses.map(course => (
           <CheckboxContainer
             key={`${studentId}-${course.id}`}
-            id={course.id}
+            id={`${studentId}-${course.id}`}
             label={course.name}
             checked={selectedCoursesIds.includes(course.id)}
             onChange={checked => onChange(course.id, checked)}
