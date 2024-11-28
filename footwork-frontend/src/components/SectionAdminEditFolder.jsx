@@ -5,6 +5,7 @@ import TitleWithArrow from './TitleWithArrow'
 import UploadPicture from './UploadPicture'
 import InputField from './InputField'
 import deleteIcon from '../assets/icons/delete-white.png'
+import PopUpDelete from "../components/PopUpDelete";
 
 import coursesService from '../services/courses'
 import choreographiesService from '../services/choreographies'
@@ -19,6 +20,11 @@ const SectionAdminEditFolder = ({
     const [isCourse, setIsCourse] = useState(true); // If false, it's a dance
     const [title, setTitle] = useState("");
     const [titleState, setTitleState] = useState("default"); // State for validation
+    const [isPopupVisible, setIsPopupVisible] = useState(false);
+
+    // Handlers for opening and closing the popup
+    const showPopup = () => setIsPopupVisible(true);
+    const hidePopup = () => setIsPopupVisible(false);
 
     const handleTitleBlur = () => {
         if (!title.trim()) {
@@ -140,7 +146,7 @@ const SectionAdminEditFolder = ({
                                         className="btn-text s"
                                         text="delete"
                                         iconName={deleteIcon}
-                                        /* ***TODO: onClick={} delete */
+                                        onClick={showPopup}
                                 />
                             </>
                         ) : (
@@ -149,7 +155,7 @@ const SectionAdminEditFolder = ({
                                     className="btn-text s"
                                     text="delete"
                                     iconName={deleteIcon}
-                                    /* ***TODO: onClick={} delete */
+                                    onClick={showPopup}
                                 />
                                 <Button
                                     className="btn-text s"
@@ -176,6 +182,14 @@ const SectionAdminEditFolder = ({
                     </div>
                 </div>
             </div>
+            {isPopupVisible && 
+                <PopUpDelete 
+                    onClose={hidePopup} 
+                    title = "Delete Folder?"
+                    text={`Are you sure you want to delete the whole folder?`}
+                    /* ***TODO: onDelete Folder? */
+                    onDelete={() => {}}
+                />}
         </div>
     );
 }
