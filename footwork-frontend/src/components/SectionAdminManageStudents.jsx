@@ -5,15 +5,26 @@ import TitleWithArrow from './TitleWithArrow';
 import PopUpAdminRequest from "./PopUpAdminRequest";
 
 import coursesService from '../services/courses';
+import adminsService from '../services/admins';
 
 const SectionAdminManageStudents = ({onBack}) => {
     const [isMobile, setIsMobile] = useState(false);
     const [isPopupVisible, setIsPopupVisible] = useState(false);
     const [courses, setCourses] = useState([]);
-
+    const [unverifiedStudents, setUnverifiedStudents] = useState([]);
     // Handlers for opening and closing the popup
     const showPopup = () => setIsPopupVisible(true);
     const hidePopup = () => setIsPopupVisible(false);
+
+    useEffect(() => {
+        adminsService.getAllStudents().then((response) => {
+            setUnverifiedStudents(response.data.filter(student => 
+                !student.verifiedByAdmin
+            ));
+        }).catch((error) => {
+            console.error('Error:', error);
+        })
+    }, [])
 
     // Detect screen size and set `isMobile`
     useEffect(() => {
@@ -28,12 +39,18 @@ const SectionAdminManageStudents = ({onBack}) => {
         };
     }, []);
 
-    useEffect(() => {
-        coursesService.getAll().then((response) => {
-            setCourses(response.data);
+    const fetchUnverifiedStudents = () => {
+        adminsService.getAllStudents().then((response) => {
+            setUnverifiedStudents(response.data.filter(student => 
+                !student.verifiedByAdmin
+            ));
         }).catch((error) => {
             console.error('Error:', error);
         })
+    }
+
+    useEffect(() => {
+        fetchUnverifiedStudents();
     }, [])
 
     // Structure for mobile
@@ -47,11 +64,12 @@ const SectionAdminManageStudents = ({onBack}) => {
                     />
                     <div className="buttonContainer">
                         <Button 
-                            /* ***TODO Add number of requests, if 0 then button disabled 
-                            
-                            > Gianluca: let's leave this for now, we can add it later
-                            */
-                            text="Requests"
+                            text={
+                                unverifiedStudents.length > 0 ?
+                                `Requests (${unverifiedStudents.length})` :
+                                "Requests"
+                            }
+                            disabled={unverifiedStudents.length === 0}
                             onClick={showPopup}
                             className="btn-primary s"
                         />
@@ -79,7 +97,10 @@ const SectionAdminManageStudents = ({onBack}) => {
                         {!isPopupVisible && <StudentColumn />}
                     </div>
                 </div>
-                {isPopupVisible && <PopUpAdminRequest onClose={hidePopup} />}
+                {isPopupVisible && <PopUpAdminRequest onClose={() => {
+                    hidePopup();
+                    fetchUnverifiedStudents();
+                }} />}
             </div>
         );
     }
@@ -93,11 +114,12 @@ const SectionAdminManageStudents = ({onBack}) => {
                     onClick={onBack}
                 />
                 <Button 
-                    /* ***TODO Add number of requests, if 0 then button disabled  
-                    
-                    > Gianluca: let's leave this for now, we can add it later
-                            */
-                            text="Requests"
+                    text={
+                        unverifiedStudents.length > 0 ?
+                        `Requests (${unverifiedStudents.length})` :
+                        "Requests"
+                    }
+                    disabled={unverifiedStudents.length === 0}
                     onClick={showPopup}
                     className="btn-primary s"
                 />
@@ -130,7 +152,10 @@ const SectionAdminManageStudents = ({onBack}) => {
                     {!isPopupVisible && <StudentColumn />}
                 </div>
             </div>
-            {isPopupVisible && <PopUpAdminRequest onClose={hidePopup} />}
+            {isPopupVisible && <PopUpAdminRequest onClose={() => {
+                hidePopup();
+                fetchUnverifiedStudents();
+            }} />}
         </div>
     )
 }
