@@ -5,12 +5,12 @@ import TitleWithArrow from './TitleWithArrow'
 import UploadPicture from './UploadPicture'
 import InputField from './InputField'
 import deleteIcon from '../assets/icons/delete-white.png'
-import PopUpDelete from "../components/PopUpDelete";
-import PopUpDiscard from "../components/PopUpDiscard";
+import PopUpDelete from "./PopUpDelete";
+import PopUpDiscard from "./PopUpDiscard";
 
 import coursesService from '../services/courses'
 
-const SectionAdminEditFolder = ({
+const SectionAdminEditCourse = ({
     courseId,
 }) => {
     const navigate = useNavigate();
@@ -201,4 +201,4 @@ const SectionAdminEditFolder = ({
     );
 }
 
-export default SectionAdminEditFolder
+export default SectionAdminEditCourse

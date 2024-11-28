@@ -10,7 +10,7 @@ import SectionAdminProfile from '../components/SectionAdminProfile'
 import SectionAdminAddingFolder from '../components/SectionAdminAddingFolder'
 import SectionAdminAddingVideo from '../components/SectionAdminAddingVideo'
 import SectionAdminManageStudents from '../components/SectionAdminManageStudents'
-import SectionAdminEditFolder from '../components/SectionAdminEditFolder'
+import SectionAdminEditCourse from '../components/SectionAdminEditCourse'
 import SectionAdminEditChoreography from '../components/SectionAdminEditChoreography'
 
 const Page = {
@@ -112,7 +112,7 @@ const AdminHomePage = () => {
                 {currentPage === Page.ADD_VIDEO && <SectionAdminAddingVideo/>}
 
                 {currentPage === Page.EDIT_FOLDER && 
-                    <SectionAdminEditFolder courseId={currentCourseId}/>
+                    <SectionAdminEditCourse courseId={currentCourseId}/>
                 }
 
                 {currentPage === Page.EDIT_CHOREOGRAPHY &&
