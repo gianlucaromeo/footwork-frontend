@@ -79,7 +79,9 @@ const StudentColumn = () => {
 
   return (
     <div style={{ width: "100%"}}>
-      {students.map((student, index) => (
+      {students
+      .filter(student => student.verifiedByAdmin)
+      .map((student, index) => (
         <StudentRow
           key={student.id}
           index={index}
