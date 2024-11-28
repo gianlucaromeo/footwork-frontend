@@ -26,6 +26,14 @@ const SectionAdminManageStudents = ({onBack}) => {
         })
     }, [])
 
+    useEffect(() => {
+        coursesService.getAll().then((response) => {
+            setCourses(response.data);
+        }).catch((error) => {
+            console.error('Error:', error);
+        })
+    }, [])
+
     // Detect screen size and set `isMobile`
     useEffect(() => {
         const checkMobile = () => {
