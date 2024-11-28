@@ -58,21 +58,23 @@ const SectionStudentChoreographyVideos = ({
                     onClick = {onBack}
                 />
             </div>
-            <div className="tableContainer">
-                {/* Only render headerRow if not mobile */}
-                {!isMobile && (
-                    <div className="headerRow">
-                        <div className="Nr">
-                            <h4 className="center">Nr</h4>
+            <div className="centerTable">
+                <div className="tableContainer">
+                    {/* Only render headerRow if not mobile */}
+                    {!isMobile && (
+                        <div className="headerRow">
+                            <div className="Nr">
+                                <h4 className="center">Nr</h4>
+                            </div>
+                            <h4 className="Video">Video</h4>
+                            <h4>Title</h4>
                         </div>
-                        <h4 className="Video">Video</h4>
-                        <h4>Title</h4>
-                    </div>
-                )}
-                <VideoColumn
-                    videos={videos}
-                    onVideoRowClicked={(videoId) => { }} // TODO
-                />
+                    )}
+                    <VideoColumn
+                        videos={videos}
+                        onVideoRowClicked={(videoId) => { }} // TODO
+                    />
+                </div>
             </div>
         </div>
     )
