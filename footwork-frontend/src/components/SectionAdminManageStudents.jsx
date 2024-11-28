@@ -69,7 +69,12 @@ const SectionAdminManageStudents = ({onBack}) => {
                                 <h5>delete</h5>
                             </div>
                         </div>
-                        <StudentColumn />
+                        {
+                         /* TODO Fix bug: if popup is visible, the onChange
+                            of CardRequest doesn't work and React uses the 
+                            one from StudentColumn > StudentRow */
+                        }
+                        {!isPopupVisible && <StudentColumn />}
                     </div>
                 </div>
                 {isPopupVisible && <PopUpAdminRequest onClose={hidePopup} />}
@@ -112,7 +117,12 @@ const SectionAdminManageStudents = ({onBack}) => {
                             <h5>delete</h5>
                         </div>
                     </div>
-                    <StudentColumn />
+                    {
+                         /* TODO Fix bug: if popup is visible, the onChange
+                            of CardRequest doesn't work and React uses the 
+                            one from StudentColumn > StudentRow */
+                    }
+                    {!isPopupVisible && <StudentColumn />}
                 </div>
             </div>
             {isPopupVisible && <PopUpAdminRequest onClose={hidePopup} />}

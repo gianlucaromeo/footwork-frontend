@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import CardTitleInfo from "./CardTitleInfo";
 import Button from "./Button";
 import CheckboxContainer from "./CheckboxContainer";
@@ -23,7 +23,9 @@ const CardRequest = ({students, enrollments, courses}) => {
                             <div className="coursesContainer">
                                 <h5>Courses</h5>
                                 <CoursesOptions
-                                    onSelectedCoursesChanged={() => {}}
+                                    onChange={(courseId, checked) => {
+                                        console.log(courseId, checked);
+                                    }}
                                     courses={courses}
                                     selectedCoursesIds={enrollments.filter(enrollment => enrollment.studentId === student.id).map(enrollment => enrollment.courseId)}
                                     studentId={student.id}
@@ -49,7 +51,7 @@ const CardRequest = ({students, enrollments, courses}) => {
 
 const CoursesOptions = ({ 
     studentId,
-    onSelectedCoursesChanged,
+    onChange,
     courses,
     selectedCoursesIds,
     title,
@@ -67,7 +69,7 @@ const CoursesOptions = ({
             id={course.id}
             label={course.name}
             checked={selectedCoursesIds.includes(course.id)}
-            onChange={(checked) => onSelectedCoursesChanged(course.id, checked)} // Directly notify parent
+            onChange={checked => onChange(course.id, checked)}
           />
         ))}
       </div>
