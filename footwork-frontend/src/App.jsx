@@ -61,7 +61,7 @@ const ProtectedRouteAuthentication = ({ element }) => {
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<AuthenticationPage />} />
+      <Route path="/" element={<ProtectedRouteAuthentication element={<AuthenticationPage />} />} />
       <Route path="/login" element={<ProtectedRouteAuthentication element={<LoginPage />} />} />
       <Route path="/registration" element={<ProtectedRouteAuthentication element={<RegistrationPage />} />} />
       <Route path="/verify" element={<VerifyEmailPage />} />
