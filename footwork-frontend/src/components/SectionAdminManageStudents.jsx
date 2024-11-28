@@ -66,11 +66,7 @@ const SectionAdminManageStudents = ({onBack}) => {
                                 ))}
                             </div>
                             <div className="row right-aligned">
-                                <img
-                                    src={deleteIcon}
-                                    alt="Delete"
-                                    style={{ width: "24px", height: "24px", visibility: "hidden" }}
-                                />
+                                <h5>delete</h5>
                             </div>
                         </div>
                         <StudentColumn />
