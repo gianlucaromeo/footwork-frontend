@@ -1,3 +1,10 @@
+import { useEffect, useState } from "react";
+import Button from './Button';
+import CardRequest from "./CardRequest";
+import adminsService from '../services/admins';
+import enrollmentsService from "../services/enrollments";
+import coursesService from "../services/courses";
+
 const PopUpAdminRequest = ({ onClose }) => {
     const [unverifiedStudents, setUnverifiedStudents] = useState([]);
     const [enrolledCourses, setEnrolledCourses] = useState([]);
@@ -72,6 +79,17 @@ const PopUpAdminRequest = ({ onClose }) => {
         updateEnrollments();
     }
 
+    const handleStudentVerifiedByAdmin = (studentId) => {
+        adminsService.verifyStudent(studentId)
+            .then(() => {
+                console.log('Student verified');
+                fetchAllStudents(); // Re-fetch students after successful verification
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+    }
+
     return (
         <div className="popupOverlay" onClick={onClose}>
             <div className="popupContainer userRequest" onClick={(e) => e.stopPropagation()}>
@@ -88,8 +106,11 @@ const PopUpAdminRequest = ({ onClose }) => {
                     enrollments={enrolledCourses}
                     courses={courses}
                     onEnrollmentChanged={handleOnEnrollmentsChange}
+                    onStudentVerified={handleStudentVerifiedByAdmin}
                 />
             </div>
         </div>
     );
 };
+
+export default PopUpAdminRequest;

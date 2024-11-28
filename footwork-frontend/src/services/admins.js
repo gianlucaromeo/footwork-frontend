@@ -46,10 +46,20 @@ const getProfile = async () => {
     })
 }
 
+const verifyStudent = async (studentId) => {
+    return helper.doPut(`${helper.verifyStudentEndpoint}/${studentId}`, {
+    }, {
+        headers: {
+            Authorization: currentUserService.getToken(),
+        }
+    })
+}
+
 export default {
     login,
     create,
     getAllVideos,
     getAllStudents,
     getProfile,
+    verifyStudent,
 }

@@ -14,6 +14,7 @@ const videosEndpoint = `${baseUrl}/videos`
 const loginAdminEndpoint = `${loginEndpoint}/admin/`
 const createAdminEndpoint = `${adminsEndpoint}/`
 const adminProfileEndpoint = `${adminsEndpoint}/profile`
+const verifyStudentEndpoint = `${adminsEndpoint}/student/verify`
 
 /* STUDENT */
 const loginStudentEndpoint = `${loginEndpoint}/student/`
@@ -52,6 +53,10 @@ const doGet = async (url, config) => {
 const doDelete = async (url, data, config) => {
   return axios.delete(url, { data, ...config });
 }
+
+const doPut = async (url, data, config) => {
+  return axios.put(url, data, config);
+}
     
 
 export default {
@@ -59,6 +64,7 @@ export default {
     loginAdminEndpoint,
     createAdminEndpoint,
     adminProfileEndpoint,
+    verifyStudentEndpoint,
 
     /* STUDENT */
     loginStudentEndpoint,
@@ -89,4 +95,5 @@ export default {
     doPost,
     doGet,
     doDelete,
+    doPut,
 }

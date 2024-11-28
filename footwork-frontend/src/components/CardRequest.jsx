@@ -3,7 +3,13 @@ import CardTitleInfo from "./CardTitleInfo";
 import Button from "./Button";
 import CheckboxContainer from "./CheckboxContainer";
 
-const CardRequest = ({students, enrollments, courses, onEnrollmentChanged}) => {
+const CardRequest = ({
+    students,
+    enrollments, 
+    courses, 
+    onEnrollmentChanged,
+    onStudentVerified,
+}) => {
 
     return(
         <div className="scrollingRequests">
@@ -45,6 +51,7 @@ const CardRequest = ({students, enrollments, courses, onEnrollmentChanged}) => {
                             <Button 
                                 className="btn-primary s"
                                 text="Confirm"
+                                onClick={() => onStudentVerified(student.id)}
                             />
                         </div>
                     </div>
