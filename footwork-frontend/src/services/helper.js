@@ -15,6 +15,7 @@ const loginAdminEndpoint = `${loginEndpoint}/admin/`
 const createAdminEndpoint = `${adminsEndpoint}/`
 const adminProfileEndpoint = `${adminsEndpoint}/profile`
 const verifyStudentEndpoint = `${adminsEndpoint}/student/verify`
+const deleteAdminAccountEndpoint = `${adminsEndpoint}/`
 
 /* STUDENT */
 const loginStudentEndpoint = `${loginEndpoint}/student/`
@@ -65,6 +66,7 @@ export default {
     createAdminEndpoint,
     adminProfileEndpoint,
     verifyStudentEndpoint,
+    deleteAdminAccountEndpoint,
 
     /* STUDENT */
     loginStudentEndpoint,

@@ -44,6 +44,14 @@ const SectionAdminProfile = () => {
                     iconName ={deleteIcon}
                     className="btn-text s"
                     text="Delete Account"
+                    onClick={() => {
+                        adminsService.deleteOwnAccount().then(() => {
+                            currentUserService.clearUser()
+                            navigate("/login")
+                        }).catch((error) => {
+                            console.error('Error:', error)
+                        })
+                    }}
                 />
                 <Button 
                     className="btn-primary s"
