@@ -600,3 +600,11 @@
         flex-direction: column;
     }
 }
+
+.marked {
+    display: flex;
+    flex-direction: column;
+    color: var(--neon-green);
+    font-weight: var(--weight-semibold);
+    gap: 16px;
+}

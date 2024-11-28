@@ -6,6 +6,7 @@ import CardInformation from './CardInformation';
 import TitleWithArrow from './TitleWithArrow';
 import Button from './Button';
 import deleteIcon from '../assets/icons/delete-white.png';
+import PopUpDelete from "../components/PopUpDelete";
 
 import studentsService from '../services/students';
 import coursesService from '../services/courses';
@@ -16,6 +17,12 @@ const SectionStudentProfile = ({onBack}) => {
     const [enrolledCourses, setEnrolledCourses] = useState([]);
 
     const navigate = useNavigate();
+
+    const [isPopupVisible, setIsPopupVisible] = useState(false);
+
+    // Handlers for opening and closing the popup
+    const showPopup = () => setIsPopupVisible(true);
+    const hidePopup = () => setIsPopupVisible(false);
 
     useEffect(() => {
         studentsService.getProfile()
@@ -56,14 +63,7 @@ const SectionStudentProfile = ({onBack}) => {
                     iconName ={deleteIcon}
                     className="btn-text s"
                     text="Delete Account"
-                    onClick={() => {
-                        studentsService.deleteOwnAccount().then(() => {
-                            currentUserService.clearUser()
-                            navigate("/login")
-                        }).catch((error) => {
-                            console.error('Error:', error)
-                        })
-                    }}
+                    onClick={showPopup}
                 />
                 <Button 
                     className="btn-primary s"
@@ -74,6 +74,20 @@ const SectionStudentProfile = ({onBack}) => {
                     }}
                 />
             </div>
+            {isPopupVisible && 
+                <PopUpDelete 
+                    onClose={hidePopup} 
+                    title = "Account?"
+                    text={`Are you sure you want to delete your account?`}
+                    onDelete={() => {
+                        studentsService.deleteOwnAccount().then(() => {
+                            currentUserService.clearUser()
+                            navigate("/login")
+                        }).catch((error) => {
+                            console.error('Error:', error)
+                        })
+                    }}
+                />}
         </div>
     )
 }

@@ -10,6 +10,10 @@ const CardCoursesStudentProfile = ({ showRequestButton = true }) => {
     const [enrolledCourses, setEnrolledCourses] = useState([]);
     const [selectedCoursesIds, setSelectedCoursesIds] = useState([]);
 
+    const selectedCourseNames = allCourses
+        .filter(course => selectedCoursesIds.includes(course.id)) // Filter courses by selected IDs
+        .map(course => course.name); // Map to get only the course names
+
     const [isMobile, setIsMobile] = useState(false);
     // State to track checkbox states
     const [checkboxStates, setCheckboxStates] = useState({
@@ -74,25 +78,25 @@ const CardCoursesStudentProfile = ({ showRequestButton = true }) => {
         <div className="card">
             {isMobile ? (
                 <>
-                    {/* Button container first for mobile */}
+                    {/* Button container first for mobile 
                     {showRequestButton && (
                         <div className="buttonContainer">
                             <Button 
                                 className="btn-primary xs"
                                 disabled={!isAnyCheckboxChecked || buttonText === "Request Sent"}
                                 text={buttonText}
-                                /*  TODO !!!!!!!!!!!!!!!!!!!!!!!!!!! */
+                                //  TODO !!!!!!!!!!!!!!!!!!!!!!!!!!!
                                 onClick={handleRequestAccess} 
                             />
                         </div>
-                    )}
+                    )} */}
                     <div className="coursesContainer">
                         <h4>Courses</h4>
-                        <CoursesOptions
-                            courses={allCourses}
-                            selectedCoursesIds={selectedCoursesIds}
-                            onSelectedCoursesChanged={handleCheckboxChange}
-                            />
+                        <div className="marked">
+                            {selectedCourseNames.map((name, index) => (
+                                <div key={index}>{name}</div> // Render each selected course name
+                            ))}
+                        </div>
                     </div>
                 </>
             ) : (
@@ -100,23 +104,32 @@ const CardCoursesStudentProfile = ({ showRequestButton = true }) => {
                     {/* Courses container first for desktop */}
                     <div className="coursesContainer">
                         <h4>Courses</h4>
+                        <div className="marked">
+                            {selectedCourseNames.map((name, index) => (
+                                <div key={index}>{name}</div> // Render each selected course name
+                            ))}
+                        </div>
+                        {/* OLD CODE
                         <CoursesOptions
                             courses={allCourses}
                             selectedCoursesIds={selectedCoursesIds}
+                            // TODO no checkboxes, just green enrolled courses
                             onSelectedCoursesChanged={handleCheckboxChange}
                             />
+                            */}
                     </div>
+                    {/*
                     {showRequestButton && (
                         <div className="buttonContainer">
                             <Button 
                                 className="btn-text s"
                                 disabled={!isAnyCheckboxChecked || buttonText === "Request Sent"}
                                 text={buttonText}
-                                /*  TODO !!!!!!!!!!!!!!!!!!!!!!!!!!! */
+                                //  TODO !!!!!!!!!!!!!!!!!!!!!!!!!!! 
                                 onClick={handleRequestAccess} 
                             />
                         </div>
-                    )}
+                    )} */}
                 </>
             )}
         </div>
