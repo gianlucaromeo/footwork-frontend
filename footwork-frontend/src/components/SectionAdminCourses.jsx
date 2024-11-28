@@ -88,7 +88,7 @@ const SectionAdminCourses = ({
                                 imageUrl={course.imageUrl}
                                 text={course.name}
                                 onClick={() => onCourseClick(course.id)}
-                                onEditFolderClick={onEditFolderClick}
+                                onEditFolderClick={() => onEditFolderClick(course.id)}
                             />
                         ))}
                     </div>

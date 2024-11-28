@@ -1,10 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import uploadIcon from "../assets/icons/upload.png"; // Upload icon
 
-const UploadPicture = ( {onFileUploaded }) => {
-  const [imageFile, setImageFile] = useState(null); 
+const UploadPicture = ( {onFileUploaded, initialImage}) => {
+  const [imageFile, setImageFile] = useState(null);
   const [imageUrl, setImageUrl] = useState("");
   const [error, setError] = useState("");
+
+  useEffect(() => {
+    if (initialImage && initialImage instanceof File) {
+      setImageFile(initialImage);
+      setImageUrl(URL.createObjectURL(initialImage));
+    }
+  }, [initialImage])
 
   const handleFileUpload = (event) => {
     const file = event.target.files[0];
@@ -14,7 +21,6 @@ const UploadPicture = ( {onFileUploaded }) => {
       setImageUrl(URL.createObjectURL(file)); 
       setError("");
       onFileUploaded(file);
-      console.log(file.type)
     } else {
       setError("Please upload a valid image file."); // Set an error message
     }

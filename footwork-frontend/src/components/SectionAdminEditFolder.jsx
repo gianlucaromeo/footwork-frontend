@@ -10,16 +10,18 @@ import PopUpDiscard from "../components/PopUpDiscard";
 
 import coursesService from '../services/courses'
 import choreographiesService from '../services/choreographies'
+import courses from "../services/courses";
 
 const SectionAdminEditFolder = ({
-    onClick
+    onClick,
+    courseId,
 }) => {
     const navigate = useNavigate();
     const [isMobile, setIsMobile] = useState(false);
 
     const [courseImage, setCourseImage] = useState(null);
     const [isCourse, setIsCourse] = useState(true); // If false, it's a dance
-    const [title, setTitle] = useState("");
+    const [title, setTitle] = useState(""); // Title of the folder
     const [titleState, setTitleState] = useState("default"); // State for validation
 
     const [isPopupVisible, setIsPopupVisible] = useState(false);
@@ -31,6 +33,34 @@ const SectionAdminEditFolder = ({
 
     const showCancelPopup = () => setIsCancelPopupVisible(true);
     const hideCancelPopup = () => setIsCancelPopupVisible(false);
+
+    useEffect(() => {
+        coursesService.getAll()
+            .then(async (response) => {
+                const courses = response.data;
+                const currentCourse = courses.find(course => course.id === courseId);
+                setTitle(currentCourse.name);
+    
+                const imageUrl = currentCourse.imageUrl;
+    
+                if (imageUrl) {
+                    try {
+                        const response = await fetch(imageUrl);
+                        if (!response.ok) throw new Error('Failed to fetch image');
+    
+                        const blob = await response.blob();
+                        const file = new File([blob], "image.jpg", { type: blob.type });
+                        setCourseImage(file);
+                    } catch (err) {
+                        console.error('Error fetching image:', err);
+                    }
+                }
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+    }, []);
+    
 
     const handleTitleBlur = () => {
         if (!title.trim()) {
@@ -65,12 +95,12 @@ const SectionAdminEditFolder = ({
     };
 
     const handleCreateChoreography = async () => {
-        if (!courseImage || !title || !currentCourseId) {
+        if (!courseImage || !title || !courseId) {
             alert("Please provide a title and upload an image");
             return;
         }
     
-        const courseId = currentCourseId;
+        const courseId = courseId;
         const coverImage = courseImage;
         const folder = "/"; // courseTitle;
     
@@ -116,6 +146,7 @@ const SectionAdminEditFolder = ({
                         {/* ***TODO: Set image as current folder's image */ }
                         <UploadPicture 
                             onFileUploaded={(file) => setCourseImage(file)} 
+                            initialImage={courseImage}
                         />
                         <div className="titleType">
                             <InputField
@@ -145,7 +176,7 @@ const SectionAdminEditFolder = ({
                                     disabled={
                                         isCourse
                                             ? !courseImage || !title
-                                            : !courseImage || !title || !currentCourseId
+                                            : !courseImage || !title || !courseId
                                     }
                                 />
                                 <Button
@@ -180,7 +211,7 @@ const SectionAdminEditFolder = ({
                                     disabled={
                                         isCourse
                                             ? !courseImage || !title
-                                            : !courseImage || !title || !currentCourseId
+                                            : !courseImage || !title || !courseId
                                     }
                                 />
                             </>
@@ -191,7 +222,7 @@ const SectionAdminEditFolder = ({
             {isPopupVisible && 
                 <PopUpDelete 
                     onClose={hidePopup} 
-                    title = "Delete Folder?"
+                    title = "Folder?"
                     text={`Are you sure you want to delete the whole folder?`}
                     /* ***TODO: onDelete Folder? */
                     onDelete={() => {}}

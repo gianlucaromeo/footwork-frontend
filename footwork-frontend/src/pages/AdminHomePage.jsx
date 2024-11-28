@@ -66,7 +66,7 @@ const AdminHomePage = () => {
                     <SectionAdminCourses
                         onCourseClick={(courseId) => navigateTo(
                             Page.COURSE_CHOREOGRAPHIES, 
-                            courseId
+                            courseId,
                         )}
                         onManageStudentsClick={() => 
                             navigateTo(
@@ -89,12 +89,12 @@ const AdminHomePage = () => {
                                 null,
                             )
                         }
-                        onEditFolderClick={() => 
+                        onEditFolderClick={(courseId) => {
                             navigateTo(
                                 Page.EDIT_FOLDER,
+                                courseId,
                                 null,
-                                null,
-                            ) 
+                            )} 
                         }
                     />
                 }
@@ -109,7 +109,9 @@ const AdminHomePage = () => {
                 
                 {currentPage === Page.ADD_VIDEO && <SectionAdminAddingVideo/>}
 
-                {currentPage === Page.EDIT_FOLDER && <SectionAdminEditFolder/>}
+                {currentPage === Page.EDIT_FOLDER && 
+                    <SectionAdminEditFolder courseId={currentCourseId}/>
+                }
                 
                 {currentPage === Page.COURSE && <div>***Course</div>}
                 
