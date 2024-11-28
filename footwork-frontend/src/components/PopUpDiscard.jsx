@@ -1,15 +1,31 @@
 import React, { useState } from 'react'
-import TitleSubtitleBig from './TitleSubtitleBig'
-import BtnPrimaryMEnabled from './BtnPrimaryMEnabled'
-import BtnTextS from './BtnTextS'
+import Button from './Button'
 
-const PopUpDiscard = () => {
+const PopUpDiscard = (
+    onDiscard, //go back to page from before
+    onClose, // hide popup
+) => {
 
 return (
-    <div>
-        <TitleSubtitleBig title="discard changes?" subtitle="Are you sure you want to discard all changes?"/>
-        <BtnPrimaryMEnabled>Cancel</BtnPrimaryMEnabled>
-        <BtnTextS>discard</BtnTextS>
+    <div className="popupOverlay" onClick={onClose}>
+            <div className="popupContainer" onClick={(e) => e.stopPropagation()}>
+                <div className="titleSubtitle">
+                    <h1>discard changes?</h1>
+                    <div>Are you sure you want to discard all changes?</div>
+                </div>
+                <div className="buttonsLeft">
+                            <Button 
+                                text="cancel" 
+                                className="btn-primary m"
+                                onClick={onClose}
+                            />
+                            <Button 
+                                text="discard"
+                                className="btn-text m"
+                                onClick={onDiscard}
+                            />
+                </div>
+            </div>
     </div>
 )
 }

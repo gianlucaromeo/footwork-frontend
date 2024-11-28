@@ -6,6 +6,7 @@ import UploadPicture from './UploadPicture'
 import InputField from './InputField'
 import deleteIcon from '../assets/icons/delete-white.png'
 import PopUpDelete from "../components/PopUpDelete";
+import PopUpDiscard from "../components/PopUpDiscard";
 
 import coursesService from '../services/courses'
 import choreographiesService from '../services/choreographies'
@@ -20,11 +21,16 @@ const SectionAdminEditFolder = ({
     const [isCourse, setIsCourse] = useState(true); // If false, it's a dance
     const [title, setTitle] = useState("");
     const [titleState, setTitleState] = useState("default"); // State for validation
+
     const [isPopupVisible, setIsPopupVisible] = useState(false);
+    const [isCancelPopupVisible, setIsCancelPopupVisible] = useState(false);
 
     // Handlers for opening and closing the popup
     const showPopup = () => setIsPopupVisible(true);
     const hidePopup = () => setIsPopupVisible(false);
+
+    const showCancelPopup = () => setIsCancelPopupVisible(true);
+    const hideCancelPopup = () => setIsCancelPopupVisible(false);
 
     const handleTitleBlur = () => {
         if (!title.trim()) {
@@ -190,6 +196,12 @@ const SectionAdminEditFolder = ({
                     /* ***TODO: onDelete Folder? */
                     onDelete={() => {}}
                 />}
+            {/* isCancelPopupVisible && 
+                <PopUpDiscard
+                    onClose={hideCancelPopup}
+                    // TODO: onDiscard go back to page from before
+                    onDiscard={() => {}}
+                /> */}
         </div>
     );
 }
