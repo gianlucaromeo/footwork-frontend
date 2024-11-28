@@ -59,7 +59,7 @@ const SectionAdminManageStudents = ({onBack}) => {
                     </div>
                 </div>
                 <div className="contentContainer manageStudents">
-                    <div class="rowContainer">
+                    <div className="rowContainer">
                         <div className="headerRow">
                             <div className="courses">
                                 {courses.map((course) => (
@@ -104,7 +104,7 @@ const SectionAdminManageStudents = ({onBack}) => {
                 />
             </div>
             <div className="contentContainer manageStudents">
-                <div class="rowContainer">
+                <div className="rowContainer">
                     <div className="headerRow">
                         <div className="row">
                             <h5>last name</h5>

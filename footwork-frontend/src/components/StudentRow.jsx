@@ -11,6 +11,7 @@ const StudentRow = ({
     firstName,
     courses,
     enrollments,
+    onCoursesChange,
 }) => {
     const [isPopupVisible, setIsPopupVisible] = useState(false);
 
@@ -45,21 +46,6 @@ const StudentRow = ({
                     <div className="row">{firstName}</div>
                 </>
             )}
-            {/* OLD CODE WITH GIANLUCAS return Checkbox
-             <div className="courses"> 
-                <div className="course">
-                    {courses.map((course) => {
-                        return (
-                            <CheckboxContainer
-                                key={course.id}
-                                id={course.id}
-                                label={course.name}
-                                onChange={(e) => console.log(`Course ${course.id} clicked`)}
-                                checked={enrollments.some((enrollment) => enrollment.studentId === studentId && enrollment.courseId === course.id)} />
-                        );
-                    })}
-                </div> 
-            </div> */}
             <div className="courses">
                 {courses.map((course) => {
                     const isEnrolled = enrollments.some(
@@ -68,10 +54,18 @@ const StudentRow = ({
                             enrollment.courseId === course.id
                     )
                     return (
-                        <div className="course" key={course.id}>
+                        <div 
+                            className="course" 
+                            key={`${studentId}-${course.id}`}>
                             <CheckboxContainer
-                                id={course.id}
-                                onChange={(e) => console.log(`Course ${course.id} clicked`)}
+                                id={`${studentId}-${course.id}`}
+                                onChange={
+                                    (checked) => onCoursesChange(
+                                        studentId,
+                                        course.id, 
+                                        checked
+                                    )
+                                }
                                 checked={isEnrolled}
                             />
                         </div>
