@@ -12,7 +12,10 @@ import profileIcon from '../assets/icons/profile-white.png';
 const LoginForm = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [passwordError, setPasswordError] = useState('');
+    const [passwordState, setPasswordState] = useState('');
     const [emailError, setEmailError] = useState('');
+    const [emailState, setEmailState] = useState('default');
     const [isButtonActive, setIsButtonActive] = useState(false);
     const [isTeacher, setIsTeacher] = useState(false);
 
@@ -106,6 +109,16 @@ const LoginForm = () => {
                     })
                     .catch((error) => {
                         console.log('Error while logging in', error)
+                        const message = error.response?.data?.error || 'An unexpected error occurred';
+                        if (message =="Both email and password are required" ||
+                            message =="Invalid email or password"
+                        ) {
+                            setEmailError(message);
+                            setPasswordError(message);
+                        }
+                        else {
+                            setEmailError(message);
+                        }
                         //
                         // TODO: Understand which error message we get from the
                         // backend and set it here. 
@@ -119,6 +132,22 @@ const LoginForm = () => {
             }
         }
     };
+    // To update states of email, password and confirm password the moment an error appears
+    useEffect(() => {
+        const updateFieldState = (error, value, setState) => {
+            if (error && error.trim()) {
+                setState('error'); // Set to error if there is an error message
+            } else if (value.trim()) {
+                setState('valid'); // Set to valid if there is no error and input is filled
+            } else {
+                setState('default'); // Default if the input is empty
+            }
+        };
+        // Update states for all fields
+        updateFieldState(emailError, email, setEmailState);
+        updateFieldState(passwordError, password, setPasswordState);
+    }, [emailError, passwordError, email, password]);
+
     const handleBack = () => {
         navigate('/');
     };
@@ -133,8 +162,8 @@ const LoginForm = () => {
                     <img src={profileIcon} alt="Profile Icon" className="icon" />
                 </div>
                 {/* state of InputField can be default, valid or error */}
-                <InputField label='email*' type='email' state ='default' value={email} onChange={handleEmailChange} errorMessage={emailError} />
-                <InputField label='password*' type='password' state ='default' value={password} onChange={handlePasswordChange} />
+                <InputField label='email*' type='email' state={emailState} value={email} onChange={handleEmailChange} errorMessage={emailError} />
+                <InputField label='password*' type='password' state ={passwordState} value={password} onChange={handlePasswordChange} errorMessage={passwordError} />
                 <div>
                     <CheckboxContainer
                         id={"teacher_checkbox"}
