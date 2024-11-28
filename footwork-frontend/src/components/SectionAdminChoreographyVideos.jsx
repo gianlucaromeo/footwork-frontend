@@ -8,7 +8,8 @@ import iconPlus from '../assets/icons/plus.png'
 
 const SectionAdminChoreographyVideos = ({
     onBack,
-    choreographyId
+    choreographyId,
+    onAddVideoClick
 }) => {
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 768)
     const [videos, setVideos] = useState([])
@@ -62,8 +63,7 @@ const SectionAdminChoreographyVideos = ({
             />
             <Button 
                     text="Add video"
-                    /* ***TODO onlcik opens add video page */
-                    onClick={() => {}}
+                    onClick={onAddVideoClick}
                     iconName={iconPlus}
                     className="btn-admin"
                 />

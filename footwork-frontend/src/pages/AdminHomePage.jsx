@@ -157,6 +157,13 @@ const AdminHomePage = () => {
                             Page.COURSE_CHOREOGRAPHIES,
                             currentCourseId
                         )}
+                        onAddVideoClick={() => 
+                            navigateTo(
+                                Page.ADD_VIDEO,
+                                null,
+                                null,
+                            )
+                        }
                     />
                 }
 

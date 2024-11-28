@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import StudentColumn from './StudentColumn';
 import Button from './Button'
 import TitleWithArrow from './TitleWithArrow';
-import deleteIcon from '../assets/icons/delete-white.png';
 import PopUpAdminRequest from "./PopUpAdminRequest";
 
 import coursesService from '../services/courses';
