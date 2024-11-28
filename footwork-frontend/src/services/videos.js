@@ -25,6 +25,18 @@ const createVideo = async (
     })
 }
 
+const deleteVideo = async (videoId) => {
+    return helper.doDelete(`${helper.deleteVideoEndpoint}${videoId}`, 
+        {},
+        {
+            headers: {
+                Authorization: currentUser.getToken(),
+            }
+        }
+    )
+}
+
 export default {
     createVideo,
+    deleteVideo,
 }

@@ -5,6 +5,7 @@ import TitleWithArrow from './TitleWithArrow'
 import Button from './Button'
 import VideoColumn from './VideoColumn'
 import iconPlus from '../assets/icons/plus.png'
+import videosService from '../services/videos'
 
 const SectionAdminChoreographyVideos = ({
     onBack,
@@ -84,7 +85,17 @@ const SectionAdminChoreographyVideos = ({
                     <VideoColumn
                         videos={videos}
                         onVideoRowClicked={(videoId) => { }} // TODO
-                        onDeleteVideo={() => {}}
+                        onDeleteVideo={(id) => {
+                            videosService.deleteVideo(id)
+                                .then(() => {
+                                    const newVideos = videos.filter(
+                                        video => video.id !== id
+                                    )
+                                    setVideos(newVideos)
+                                }).catch((error) => {
+                                    console.log(error)
+                                })
+                        }}
                     />
                 </div>
             </div>

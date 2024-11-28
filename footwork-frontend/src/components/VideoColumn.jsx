@@ -7,6 +7,7 @@ const VideoColumn = ({ videos, onVideoRowClicked, onDeleteVideo }) => {
       {videos.map((video, index) => (
         <VideoRow
           key={video.id}
+          videoId={video.id}
           videoNumber={index+1}
           thumbnail={video.coverImageUrl}
           videoUrl={video.videoUrl}

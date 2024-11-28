@@ -6,6 +6,7 @@ import PopUpDelete from "../components/PopUpDelete";
 
 const VideoRow = ({
     videoNumber,        // TODO Video number (e.g., "1")
+    videoId,
     coverImageUrl,           // Thumbnail image source
     videoUrl,                // Video source
     title = "",              // Title of the video
@@ -99,7 +100,7 @@ const VideoRow = ({
                         text={`Are you sure you want to delete this video?`}
                         onDelete={(e) => {
                             e.stopPropagation(); // Prevent row's onClick from triggering
-                            onDelete(videoNumber); // Call delete handler
+                            onDelete(videoId); // Call delete handler
                         }}
                     />}
             </div>
@@ -155,7 +156,7 @@ const VideoRow = ({
                     text={`Are you sure you want to delete this video?`}
                     onDelete={(e) => {
                         e.stopPropagation(); // Prevent row's onClick from triggering
-                        onDelete(videoNumber); // Call delete handler
+                        onDelete(videoId); // Call delete handler
                     }}
                 />}
     </div>

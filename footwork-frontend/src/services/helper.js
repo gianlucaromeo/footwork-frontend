@@ -40,6 +40,7 @@ const updateChoreographyEndpoint = `${choreographiesEndpoint}/`
 const getStudentVideosEndpoint = `${videosEndpoint}/student/all`
 const getAdminVideosEndpoint = `${videosEndpoint}/admin/all`
 const createVideoEndpoint = `${videosEndpoint}/`
+const deleteVideoEndpoint = `${videosEndpoint}/`
 
 /* ENROLLMENTS */
 const getAllEnrollmentsEndpoint = `${enrollmentsEndpoint}/`
@@ -95,6 +96,7 @@ export default {
     getStudentVideosEndpoint,
     getAdminVideosEndpoint,
     createVideoEndpoint,
+    deleteVideoEndpoint,
 
     /* ENROLLMENTS */
     getAllEnrollmentsEndpoint,
