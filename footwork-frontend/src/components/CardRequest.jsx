@@ -3,7 +3,8 @@ import CardTitleInfo from "./CardTitleInfo";
 import Button from "./Button";
 import CheckboxContainer from "./CheckboxContainer";
 
-const CardRequest = ({students, enrollments, courses}) => {
+const CardRequest = ({students, enrollments, courses, onEnrollmentChanged}) => {
+
     return(
         <div className="scrollingRequests">
             {students.map((student) => (
@@ -24,7 +25,11 @@ const CardRequest = ({students, enrollments, courses}) => {
                                 <h5>Courses</h5>
                                 <CoursesOptions
                                     onChange={(courseId, checked) => {
-                                        console.log(courseId, checked);
+                                        onEnrollmentChanged(
+                                            student.id, 
+                                            courseId,
+                                            checked
+                                        );
                                     }}
                                     courses={courses}
                                     selectedCoursesIds={enrollments.filter(enrollment => enrollment.studentId === student.id).map(enrollment => enrollment.courseId)}

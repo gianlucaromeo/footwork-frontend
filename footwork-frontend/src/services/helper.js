@@ -37,6 +37,8 @@ const createVideoEndpoint = `${videosEndpoint}/`
 
 /* ENROLLMENTS */
 const getAllEnrollmentsEndpoint = `${enrollmentsEndpoint}/`
+const createEnrollmentEndpoint = `${enrollmentsEndpoint}/`
+const deleteEnrollmentEndpoint = `${enrollmentsEndpoint}/`
 
 /* COMMON */
 const doPost = async (url, data, config = {}) => {
@@ -45,6 +47,10 @@ const doPost = async (url, data, config = {}) => {
 
 const doGet = async (url, config) => {
     return axios.get(url, config)
+}
+
+const doDelete = async (url, data, config) => {
+  return axios.delete(url, { data, ...config });
 }
     
 
@@ -76,8 +82,11 @@ export default {
 
     /* ENROLLMENTS */
     getAllEnrollmentsEndpoint,
+    createEnrollmentEndpoint,
+    deleteEnrollmentEndpoint,
 
     /* COMMON */
     doPost,
     doGet,
+    doDelete,
 }

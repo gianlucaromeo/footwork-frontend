@@ -9,6 +9,30 @@ const getAllEnrollments = async () => {
     })
 }
 
+const createEnrollment = async (courseId, studentId) => {
+    return helper.doPost(helper.createEnrollmentEndpoint, {
+        courseId,
+        studentId,
+    }, {
+        headers: {
+            Authorization: currentUser.getToken(),
+        }
+    })
+}
+
+const deleteEnrollment = async (courseId, studentId) => {
+    return helper.doDelete(helper.deleteEnrollmentEndpoint, {
+        courseId,
+        studentId,
+    }, {
+        headers: {
+            Authorization: currentUser.getToken(),
+        }
+    })
+}
+
 export default {
     getAllEnrollments,
+    createEnrollment,
+    deleteEnrollment,
 }
