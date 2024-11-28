@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 import React from 'react';
 import deleteIcon from '../assets/icons/delete-white.png'; 
 import playGreenIcon from '../assets/icons/play-green.png';
+import PopUpDelete from "../components/PopUpDelete";
 
 const VideoRow = ({
     videoNumber,        // TODO Video number (e.g., "1")
@@ -15,6 +16,11 @@ const VideoRow = ({
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
     const [isPlaying, setIsPlaying] = useState(false);
     const videoRef = useRef(null); // Reference to the video element
+    const [isPopupVisible, setIsPopupVisible] = useState(false);
+
+    // Handlers for opening and closing the popup
+    const showPopup = () => setIsPopupVisible(true);
+    const hidePopup = () => setIsPopupVisible(false);
 
     useEffect(() => {
         const checkScreenSize = () => {
@@ -77,10 +83,7 @@ const VideoRow = ({
                         <div className="copy-regular-med">{title}</div>
                     </div>
                     {onDelete && 
-                            <div onClick={(e) => {
-                                e.stopPropagation(); // Prevent row's onClick from triggering
-                                onDelete(videoNumber); // Call delete handler
-                            }}>
+                            <div onClick={showPopup}>
                                 <img 
                                     src={deleteIcon} 
                                     alt={iconAlt} 
@@ -89,6 +92,16 @@ const VideoRow = ({
                             </div>
                     }
                 </div>
+                {isPopupVisible && 
+                    <PopUpDelete 
+                        onClose={hidePopup} 
+                        title = "video?"
+                        text={`Are you sure you want to delete this video?`}
+                        onDelete={(e) => {
+                            e.stopPropagation(); // Prevent row's onClick from triggering
+                            onDelete(videoNumber); // Call delete handler
+                        }}
+                    />}
             </div>
         )
     }
@@ -126,10 +139,7 @@ const VideoRow = ({
             </div>
             <div className="deleteIconContainer">
                 {onDelete && 
-                    <div onClick={(e) => {
-                        e.stopPropagation(); // Prevent row's onClick from triggering
-                        onDelete(videoNumber); // Call delete handler
-                    }}>
+                    <div onClick={showPopup} style={{ cursor: "pointer" }}>
                         <img 
                             src={deleteIcon} 
                             alt={iconAlt} 
@@ -138,6 +148,16 @@ const VideoRow = ({
                     </div>
                 }
              </div>
+             {isPopupVisible && 
+                <PopUpDelete 
+                    onClose={hidePopup} 
+                    title = "video?"
+                    text={`Are you sure you want to delete this video?`}
+                    onDelete={(e) => {
+                        e.stopPropagation(); // Prevent row's onClick from triggering
+                        onDelete(videoNumber); // Call delete handler
+                    }}
+                />}
     </div>
     );
 };

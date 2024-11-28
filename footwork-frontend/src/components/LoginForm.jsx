@@ -119,6 +119,9 @@ const LoginForm = () => {
             }
         }
     };
+    const handleBack = () => {
+        navigate('/');
+    };
 
     return (
         <div className="loginForm">
@@ -144,8 +147,7 @@ const LoginForm = () => {
             <div className='buttonContainer'>
                     <Button 
                         className={isMobile ? "btn-text m" : "btn-text s"}
-                        onClick={handleContinue}
-                        disabled={isButtonActive}
+                        onClick={handleBack}
                         text="Cancel"
                     />
                     <Button 
