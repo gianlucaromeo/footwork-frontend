@@ -22,6 +22,7 @@ const loginStudentEndpoint = `${loginEndpoint}/student/`
 const createStudentEndpoint = `${studentsEndpoint}/`
 const getAllStudentsEndpoint = `${studentsEndpoint}/`
 const profileEndpoint = `${studentsEndpoint}/profile`
+const deleteStudentAccountEndpoint = `${studentsEndpoint}/`
 
 /* COURSES */
 const getAllCoursesEndpoint = `${coursesEndpoint}/all`
@@ -73,6 +74,7 @@ export default {
     createStudentEndpoint,
     getAllStudentsEndpoint,
     profileEndpoint,
+    deleteStudentAccountEndpoint,
 
     /* COURSES */
     getAllCoursesEndpoint,

@@ -42,9 +42,18 @@ const getProfile = async () => {
     })
 }
 
+const deleteOwnAccount = async () => {
+    return helper.doDelete(helper.deleteStudentAccountEndpoint, {}, {
+        headers: {
+            Authorization: currentUserService.getToken(),
+        }
+    })
+}
+
 export default {
     login,
     create,
     getAllVideos,
     getProfile,
+    deleteOwnAccount,
 }
