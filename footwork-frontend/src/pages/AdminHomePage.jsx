@@ -11,6 +11,7 @@ import SectionAdminAddingFolder from '../components/SectionAdminAddingFolder'
 import SectionAdminAddingVideo from '../components/SectionAdminAddingVideo'
 import SectionAdminManageStudents from '../components/SectionAdminManageStudents'
 import SectionAdminEditFolder from '../components/SectionAdminEditFolder'
+import SectionAdminEditChoreography from '../components/SectionAdminEditChoreography'
 
 const Page = {
     ALL_COURSES: 'all-courses',
@@ -23,6 +24,7 @@ const Page = {
     ADD_FOLDER: 'add-course',
     ADD_VIDEO: 'add-video',
     EDIT_FOLDER: 'edit-folder',
+    EDIT_CHOREOGRAPHY: 'edit-choreography',
 }
 
 const AdminHomePage = () => {
@@ -112,6 +114,13 @@ const AdminHomePage = () => {
                 {currentPage === Page.EDIT_FOLDER && 
                     <SectionAdminEditFolder courseId={currentCourseId}/>
                 }
+
+                {currentPage === Page.EDIT_CHOREOGRAPHY &&
+                    <SectionAdminEditChoreography 
+                        courseId={currentCourseId}
+                        choreographyId={currentChoreographyId}
+                    />
+                }
                 
                 {currentPage === Page.COURSE && <div>***Course</div>}
                 
@@ -141,11 +150,11 @@ const AdminHomePage = () => {
                                 null,
                             )
                         }
-                        onEditFolderClick={() => 
+                        onEditFolderClick={(choreographyId) => 
                             navigateTo(
-                                Page.EDIT_FOLDER,
-                                null,
-                                null,
+                                Page.EDIT_CHOREOGRAPHY,
+                                currentCourseId,
+                                choreographyId
                             ) 
                         }
                         onBack={() => navigateTo(Page.ALL_COURSES)}

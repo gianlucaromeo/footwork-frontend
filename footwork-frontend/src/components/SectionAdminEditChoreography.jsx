@@ -5,18 +5,19 @@ import TitleWithArrow from './TitleWithArrow'
 import UploadPicture from './UploadPicture'
 import InputField from './InputField'
 import deleteIcon from '../assets/icons/delete-white.png'
-import PopUpDelete from "../components/PopUpDelete";
-import PopUpDiscard from "../components/PopUpDiscard";
+import PopUpDelete from "./PopUpDelete";
+import PopUpDiscard from "./PopUpDiscard";
 
-import coursesService from '../services/courses'
+import choreographiesService from '../services/choreographies'
 
-const SectionAdminEditFolder = ({
+const SectionAdminEditChoreography = ({
     courseId,
+    choreographyId,
 }) => {
     const navigate = useNavigate();
     const [isMobile, setIsMobile] = useState(false);
 
-    const [courseImage, setCourseImage] = useState(null);
+    const [choreographyImage, setChoreographyImage] = useState(null);
     const [title, setTitle] = useState(""); // Title of the folder
     const [titleState, setTitleState] = useState("default"); // State for validation
 
@@ -31,24 +32,23 @@ const SectionAdminEditFolder = ({
     const hideCancelPopup = () => setIsCancelPopupVisible(false);
 
     useEffect(() => {
-        coursesService.getAll()
+        choreographiesService.getAll()
             .then(async (response) => {
-                const courses = response.data;
-                const currentCourse = courses.find(course => course.id === courseId);
-                setTitle(currentCourse.name);
-    
-                const imageUrl = currentCourse.imageUrl;
-    
-                if (imageUrl) {
-                    try {
-                        const response = await fetch(imageUrl);
-                        if (!response.ok) throw new Error('Failed to fetch image');
-    
-                        const blob = await response.blob();
-                        const file = new File([blob], "image.jpg", { type: blob.type });
-                        setCourseImage(file);
-                    } catch (err) {
-                        console.error('Error fetching image:', err);
+                const choreography = response.data.find(choreography => choreography.id === choreographyId);
+                if (choreography) {
+                    setTitle(choreography.title);
+                    const imageUrl = choreography.imageUrl;
+                    if (imageUrl) {
+                        try {
+                            const response = await fetch(imageUrl);
+                            if (!response.ok) throw new Error('Failed to fetch image');
+        
+                            const blob = await response.blob();
+                            const file = new File([blob], "image.jpg", { type: blob.type });
+                            setChoreographyImage(file);
+                        } catch (err) {
+                            console.error('Error fetching image:', err);
+                        }
                     }
                 }
             })
@@ -70,31 +70,31 @@ const SectionAdminEditFolder = ({
         navigate(-1);
     };
 
-    const handleUpdateCourse = async () => {
-        if (!courseImage || !title) {
-            alert("Please provide a title and upload an image.");
+    const handleUpdateChoreography = async () => {
+        if (!choreographyImage || !title || !courseId) {
+            alert("Please provide a title and upload an image");
             return;
         }
     
-        const fileName = title;
-        const folderName = "/"; // courseTitle;
-        const coverImage = courseImage;
+        const coverImage = choreographyImage;
+        const folder = "/"; 
     
         try {
-            await coursesService.updateCourse(
+            await choreographiesService.updateChoreography(
+                choreographyId,
+                title,
                 courseId, 
-                fileName, 
-                folderName, 
-                coverImage
+                coverImage, 
+                folder
             );
-            console.log("Course updated successfully!");
+            console.log("Choreography created successfully!");
             navigate(-1); // Go back to the previous page
         } catch (error) {
-            console.error("Error updating course:", error);
+            console.error("Error creating choreography:", error);
             alert("An error occurred. Please try again.");
         }
-    };
-
+    }
+    
     useEffect(() => {
         const checkMobile = () => {
             setIsMobile(window.innerWidth <= 600); // Adjust breakpoint as needed
@@ -121,8 +121,8 @@ const SectionAdminEditFolder = ({
                     <div className="data">
                         {/* ***TODO: Set image as current folder's image */ }
                         <UploadPicture 
-                            onFileUploaded={(file) => setCourseImage(file)} 
-                            initialImage={courseImage}
+                            onFileUploaded={(file) => setChoreographyImage(file)} 
+                            initialImage={choreographyImage}
                         />
                         <div className="titleType">
                             <InputField
@@ -144,9 +144,11 @@ const SectionAdminEditFolder = ({
                                     className="btn-primary s"
                                     text="Save"
                                     onClick={() =>
-                                        handleUpdateCourse()
+                                        handleUpdateChoreography()
                                     }
-                                    disabled={!courseImage || !title}
+                                    disabled={
+                                        !choreographyImage || !title || !courseId
+                                    }
                                 />
                                 <Button
                                         className="btn-text s"
@@ -172,10 +174,10 @@ const SectionAdminEditFolder = ({
                                     className="btn-primary s"
                                     text="Save"
                                     onClick={() =>
-                                        handleUpdateCourse()
+                                        handleUpdateChoreography()
                                     }
                                     disabled={
-                                        !courseImage || !title
+                                        !choreographyImage || !title || !courseId
                                     }
                                 />
                             </>
@@ -201,4 +203,4 @@ const SectionAdminEditFolder = ({
     );
 }
 
-export default SectionAdminEditFolder
+export default SectionAdminEditChoreography

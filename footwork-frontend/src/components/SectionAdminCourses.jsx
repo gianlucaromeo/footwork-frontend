@@ -15,7 +15,7 @@ const SectionAdminCourses = ({
     onManageStudentsClick,
     onAddFolderClick,
     onAddVideoClick,
-    onEditFolderClick
+    onEditFolderClick,
 }) => {
     const [userFirstName, setUserFirstName] = useState(null)
     const [courses, setCourses] = useState([])

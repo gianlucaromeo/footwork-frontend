@@ -74,7 +74,7 @@ const SectionAdminCourseChoreographies = ({
                                 imageUrl={choreography.imageUrl}
                                 text={choreography.title}
                                 onClick={() => onClick(choreography.id)}
-                                onEditFolderClick={onEditFolderClick}
+                                onEditFolderClick={() => onEditFolderClick(choreography.id)}
                             />
                         ))}
                     </div>
