@@ -48,8 +48,11 @@ const SectionAdminManageStudents = ({onBack}) => {
                     />
                     <div className="buttonContainer">
                         <Button 
-                            /* ***TODO Add number of requests, if 0 then button disabled */
-                            text="***Requests"
+                            /* ***TODO Add number of requests, if 0 then button disabled 
+                            
+                            > Gianluca: let's leave this for now, we can add it later
+                            */
+                            text="Requests"
                             onClick={showPopup}
                             className="btn-primary s"
                         />
@@ -91,8 +94,11 @@ const SectionAdminManageStudents = ({onBack}) => {
                     onClick={onBack}
                 />
                 <Button 
-                    /* ***TODO Add number of requests, if 0 then button disabled */
-                    text="***Requests"
+                    /* ***TODO Add number of requests, if 0 then button disabled  
+                    
+                    > Gianluca: let's leave this for now, we can add it later
+                            */
+                            text="Requests"
                     onClick={showPopup}
                     className="btn-primary s"
                 />
