@@ -51,6 +51,17 @@ const PopUpAdminRequest = ({ onClose }) => {
         fetchCourses();
     }, []); // Fetch once on component mount
 
+    const handleDeny = (studentId) => {
+        adminsService.deleteStudentAccount(studentId)
+            .then(() => {
+                fetchAllStudents();
+                console.log("Student account deleted");
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+    }
+
     const handleOnEnrollmentsChange = (studentId, courseId, checked) => {
         console.log('studentId:', studentId, 'courseId:', courseId, 'checked:', checked);
 
@@ -107,6 +118,7 @@ const PopUpAdminRequest = ({ onClose }) => {
                     courses={courses}
                     onEnrollmentChanged={handleOnEnrollmentsChange}
                     onStudentVerified={handleStudentVerifiedByAdmin}
+                    onDeny={handleDeny}
                 />
             </div>
         </div>

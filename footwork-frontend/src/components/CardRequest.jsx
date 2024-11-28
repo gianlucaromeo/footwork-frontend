@@ -3,14 +3,16 @@ import CardTitleInfo from "./CardTitleInfo";
 import Button from "./Button";
 import CheckboxContainer from "./CheckboxContainer";
 
+import adminsService from "../services/admins";
+
 const CardRequest = ({
     students,
     enrollments, 
     courses, 
     onEnrollmentChanged,
     onStudentVerified,
+    onDeny,
 }) => {
-
     return(
         <div className="scrollingRequests">
             {students.map((student) => (
@@ -47,6 +49,7 @@ const CardRequest = ({
                             <Button 
                                 className="btn-text s"
                                 text="Deny"
+                                onClick={() => onDeny(student.id)}
                             />
                             <Button 
                                 className="btn-primary s"
