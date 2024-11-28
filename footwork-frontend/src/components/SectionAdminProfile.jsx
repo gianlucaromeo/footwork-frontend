@@ -6,6 +6,7 @@ import Button from './Button';
 import deleteIcon from '../assets/icons/delete-white.png';
 
 import adminsService from '../services/admins';
+import currentUserService from '../services/currentUser';
 
 const SectionAdminProfile = () => {
     const navigate = useNavigate();
