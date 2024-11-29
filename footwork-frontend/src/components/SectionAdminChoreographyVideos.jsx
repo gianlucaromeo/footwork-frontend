@@ -7,6 +7,8 @@ import VideoColumn from './VideoColumn'
 import iconPlus from '../assets/icons/plus.png'
 import videosService from '../services/videos'
 
+import choreographiesService from '../services/choreographies'
+
 const SectionAdminChoreographyVideos = ({
     onBack,
     choreographyId,
@@ -23,8 +25,6 @@ const SectionAdminChoreographyVideos = ({
                     video => video.choreography.id === choreographyId
                 )
                 setVideos(videos)
-                const choreography = videos[0].choreography.title
-                setChoreographyName(choreography)
             }).catch((error) => {
                 console.log(error)
             })
@@ -54,6 +54,18 @@ const SectionAdminChoreographyVideos = ({
             window.removeEventListener('popstate', handlePopState);
         };
     }, [navigate]);
+
+    useEffect(() => {
+        choreographiesService.getAll()
+            .then((response) => {
+                const choreography = response.data.find(choreography => 
+                    choreography.id === choreographyId
+                )
+                setChoreographyName(choreography.title)
+            }).catch((error) => {
+                console.log(error)
+            })
+    }, [])
 
     return (<div className="adminDashboard">
         <div className="headerContainer courseChoreographies availableVideos">

@@ -4,6 +4,8 @@ import studentsService from '../services/students'
 import VideoColumn from './VideoColumn'
 import TitleWithArrow from './TitleWithArrow'
 
+import choreographiesService from '../services/choreographies'
+
 const SectionStudentChoreographyVideos = ({
     onBack,
     choreographyId
@@ -17,8 +19,6 @@ const SectionStudentChoreographyVideos = ({
             .then((response) => {
                 const videos = response.data.filter(video => video.choreography.id === choreographyId)
                 setVideos(videos)
-                const choreography = response.data[0].choreography.title
-                setChoreographyName(choreography)
             }).catch((error) => {
                 console.log(error)
             })
@@ -33,6 +33,19 @@ const SectionStudentChoreographyVideos = ({
             return () => {
                 window.removeEventListener("resize", checkScreenSize); // Cleanup listener
             };
+    }, [])
+
+    useEffect(() => {
+        choreographiesService.getAll()
+            .then((response) => {
+                console.log(response.data)
+                const choreography = response.data.find(choreography => 
+                    choreography.id === choreographyId
+                )
+                setChoreographyName(choreography.title)
+            }).catch((error) => {
+                console.log(error)
+            })
     }, [])
 
     const navigate = useNavigate();
