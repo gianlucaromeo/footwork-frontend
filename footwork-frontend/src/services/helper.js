@@ -35,6 +35,7 @@ const updateCourseEndpoint = `${coursesEndpoint}/`
 const getChoreographiesEndpoint = `${choreographiesEndpoint}/admin/all`
 const createChoreographyEndpoint = `${choreographiesEndpoint}/`
 const updateChoreographyEndpoint = `${choreographiesEndpoint}/`
+const deleteChoreographyEndpoint = `${choreographiesEndpoint}/`
 
 /* VIDEOS */
 const getStudentVideosEndpoint = `${videosEndpoint}/student/all`
@@ -91,6 +92,7 @@ export default {
     getChoreographiesEndpoint,
     createChoreographyEndpoint,
     updateChoreographyEndpoint,
+    deleteChoreographyEndpoint,
 
     /* VIDEOS */
     getStudentVideosEndpoint,

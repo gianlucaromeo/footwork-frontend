@@ -190,8 +190,17 @@ const SectionAdminEditChoreography = ({
                     onClose={hidePopup} 
                     title = "Folder?"
                     text={`Are you sure you want to delete the whole folder?`}
-                    /* ***TODO: onDelete Folder? */
-                    onDelete={() => {}}
+                    onDelete={() => 
+                        choreographiesService
+                        .deleteChoreography(choreographyId)
+                        .then(() => {
+                            console.log("Choreography deleted successfully!");
+                            navigate(-1); // Go back to the previous page
+                        }).catch((error) => {
+                            console.error("Error deleting choreography:", error);
+                            alert("An error occurred. Please try again.");
+                        })
+                    }
                 />}
             {/* isCancelPopupVisible && 
                 <PopUpDiscard

@@ -54,8 +54,21 @@ const updateChoreography = async (
         })
 }
 
+const deleteChoreography = async (choreographyId) => {
+    return helper.doDelete(
+        `${helper.deleteChoreographyEndpoint}${choreographyId}`, 
+        {},
+        {
+            headers: {
+                Authorization: currentUser.getToken(),
+            }
+        }
+    )
+}
+
 export default {
     getAll,
     createChoreography,
     updateChoreography,
+    deleteChoreography,
 }
