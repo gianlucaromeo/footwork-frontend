@@ -188,8 +188,17 @@ const SectionAdminEditCourse = ({
                     onClose={hidePopup} 
                     title = "Folder?"
                     text={`Are you sure you want to delete the whole folder?`}
-                    /* ***TODO: onDelete Folder? */
-                    onDelete={() => {}}
+                    onDelete={() => 
+                        coursesService
+                            .deleteCourse(courseId)
+                            .then(() => {
+                                console.log("Course deleted successfully!");
+                                navigate(-1);
+                            }).catch((error) => {
+                                console.error("Error deleting course:", error);
+                                alert("An error occurred. Please try again.");
+                            })
+                    }
                 />}
             {/* isCancelPopupVisible && 
                 <PopUpDiscard
