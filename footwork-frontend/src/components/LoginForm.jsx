@@ -49,6 +49,12 @@ const LoginForm = () => {
     const handlePasswordChange = (e) => {
         const passwordValue = e.target.value;
         setPassword(passwordValue);
+    
+        // Clear error if the password is being corrected
+        if (passwordError) {
+            setPasswordError('');
+        }
+    
         checkButtonActivation(validateEmail(email), passwordValue);
     };
 
