@@ -125,15 +125,6 @@ const LoginForm = () => {
                         else {
                             setEmailError(message);
                         }
-                        //
-                        // TODO: Understand which error message we get from the
-                        // backend and set it here. 
-                        // 
-                        // Errors can be:
-                        // - "Both email and password are required"
-                        // - "Email is not valid"
-                        // - "Invalid email or password"
-                        // - "Please confirm your email before logging in"
                     });
             }
         }

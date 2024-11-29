@@ -119,7 +119,6 @@ const SectionAdminEditChoreography = ({
             <div className="centered">
                 <div className="contentContainer addFolderVideo">
                     <div className="data">
-                        {/* ***TODO: Set image as current folder's image */ }
                         <UploadPicture 
                             onFileUploaded={(file) => setChoreographyImage(file)} 
                             initialImage={choreographyImage}
@@ -128,7 +127,6 @@ const SectionAdminEditChoreography = ({
                             <InputField
                                 state={titleState}
                                 label="title*"
-                                /* ***TODO: set title to current folder's title */
                                 value={title}
                                 onChange={(e) => setTitle(e.target.value)}
                                 onBlur={handleTitleBlur}

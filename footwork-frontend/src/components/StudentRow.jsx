@@ -79,8 +79,6 @@ const StudentRow = ({
                 onClick={(e) => {
                         e.preventDefault();
                         e.stopPropagation();
-                        // TODO Implement delete
-                        console.log(`TODO Delete Student ${studentId}`);
                     }}
                 >
                 {isMobile ? (

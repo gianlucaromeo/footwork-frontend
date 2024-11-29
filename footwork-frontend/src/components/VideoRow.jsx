@@ -5,8 +5,8 @@ import playGreenIcon from '../assets/icons/play-green.png';
 import PopUpDelete from "../components/PopUpDelete";
 
 const VideoRow = ({
-    videoNumber,        // TODO Video number (e.g., "1")
-    videoId,
+    videoNumber,             //  Video number (e.g., "1")
+    videoId,                 // Video ID
     coverImageUrl,           // Thumbnail image source
     videoUrl,                // Video source
     title = "",              // Title of the video

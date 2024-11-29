@@ -85,7 +85,7 @@ const SectionStudentChoreographyVideos = ({
                     )}
                     <VideoColumn
                         videos={videos}
-                        onVideoRowClicked={(videoId) => { }} // TODO
+                        onVideoRowClicked={(videoId) => { }}
                     />
                 </div>
             </div>

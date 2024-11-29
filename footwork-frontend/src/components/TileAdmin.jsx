@@ -18,7 +18,6 @@ const TileAdmin = ({
             <div className="iconBtnContainer">
                 <button className="iconBtn more" onClick={(e) => {
                     e.stopPropagation();
-                    // ***TODO ADD LOGIC TO LINK TO SectionAdminEditCourse.jsx
                     handleButtonClick();
                 }}></button> 
             </div>

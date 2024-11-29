@@ -96,7 +96,7 @@ const SectionAdminChoreographyVideos = ({
                     )}
                     <VideoColumn
                         videos={videos}
-                        onVideoRowClicked={(videoId) => { }} // TODO
+                        onVideoRowClicked={(videoId) => { }}
                         onDeleteVideo={(id) => {
                             videosService.deleteVideo(id)
                                 .then(() => {
